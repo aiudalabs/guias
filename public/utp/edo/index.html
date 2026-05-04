@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDO de 1er Orden — Guía Interactiva | Aiuda Labs</title>
+<meta name="description" content="Guía interactiva para identificar y resolver EDOs de primer orden y primer grado.">
+<link rel="canonical" href="https://guias.aiudalabs.com/utp/edo/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+:root{--bg:#FAF8F4;--bg2:#F3F0EA;--bg3:#EBE7DE;--ink:#0D0D0F;--ink2:#2A2A2F;--ink3:#52525A;--ink4:#8A8A92;--accent:#E8440A;--accent-h:#D13A06;--emerald:#0A7B5A;--emerald-soft:rgba(10,123,90,0.06);--navy:#142850;--display:"Satoshi",system-ui,sans-serif;--serif:"Instrument Serif",Georgia,serif;--mono:"JetBrains Mono",monospace;--max:1120px;--r:12px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#root{position:relative;z-index:1}
+.katex{font-size:1.3em!important}
+.katex-display{margin:0!important}
+.katex-display>.katex{color:#e2e8f0}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+a{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const{useState,useEffect,useRef}=React;
+const h=React.createElement;
+
+function M({children:c,display:d=false}){const ref=useRef(null);useEffect(()=>{if(!ref.current||!window.katex)return;try{window.katex.render(c,ref.current,{throwOnError:false,displayMode:d,trust:true})}catch(e){if(ref.current)ref.current.textContent=c}},[c,d]);return h('span',{ref,style:d?{display:'block',margin:'12px 0',overflowX:'auto'}:{}})}
+function Tx({children:c,style:s}){if(typeof c!=='string')return h('span',{style:s},c);const p=c.split(/(\$[^$]+\$)/g);return h('span',{style:{lineHeight:1.9,...s}},p.map((t,i)=>t.startsWith('$')&&t.endsWith('$')?h(M,{key:i},t.slice(1,-1)):h('span',{key:i},t)))}
+function Logo({size=28}){const a='#E8440A';return h('span',{style:{display:'inline-flex',alignItems:'baseline',gap:size*0.14,lineHeight:1}},h('span',{style:{fontSize:size,fontWeight:900,letterSpacing:'-0.04em',fontFamily:'var(--display)'}},h('span',{style:{color:a,fontWeight:400}},'<'),h('span',{style:{color:a}},'ai'),h('span',{style:{color:'var(--ink)'}},'uda'),h('span',{style:{color:a,fontWeight:400}},'/>')),h('span',{style:{fontSize:size*0.72,fontWeight:500,color:'var(--ink4)',fontFamily:'var(--display)'}},'labs'))}
+
+/* ═══ DATA — PDF order ═══ */
+const T={
+"2.2":{name:"Variables Separables",sec:"2.2",color:"#E8440A",
+identify:["¿Se puede escribir como $\\dfrac{dy}{dx} = g(x)\\cdot h(y)$?","Es decir: un factor solo con $x$ y otro solo con $y$","Ejemplo: $\\dfrac{dy}{dx} = x^2 \\cdot y$ → $g(x)=x^2,\\; h(y)=y$ ✓"],
+steps:[{t:"Separar variables",x:"\\frac{dy}{h(y)} = g(x)\\,dx",d:"Pasa todo lo de $y$ con $dy$ y todo lo de $x$ con $dx$"},{t:"Integrar ambos lados",x:"\\int \\frac{dy}{h(y)} = \\int g(x)\\,dx",d:"Cada lado se integra respecto a su variable"},{t:"Resolver + constante",x:"H(y) = G(x) + C",d:"Solo UNA constante $C$. Despeja $y$ si puedes."}],
+ex:{p:"(1+x)\\,dy - y\\,dx = 0",s:"\\frac{dy}{y} = \\frac{dx}{1+x} \\;\\Rightarrow\\; \\ln|y| = \\ln|1+x| + C",a:"y = \\pm\\, C(x+1)"},
+tip:"Es el tipo más sencillo. Siempre intenta separar primero."},
+
+"2.3":{name:"Coeficientes Homogéneos",sec:"2.3",color:"#9333ea",
+identifyDetailed:{intro:"Verifica que $M$ y $N$ son homogéneas del MISMO grado con la «prueba del $\\lambda$»:",
+vs:[{t:"Identificar M y N",d:"Forma $M(x,y)\\,dx + N(x,y)\\,dy = 0$",x:"(x^2 - 3y^2)\\,dx + 2xy\\,dy = 0",n:"$M = x^2 - 3y^2$ y $N = 2xy$"},{t:"Sustituir λx, λy en M",d:"Reemplaza CADA $x$ por $\\lambda x$ y CADA $y$ por $\\lambda y$:",x:"M(\\lambda x, \\lambda y) = (\\lambda x)^2 - 3(\\lambda y)^2 = \\lambda^2 x^2 - 3\\lambda^2 y^2",n:"$= \\lambda^{\\color{#E8440A}{2}}(x^2 - 3y^2) = \\lambda^{\\color{#E8440A}{2}} M$ → grado $\\color{#E8440A}{2}$ ✓"},{t:"Sustituir λx, λy en N",d:"Lo mismo con $N$:",x:"N(\\lambda x, \\lambda y) = 2(\\lambda x)(\\lambda y) = 2\\lambda^2 xy",n:"$= \\lambda^{\\color{#E8440A}{2}}(2xy) = \\lambda^{\\color{#E8440A}{2}} N$ → grado $\\color{#E8440A}{2}$ ✓"},{t:"Comparar grados",d:"$M$: grado 2, $N$: grado 2 → MISMO → ✅ Es homogénea",x:null,n:"Si fueran diferentes, NO es homogénea."}],
+tricks:["Truco: suma exponentes de $x$ e $y$ en cada término. Si todos dan lo mismo, es homogénea.","En $x^2 - 3y^2$: $2+0=2$, $0+2=2$ ✓.  En $2xy$: $1+1=2$ ✓","$e^{y/x}$, $\\sin(y/x)$, $\\ln(x/y)$ SÍ pueden ser homogéneas grado 0."]},
+steps:[{t:"Verificar homogeneidad",x:"M(\\lambda x,\\lambda y) = \\lambda^n M \\;\\;\\text{y}\\;\\; N(\\lambda x,\\lambda y) = \\lambda^n N",d:"Mismo grado $n$"},{t:"Sustituir y = vx",x:"y = vx,\\; dy = v\\,dx + x\\,dv",d:"Si $M$ es más simple, usa $x = uy$"},{t:"Reemplazar en la EDO",x:"M(x,vx)\\,dx + N(x,vx)(v\\,dx + x\\,dv) = 0",d:""},{t:"Factorizar xⁿ y simplificar",x:null,d:"Saca $x^n$, divide. Queda SEPARABLE en $v$ y $x$."},{t:"Separar e integrar",x:"\\frac{h(v)}{\\ldots}\\,dv = \\frac{dx}{x}",d:""},{t:"Regresar a y",x:"v = y/x",d:"Sustituye de vuelta"}],
+ex:{p:"(x^2 - 3y^2)dx + 2xy\\,dy = 0",s:"y=vx \\;\\Rightarrow\\; x^2[(1-v^2)dx + 2vx\\,dv]=0",a:"y = \\pm\\sqrt{x^2(1+Cx)}"},
+tip:"Prueba del $\\lambda$: sustituye, expande, factoriza $\\lambda^n$. Mismo $n$ = homogénea."},
+
+"2.4":{name:"Casi Homogéneas",sec:"2.4",color:"#0A7B5A",
+identify:["Forma: $\\dfrac{dy}{dx} = F\\!\\left(\\dfrac{Ax + By + C}{ax + by + c}\\right)$","Los coeficientes son rectas. Hay DOS casos según si son paralelas o no.","Caso 1: $\\frac{A}{B} \\neq \\frac{a}{b}$ → rectas NO paralelas → se cortan en $(h,k)$","Caso 2: $\\frac{A}{B} = \\frac{a}{b}$ → rectas paralelas"],
+steps:[{t:"Determinar el caso",x:"\\frac{A}{B} \\stackrel{?}{=} \\frac{a}{b}",d:"Si son distintos → Caso 1 (no paralelas)\nSi son iguales → Caso 2 (paralelas)"},{t:"Caso 1: encontrar (h,k)",x:"\\begin{cases} Ah + Bk + C = 0 \\\\ ah + bk + c = 0 \\end{cases}",d:"Resuelve el sistema para encontrar el punto de intersección"},{t:"Caso 1: sustituir",x:"x = x' + h,\\; y = y' + k \\;\\Rightarrow\\; dx = dx',\\; dy = dy'",d:"Esto elimina las constantes $C$ y $c$. Queda HOMOGÉNEA."},{t:"Caso 2: sustituir",x:"z = Ax + By \\;\\Rightarrow\\; dz = A\\,dx + B\\,dy",d:"Esto la convierte en SEPARABLE."},{t:"Resolver y regresar",x:null,d:"Resuelve la homogénea o separable resultante.\nAl final sustituye de vuelta a las variables originales."}],
+ex:{p:"\\frac{dy}{dx} = \\frac{2x+3y+1}{3x-2y-5}",s:"\\frac{A}{B}=\\frac{2}{3} \\neq \\frac{3}{-2} \\;\\Rightarrow\\; \\text{Caso 1: }(h,k)=(1,-1)",a:"\\ln|(y+1)^2+(x-1)^2| - 3\\arctan\\!\\left(\\frac{y+1}{x-1}\\right) = C"},
+tip:"Si los coeficientes son rectas, es «casi homogénea». Determina si son paralelas o no."},
+
+"2.5":{name:"Ecuación Exacta",sec:"2.5",color:"#142850",
+identify:["Forma: $M(x,y)\\,dx + N(x,y)\\,dy = 0$","Calcula $\\dfrac{\\partial M}{\\partial y}$ y $\\dfrac{\\partial N}{\\partial x}$","Si $\\dfrac{\\partial M}{\\partial y} = \\dfrac{\\partial N}{\\partial x}$ → ¡Es EXACTA!","Ejemplo: $(2x-5y)dx + (3y^2-5x)dy = 0$ → ambas dan $-5$ ✓"],
+steps:[{t:"Verificar exactitud",x:"\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}",d:"¿Son iguales? Continúa"},{t:"Integrar M respecto a x",x:"f(x,y) = \\int M\\,dx + g(y)",d:"$g(y)$ es función desconocida de $y$"},{t:"Derivar f respecto a y",x:"\\frac{\\partial f}{\\partial y} = N(x,y)",d:"Iguala con $N$"},{t:"Encontrar g(y)",x:"g'(y) = N - \\frac{\\partial}{\\partial y}\\!\\int\\! M\\,dx",d:"Despeja $g'(y)$ e integra"},{t:"Solución",x:"f(x,y) = C",d:"Sustituye $g(y)$ en $f$"}],
+ex:{p:"2xy\\,dx + (x^2-1)\\,dy = 0",s:"\\frac{\\partial M}{\\partial y}=2x = \\frac{\\partial N}{\\partial x} \\;\\checkmark\\;\\; f = x^2y + g(y),\\; g'(y)=-1",a:"x^2 y - y = C"},
+tip:"El test $\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}$ es rápido y directo."},
+
+"2.6":{name:"Factor Integrante",sec:"2.6",color:"#d97706",
+identify:["$M\\,dx + N\\,dy = 0$ pero NO es exacta ($\\frac{\\partial M}{\\partial y} \\neq \\frac{\\partial N}{\\partial x}$)","$\\dfrac{\\frac{\\partial M}{\\partial y} - \\frac{\\partial N}{\\partial x}}{N}$ solo depende de $x$ → caso §2.6.1","$\\dfrac{\\frac{\\partial M}{\\partial y} - \\frac{\\partial N}{\\partial x}}{M} = -g(y)$ → caso §2.6.2","Si es homogénea: $\\mu = \\dfrac{1}{Mx + Ny}$ → §2.6.3","Si es $yf(xy)dx + xg(xy)dy = 0$: $\\mu = \\dfrac{1}{Mx - Ny}$ → §2.6.4"],
+steps:[{t:"Confirmar NO exacta",x:"\\frac{\\partial M}{\\partial y} \\neq \\frac{\\partial N}{\\partial x}",d:""},{t:"§2.6.1 — Caso f(x)",x:"\\frac{\\frac{\\partial M}{\\partial y} - \\frac{\\partial N}{\\partial x}}{N} = f(x) \\;\\Rightarrow\\; \\mu = e^{\\int f(x)\\,dx}",d:"Si el cociente solo depende de $x$"},{t:"§2.6.2 — Caso g(y)",x:"\\frac{\\frac{\\partial M}{\\partial y} - \\frac{\\partial N}{\\partial x}}{M} = -g(y) \\;\\Rightarrow\\; \\mu = e^{\\int g(y)\\,dy}",d:"Si el cociente solo depende de $y$"},{t:"§2.6.3 — Homogéneos",x:"\\mu = \\frac{1}{Mx + Ny} \\quad (Mx+Ny \\neq 0)",d:"Cuando $M$ y $N$ son homogéneas del mismo grado"},{t:"§2.6.4 — yf(xy)dx + xg(xy)dy",x:"\\mu = \\frac{1}{Mx - Ny} \\quad (f \\neq g)",d:""},{t:"Multiplicar y resolver",x:"\\mu M\\,dx + \\mu N\\,dy = 0",d:"Ahora es exacta → método de §2.5"}],
+ex:{p:"(x^2+y^2+x)dx + xy\\,dy = 0",s:"\\frac{2y-y}{xy} = \\frac{1}{x} = f(x) \\;\\Rightarrow\\; \\mu = e^{\\int dx/x} = x",a:"6x^2y^2 + 4x^3 + 3x^4 = C"},
+tip:"Prueba §2.6.1→§2.6.4 en orden hasta que una dé función de una sola variable."},
+
+"2.7":{name:"Ecuación Lineal",sec:"2.7",color:"#0369a1",
+identify:["Se puede escribir como $\\dfrac{dy}{dx} + P(x)\\cdot y = f(x)$","La $y$ aparece en grado 1, sin multiplicar por $\\frac{dy}{dx}$","$P(x)$ y $f(x)$ son funciones SOLO de $x$ (o constantes)","Ejemplo: $x\\frac{dy}{dx} - 2y = x^5$ → $\\frac{dy}{dx} - \\frac{2}{x}y = x^4$ ✓"],
+steps:[{t:"Forma estándar",x:"\\frac{dy}{dx} + P(x)\\,y = f(x)",d:"Divide entre el coeficiente de $\\frac{dy}{dx}$. Identifica $P(x)$."},{t:"Factor integrante",x:"\\mu = e^{\\int P(x)\\,dx}",d:"No necesitas $C$ en esta integral"},{t:"Reconocer la derivada",x:"\\frac{d}{dx}\\!\\left[\\mu \\cdot y\\right] = \\mu \\cdot f(x)",d:"El lado izquierdo siempre se simplifica así"},{t:"Integrar ambos lados",x:"\\mu \\cdot y = \\int \\mu \\cdot f(x)\\,dx + C",d:""},{t:"Despejar y",x:"y = \\frac{1}{\\mu}\\left[\\int \\mu\\, f(x)\\,dx + C\\right]",d:"Solución = particular $y_p$ + complementaria $y_c = C/\\mu$"}],
+ex:{p:"x\\,\\frac{dy}{dx} = 2y + x^5",s:"P(x)=-\\tfrac{2}{x},\\;\\mu = x^{-2} \\;\\Rightarrow\\; \\frac{d}{dx}\\!\\left[\\frac{y}{x^2}\\right] = x^2",a:"y = \\tfrac{1}{3}x^5 + Cx^2"},
+tip:"Si ves $\\frac{dy}{dx}$ + (algo)·$y$ = (algo sin $y$), es lineal."},
+
+"2.8":{name:"Ecuación de Bernoulli",sec:"2.8",color:"#be185d",
+identify:["Forma: $\\dfrac{dy}{dx} + P(x)\\,y = f(x)\\,y^n$","Es como una lineal PERO con $y^n$ en el lado derecho","Si $n=0$ o $n=1$, ya es lineal directamente","Ejemplo: $x\\frac{dy}{dx} + y = x^2 y^2$ → $n=2$"],
+steps:[{t:"Identificar n",x:"\\frac{dy}{dx} + P(x)\\,y = f(x)\\,y^{\\,n}",d:"¿Cuánto vale $n$?"},{t:"Dividir entre yⁿ",x:"y^{-n}\\frac{dy}{dx} + P(x)\\,y^{1-n} = f(x)",d:""},{t:"Sustituir z",x:"z = y^{1-n} \\;\\Rightarrow\\; \\frac{dz}{dx} = (1-n)\\,y^{-n}\\frac{dy}{dx}",d:"Se transforma en LINEAL en $z$"},{t:"Resolver la lineal",x:"\\frac{1}{1-n}\\frac{dz}{dx} + P(x)\\,z = f(x)",d:"Usa el método de §2.7"},{t:"Regresar a y",x:"y = z^{\\,1/(1-n)}",d:"$z = y^{1-n}$"}],
+ex:{p:"x\\,\\frac{dy}{dx} + y = x^2\\,y^2",s:"n=2,\\;z=y^{-1} \\;\\Rightarrow\\; \\frac{dz}{dx} - \\frac{z}{x} = -x",a:"y = \\frac{1}{Cx - x^2}"},
+tip:"Si es 'casi lineal' pero tiene $y^n$, es Bernoulli. $z = y^{1-n}$ la convierte en lineal."}
+};
+
+const ORD=["2.2","2.3","2.4","2.5","2.6","2.7","2.8"];
+const FQ=[
+{q:"¿Puedes separar $y$ con $dy$ y $x$ con $dx$?",y:"2.2",n:1},
+{q:"¿Forma $\\frac{dy}{dx} + P(x)y = f(x)$? (sin $y^n$)",y:"2.7",n:2},
+{q:"¿Forma $\\frac{dy}{dx} + Py = fy^n$, $n\\neq 0,1$?",y:"2.8",n:3},
+{q:"¿Es $\\frac{dy}{dx} = F\\!\\left(\\frac{Ax+By+C}{ax+by+c}\\right)$?",y:"2.4",n:4},
+{q:"¿$M\\,dx + N\\,dy = 0$ con $\\frac{\\partial M}{\\partial y} = \\frac{\\partial N}{\\partial x}$?",y:"2.5",n:5},
+{q:"¿$M$ y $N$ homogéneas del MISMO grado?",y:"2.3",n:"2.6"}];
+
+/* ═══ COMPONENTS — sizes matched to aiudalabs.com ═══ */
+
+function Card({type:t,active:a,onClick:oc}){return h('button',{onClick:oc,style:{display:'flex',alignItems:'center',gap:12,padding:'14px 18px',borderRadius:'var(--r)',border:a?'2px solid '+t.color:'1.5px solid var(--bg3)',background:a?t.color+'08':'#fff',cursor:'pointer',width:'100%',textAlign:'left',transition:'all .15s',fontFamily:'var(--display)'}},h('span',{style:{fontFamily:'var(--mono)',fontSize:14,fontWeight:500,color:a?t.color:'var(--ink4)',minWidth:32}},t.sec),h('span',{style:{fontWeight:a?700:500,fontSize:15,color:a?t.color:'var(--ink2)'}},t.name))}
+
+function SD({d}){if(!d)return null;return h('div',{style:{fontSize:16,color:'var(--ink3)',lineHeight:1.85,background:'var(--bg)',padding:'12px 16px',borderRadius:8,marginTop:8,border:'1px solid var(--bg3)'}},d.split('\n').map((l,i)=>h('div',{key:i},h(Tx,null,l))))}
+
+function DI({data:d,color:c}){return h('div',null,h('div',{style:{fontSize:17,color:'var(--ink2)',marginBottom:18,lineHeight:1.8}},h(Tx,null,d.intro)),d.vs.map((s,i)=>h('div',{key:i,style:{background:'#fff',borderRadius:'var(--r)',padding:'16px 20px',marginBottom:14,border:'1px solid '+c+'20'}},h('div',{style:{display:'flex',alignItems:'center',gap:12,marginBottom:10}},h('span',{style:{background:c,color:'#fff',fontWeight:700,fontSize:14,padding:'4px 12px',borderRadius:10,fontFamily:'var(--mono)'}},i+1),h('span',{style:{fontWeight:700,fontSize:17,color:'var(--ink)'}},s.t)),h('div',{style:{fontSize:16,color:'var(--ink2)',lineHeight:1.85,marginBottom:s.x?12:0}},h(Tx,null,s.d)),s.x&&h('div',{style:{background:'var(--ink)',borderRadius:10,padding:'14px 20px',marginBottom:8,overflowX:'auto'}},h(M,{display:true},s.x)),s.n&&h('div',{style:{fontSize:15,color:'var(--ink2)',lineHeight:1.85,background:'var(--emerald-soft)',padding:'10px 14px',borderRadius:8,borderLeft:'3px solid var(--emerald)',marginTop:8}},h(Tx,null,s.n)))),d.tricks&&h('div',{style:{background:'#fefce8',borderRadius:10,padding:'14px 16px',marginTop:14,borderLeft:'3px solid #facc15'}},h('span',{style:{fontSize:12,fontWeight:700,color:'#a16207',textTransform:'uppercase',letterSpacing:'.06em',fontFamily:'var(--mono)'}},'⚡ Trucos rápidos'),d.tricks.map((t,i)=>h('div',{key:i,style:{fontSize:15,color:'#713f12',margin:'8px 0',lineHeight:1.85}},h(Tx,null,t)))))}
+
+function Detail({type:t}){const[showEx,set]=useState(false);const det=!!t.identifyDetailed;
+return h('div',{style:{animation:'fadeSlide .2s ease'}},
+/* Title */
+h('div',{style:{display:'flex',alignItems:'baseline',gap:14,marginBottom:24}},h('span',{style:{fontFamily:'var(--mono)',fontSize:18,fontWeight:500,color:t.color}},t.sec),h('h2',{style:{fontSize:28,fontWeight:900,color:t.color,margin:0,fontFamily:'var(--display)',letterSpacing:'-0.03em'}},t.name)),
+/* Identify */
+h('div',{style:{background:t.color+'08',borderRadius:'var(--r)',padding:'20px 24px',marginBottom:24,borderLeft:'4px solid '+t.color}},h('div',{style:{fontSize:12,fontWeight:700,color:t.color,textTransform:'uppercase',letterSpacing:'.12em',marginBottom:14,fontFamily:'var(--mono)'}},'¿Cómo la reconozco?'),det?h(DI,{data:t.identifyDetailed,color:t.color}):t.identify.map((item,i)=>h('div',{key:i,style:{fontSize:17,color:'var(--ink2)',margin:'12px 0',paddingLeft:4,lineHeight:1.85}},h('span',{style:{color:t.color,fontWeight:700,marginRight:10}},(i+1)+'.'),h(Tx,null,item)))),
+/* Steps */
+h('div',{style:{marginBottom:24}},h('div',{style:{fontSize:12,fontWeight:700,color:'var(--ink)',textTransform:'uppercase',letterSpacing:'.12em',marginBottom:18,fontFamily:'var(--mono)'}},'Pasos para resolver'),t.steps.map((s,i)=>h('div',{key:i,style:{display:'flex',gap:16,marginBottom:18}},h('div',{style:{minWidth:36,height:36,borderRadius:'50%',background:t.color,color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:800,fontSize:16,flexShrink:0,marginTop:2,fontFamily:'var(--mono)'}},i+1),h('div',{style:{flex:1,minWidth:0}},h('div',{style:{fontWeight:700,fontSize:18,color:'var(--ink)',marginBottom:8}},s.t),s.x&&h('div',{style:{background:'var(--ink)',borderRadius:10,padding:'14px 20px',marginBottom:8,overflowX:'auto'}},h(M,{display:true},s.x)),h(SD,{d:s.d}))))),
+/* Example */
+h('button',{onClick:()=>set(!showEx),style:{width:'100%',padding:15,borderRadius:'var(--r)',border:'1.5px dashed '+t.color,background:showEx?t.color+'08':'#fff',cursor:'pointer',fontWeight:600,fontSize:16,color:t.color,marginBottom:showEx?12:20,fontFamily:'var(--display)'}},showEx?'▾ Ocultar ejemplo':'▸ Ver ejemplo resuelto'),
+showEx&&h('div',{style:{background:'var(--ink)',borderRadius:'var(--r)',padding:24,marginBottom:20}},[{l:'Problema',c:'#fbbf24',x:t.ex.p},{l:'Desarrollo',c:'#38bdf8',x:t.ex.s},{l:'Respuesta',c:'#4ade80',x:t.ex.a}].map((r,i)=>h('div',{key:i,style:{marginBottom:i<2?16:0}},h('span',{style:{fontSize:12,fontWeight:700,color:r.c,textTransform:'uppercase',letterSpacing:'.08em',fontFamily:'var(--mono)'}},r.l),h('div',{style:{marginTop:8}},h(M,{display:true},r.x))))),
+/* Tip */
+h('div',{style:{background:'#fefce8',borderRadius:'var(--r)',padding:'16px 20px',display:'flex',gap:12,alignItems:'flex-start',border:'1px solid #fde68a'}},h('span',{style:{fontSize:20,flexShrink:0}},'💡'),h('span',{style:{fontSize:16,color:'#92400e',lineHeight:1.75,fontStyle:'italic'}},h(Tx,null,t.tip))))}
+
+function Flow(){const[s,setS]=useState(0);const[r,setR]=useState(null);const reset=()=>{setS(0);setR(null)};
+if(r){const t=T[r];return h('div',{style:{animation:'fadeSlide .2s ease'}},h('div',{style:{textAlign:'center',padding:36,background:t.color+'08',borderRadius:'var(--r)',border:'2px solid '+t.color,marginBottom:20}},h('h3',{style:{fontSize:24,fontWeight:900,color:t.color,margin:'0 0 6px',fontFamily:'var(--display)',letterSpacing:'-0.02em'}},'¡Es §'+t.sec+' '+t.name+'!'),h('p',{style:{fontSize:16,color:'var(--ink4)',margin:0}},'Ve a «Tipos» para los pasos de solución')),h('button',{onClick:reset,style:{width:'100%',padding:14,borderRadius:'var(--r)',border:'none',background:'var(--ink)',color:'var(--bg)',cursor:'pointer',fontWeight:600,fontSize:16,fontFamily:'var(--display)'}},'↻ Otra ecuación'))}
+const c=FQ[s];return h('div',null,h('div',{style:{display:'flex',gap:5,marginBottom:24}},FQ.map((_,i)=>h('div',{key:i,style:{flex:1,height:5,borderRadius:3,background:i<=s?'var(--accent)':'var(--bg3)',transition:'background .3s'}}))),h('div',{style:{background:'#fff',borderRadius:'var(--r)',padding:32,textAlign:'center',marginBottom:20,border:'1px solid var(--bg3)'}},h('p',{style:{fontSize:13,color:'var(--ink4)',margin:'0 0 10px',fontFamily:'var(--mono)',letterSpacing:'.06em'}},'Pregunta '+(s+1)+' de '+FQ.length),h('div',{style:{fontSize:19,fontWeight:600,color:'var(--ink)',lineHeight:1.85}},h(Tx,null,c.q))),h('div',{style:{display:'flex',gap:14}},[{l:'✓ Sí',bg:'var(--emerald)',t:c.y},{l:'✗ No',bg:'#ef4444',t:c.n}].map((b,i)=>h('button',{key:i,onClick:()=>typeof b.t==='string'?setR(b.t):setS(b.t),style:{flex:1,padding:16,borderRadius:'var(--r)',border:'none',background:b.bg,color:'#fff',cursor:'pointer',fontWeight:700,fontSize:18,fontFamily:'var(--display)'}},b.l))),s>0&&h('button',{onClick:()=>setS(s-1),style:{width:'100%',marginTop:12,padding:12,borderRadius:10,border:'1px solid var(--bg3)',background:'#fff',cursor:'pointer',fontSize:15,color:'var(--ink4)',fontFamily:'var(--display)'}},'← Regresar'))}
+
+function Cheat(){const f=[{l:'§2.2 Separable',x:"\\frac{dy}{dx}=g(x)h(y) \\;\\Rightarrow\\; \\int\\!\\frac{dy}{h(y)}=\\int\\!g(x)dx+C",c:'#E8440A'},{l:'§2.3 Homogénea',x:"M,N\\text{ grado }n \\;\\xrightarrow{y=vx}\\; \\text{Separable}",c:'#9333ea'},{l:'§2.5 Exacta',x:"Mdx+Ndy=0,\\;\\frac{\\partial M}{\\partial y}=\\frac{\\partial N}{\\partial x} \\;\\Rightarrow\\; f(x,y)=C",c:'#142850'},{l:'§2.7 Lineal',x:"y'+Py=f \\;\\Rightarrow\\; y=\\frac{1}{\\mu}\\!\\int\\!\\mu f\\,dx+C,\\;\\mu=e^{\\int P\\,dx}",c:'#0369a1'},{l:'§2.8 Bernoulli',x:"y'+Py=fy^n \\;\\xrightarrow{z=y^{1-n}}\\; \\text{Lineal}",c:'#be185d'}];
+return h('div',{style:{animation:'fadeSlide .2s ease'}},h('h3',{style:{fontSize:28,fontWeight:400,color:'var(--ink)',margin:'0 0 20px',fontFamily:'var(--serif)',fontStyle:'italic'}},'Fórmulas clave'),f.map((v,i)=>h('div',{key:i,style:{background:'var(--ink)',borderRadius:'var(--r)',padding:'16px 22px',marginBottom:12,overflowX:'auto',borderLeft:'4px solid '+v.c}},h('span',{style:{fontSize:13,fontWeight:600,color:'#94a3b8',textTransform:'uppercase',letterSpacing:'.08em',fontFamily:'var(--mono)'}},v.l),h('div',{style:{marginTop:10}},h(M,{display:true},v.x)))))}
+
+/* ═══ APP ═══ */
+const TABS=['📋 Tipos','🧭 Identificador','📐 Fórmulas'];
+function App(){const[at,setAt]=useState('2.2');const[tab,setTab]=useState(0);
+return h('div',{style:{maxWidth:'var(--max)',margin:'0 auto',padding:'0 32px',minHeight:'100vh'}},
+/* Nav — matches website nav exactly */
+h('nav',{style:{position:'sticky',top:0,zIndex:100,background:'rgba(250,248,244,0.88)',backdropFilter:'blur(20px)',borderBottom:'1px solid rgba(0,0,0,0.04)',padding:'0',margin:'0 -32px',paddingLeft:32,paddingRight:32}},h('div',{style:{display:'flex',alignItems:'center',justifyContent:'space-between',height:64,maxWidth:'var(--max)',margin:'0 auto'}},h('a',{href:'https://www.aiudalabs.com',target:'_blank',rel:'noopener'},h(Logo,{size:28})),h('span',{style:{fontFamily:'var(--mono)',fontSize:12,fontWeight:500,color:'var(--ink3)',textTransform:'uppercase',letterSpacing:'.04em'}},'Guías de Estudio'))),
+/* Hero header — matches website section-header pattern */
+h('div',{style:{marginBottom:32,paddingTop:24}},h('div',{style:{display:'flex',alignItems:'center',gap:10,marginBottom:14}},h('span',{style:{width:20,height:1.5,background:'var(--accent)',display:'block'}}),h('span',{style:{fontFamily:'var(--mono)',fontSize:12,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)'}},'UTP · Ecuaciones Diferenciales')),h('h1',{style:{fontSize:'clamp(32px,4vw,44px)',fontWeight:900,lineHeight:1.08,letterSpacing:'-0.03em',marginBottom:8,fontFamily:'var(--display)'}},'EDO de 1er Orden y ',h('em',{style:{fontFamily:'var(--serif)',fontStyle:'italic',fontWeight:400,color:'var(--accent)'}},'1er Grado')),h('p',{style:{fontSize:17,lineHeight:1.7,color:'var(--ink3)',maxWidth:520}},'Prof. Alejandro Hernández Espino · Universidad Tecnológica de Panamá')),
+/* Tabs */
+h('div',{style:{display:'flex',gap:4,background:'#fff',borderRadius:'var(--r)',padding:4,marginBottom:24,border:'1px solid var(--bg3)'}},TABS.map((t,i)=>h('button',{key:i,onClick:()=>setTab(i),style:{flex:1,padding:13,borderRadius:10,border:'none',background:tab===i?'var(--ink)':'transparent',cursor:'pointer',fontWeight:tab===i?600:500,fontSize:15,color:tab===i?'var(--bg)':'var(--ink4)',fontFamily:'var(--display)',transition:'all .15s'}},t))),
+/* Content */
+tab===0&&h('div',{style:{display:'grid',gridTemplateColumns:'280px 1fr',gap:20,alignItems:'start'}},h('div',{style:{display:'flex',flexDirection:'column',gap:6,position:'sticky',top:80}},ORD.map(id=>h(Card,{key:id,type:T[id],active:at===id,onClick:()=>setAt(id)}))),h('div',{style:{background:'#fff',borderRadius:'var(--r)',padding:28,border:'1px solid var(--bg3)'}},h(Detail,{key:at,type:T[at]}))),
+tab===1&&h('div',{style:{maxWidth:700,margin:'0 auto',background:'#fff',borderRadius:'var(--r)',padding:32,border:'1px solid var(--bg3)'}},h('h3',{style:{fontSize:28,fontWeight:400,color:'var(--ink)',margin:'0 0 6px',fontFamily:'var(--serif)',fontStyle:'italic'}},'¿Qué tipo de EDO tengo?'),h('p',{style:{fontSize:17,color:'var(--ink3)',margin:'0 0 24px',lineHeight:1.7}},'Responde Sí o No a cada pregunta'),h(Flow)),
+tab===2&&h('div',{style:{maxWidth:760,margin:'0 auto',background:'#fff',borderRadius:'var(--r)',padding:32,border:'1px solid var(--bg3)'}},h(Cheat)),
+/* Footer */
+h('footer',{style:{textAlign:'center',padding:'40px 0 28px',marginTop:40,borderTop:'1px solid var(--bg3)'}},h('a',{href:'https://www.aiudalabs.com',target:'_blank',rel:'noopener'},h(Logo,{size:22})),h('p',{style:{fontFamily:'var(--mono)',fontSize:12,color:'var(--ink4)',marginTop:10,letterSpacing:'.04em'}},'© 2026 Aiuda Labs · Panamá'),h('p',{style:{fontSize:14,color:'var(--ink3)',marginTop:12}},'¿Guías personalizadas para tu curso? ',h('a',{href:'https://wa.me/50763644604',target:'_blank',style:{color:'var(--accent)',fontWeight:600}},'Escríbenos'))))}
+
+ReactDOM.render(h(App),document.getElementById('root'));
+</script>
+</body>
+</html>

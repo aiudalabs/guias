@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guías de Estudio | Aiuda Labs</title>
+<meta name="description" content="Guías interactivas de estudio para estudiantes universitarios en Panamá y LATAM. Ecuaciones renderizadas, identificadores interactivos y ejemplos paso a paso.">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- GA -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<style>
+:root{--bg:#FAF8F4;--bg2:#F3F0EA;--bg3:#EBE7DE;--ink:#0D0D0F;--ink2:#2A2A2F;--ink3:#52525A;--ink4:#8A8A92;--accent:#E8440A;--display:"Satoshi",system-ui,sans-serif;--serif:"Instrument Serif",Georgia,serif;--mono:"JetBrains Mono",monospace;--r:12px;--max:1120px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.04)}
+nav .inner{max-width:var(--max);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:28px;font-weight:900;letter-spacing:-0.04em;line-height:1}
+.logo .a{color:#E8440A}.logo .a2{color:#E8440A;font-weight:400}.logo .m{color:var(--ink4);font-size:20px;font-weight:500;margin-left:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero{padding:60px 0 48px}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.eyebrow span:first-child{width:20px;height:1.5px;background:var(--accent);display:block}
+.eyebrow span:last-child{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(36px,5vw,56px);font-weight:900;line-height:1.08;letter-spacing:-0.035em;margin-bottom:12px}
+h1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+.lead{font-size:18px;line-height:1.7;color:var(--ink3);max-width:540px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;padding-bottom:80px}
+.card{background:#fff;border:1.5px solid var(--bg3);border-radius:var(--r);padding:28px;transition:all .2s;display:block;position:relative;z-index:1}
+.card:hover{border-color:var(--accent);box-shadow:0 8px 30px rgba(0,0,0,.06);transform:translateY(-2px)}
+.card-uni{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:8px}
+.card-title{font-size:22px;font-weight:900;letter-spacing:-0.02em;margin-bottom:6px}
+.card-desc{font-size:15px;color:var(--ink3);line-height:1.6;margin-bottom:16px}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:11px;font-weight:500;background:var(--bg2);color:var(--ink3);padding:3px 10px;border-radius:6px}
+.card-arrow{position:absolute;top:28px;right:28px;color:var(--ink4);transition:color .2s}
+.card:hover .card-arrow{color:var(--accent)}
+.empty{background:var(--bg2);border:1.5px dashed var(--bg3);border-radius:var(--r);padding:28px;opacity:.7}
+.empty .card-title{color:var(--ink4)}
+footer{text-align:center;padding:40px 0 28px;border-top:1px solid var(--bg3)}
+footer p{font-family:var(--mono);font-size:12px;color:var(--ink4);margin-top:10px;letter-spacing:.04em}
+footer .cta{font-size:14px;color:var(--ink3);margin-top:12px}
+footer .cta a{color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="https://www.aiudalabs.com" target="_blank" rel="noopener">
+      <span class="logo"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m">labs</span></span>
+    </a>
+    <span style="font-family:var(--mono);font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em">Guías de Estudio</span>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">
+      <span></span>
+      <span>Recursos gratuitos</span>
+    </div>
+    <h1>Guías interactivas<br>para <em>estudiar en serio</em></h1>
+    <p class="lead">Ecuaciones renderizadas, identificadores paso a paso y ejemplos resueltos. Gratis, sin registro, para estudiantes en Panamá y LATAM.</p>
+  </div>
+
+  <div class="grid">
+    <a href="/utp/edo/" class="card">
+      <span class="card-arrow">→</span>
+      <div class="card-uni">UTP · Ing. Civil / Mecánica / Eléctrica</div>
+      <div class="card-title">EDO de 1er Orden y 1er Grado</div>
+      <div class="card-desc">Variables separables, homogéneas, casi homogéneas, exactas, factor integrante, lineales y Bernoulli. Con identificador interactivo.</div>
+      <div class="card-tags">
+        <span class="tag">7 tipos de EDO</span>
+        <span class="tag">KaTeX</span>
+        <span class="tag">Prof. Hernández Espino</span>
+      </div>
+    </a>
+
+    <div class="empty">
+      <div class="card-uni">Próximamente</div>
+      <div class="card-title">Cálculo III</div>
+      <div class="card-desc">Integrales dobles y triples, coordenadas curvilíneas, teoremas de Green, Stokes y divergencia.</div>
+      <div class="card-tags">
+        <span class="tag">En desarrollo</span>
+      </div>
+    </div>
+
+    <div class="empty">
+      <div class="card-uni">Próximamente</div>
+      <div class="card-title">Física II</div>
+      <div class="card-desc">Electrostática, ley de Gauss, potencial eléctrico, circuitos, magnetismo e inducción electromagnética.</div>
+      <div class="card-tags">
+        <span class="tag">En desarrollo</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="https://www.aiudalabs.com" target="_blank" rel="noopener">
+    <span class="logo" style="font-size:22px"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m" style="font-size:16px">labs</span></span>
+  </a>
+  <p>© 2026 Aiuda Labs · Panamá</p>
+  <p class="cta">¿Quieres una guía para tu curso? <a href="https://wa.me/50763644604" target="_blank">Escríbenos por WhatsApp</a></p>
+</footer>
+
+</body>
+</html>
