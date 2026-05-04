@@ -26,6 +26,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
 .katex-display>.katex{color:#e2e8f0}
 @keyframes fadeSlide{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 a{color:inherit;text-decoration:none}
+@media(max-width:768px){.katex{font-size:1.05em!important}.katex-display{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}}
 </style>
 </head>
 <body>
@@ -37,6 +38,8 @@ const h=React.createElement;
 function M({children:c,display:d=false}){const ref=useRef(null);useEffect(()=>{if(!ref.current||!window.katex)return;try{window.katex.render(c,ref.current,{throwOnError:false,displayMode:d,trust:true})}catch(e){if(ref.current)ref.current.textContent=c}},[c,d]);return h('span',{ref,style:d?{display:'block',margin:'12px 0',overflowX:'auto'}:{}})}
 function Tx({children:c,style:s}){if(typeof c!=='string')return h('span',{style:s},c);const p=c.split(/(\$[^$]+\$)/g);return h('span',{style:{lineHeight:1.9,...s}},p.map((t,i)=>t.startsWith('$')&&t.endsWith('$')?h(M,{key:i},t.slice(1,-1)):h('span',{key:i},t)))}
 function Logo({size=28}){const a='#E8440A';return h('span',{style:{display:'inline-flex',alignItems:'baseline',gap:size*0.14,lineHeight:1}},h('span',{style:{fontSize:size,fontWeight:900,letterSpacing:'-0.04em',fontFamily:'var(--display)'}},h('span',{style:{color:a,fontWeight:400}},'<'),h('span',{style:{color:a}},'ai'),h('span',{style:{color:'var(--ink)'}},'uda'),h('span',{style:{color:a,fontWeight:400}},'/>')),h('span',{style:{fontSize:size*0.72,fontWeight:500,color:'var(--ink4)',fontFamily:'var(--display)'}},'labs'))}
+
+function useIsMobile(bp=768){const[m,setM]=useState(()=>typeof window!=='undefined'&&window.innerWidth<bp);useEffect(()=>{const cb=()=>setM(window.innerWidth<bp);window.addEventListener('resize',cb);return()=>window.removeEventListener('resize',cb)},[bp]);return m}
 
 /* ═══ DATA — PDF order ═══ */
 const T={
@@ -125,20 +128,25 @@ return h('div',{style:{animation:'fadeSlide .2s ease'}},h('h3',{style:{fontSize:
 
 /* ═══ APP ═══ */
 const TABS=['📋 Tipos','🧭 Identificador','📐 Fórmulas'];
-function App(){const[at,setAt]=useState('2.2');const[tab,setTab]=useState(0);
-return h('div',{style:{maxWidth:'var(--max)',margin:'0 auto',padding:'0 32px',minHeight:'100vh'}},
-/* Nav — matches website nav exactly */
-h('nav',{style:{position:'sticky',top:0,zIndex:100,background:'rgba(250,248,244,0.88)',backdropFilter:'blur(20px)',borderBottom:'1px solid rgba(0,0,0,0.04)',padding:'0',margin:'0 -32px',paddingLeft:32,paddingRight:32}},h('div',{style:{display:'flex',alignItems:'center',justifyContent:'space-between',height:64,maxWidth:'var(--max)',margin:'0 auto'}},h('a',{href:'https://www.aiudalabs.com',target:'_blank',rel:'noopener'},h(Logo,{size:28})),h('span',{style:{fontFamily:'var(--mono)',fontSize:12,fontWeight:500,color:'var(--ink3)',textTransform:'uppercase',letterSpacing:'.04em'}},'Guías de Estudio'))),
-/* Hero header — matches website section-header pattern */
-h('div',{style:{marginBottom:32,paddingTop:24}},h('div',{style:{display:'flex',alignItems:'center',gap:10,marginBottom:14}},h('span',{style:{width:20,height:1.5,background:'var(--accent)',display:'block'}}),h('span',{style:{fontFamily:'var(--mono)',fontSize:12,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)'}},'UTP · Ecuaciones Diferenciales')),h('h1',{style:{fontSize:'clamp(32px,4vw,44px)',fontWeight:900,lineHeight:1.08,letterSpacing:'-0.03em',marginBottom:8,fontFamily:'var(--display)'}},'EDO de 1er Orden y ',h('em',{style:{fontFamily:'var(--serif)',fontStyle:'italic',fontWeight:400,color:'var(--accent)'}},'1er Grado')),h('p',{style:{fontSize:17,lineHeight:1.7,color:'var(--ink3)',maxWidth:520}},'Prof. Alejandro Hernández Espino · Universidad Tecnológica de Panamá')),
+function App(){const[at,setAt]=useState('2.2');const[tab,setTab]=useState(0);const mob=useIsMobile();const px=mob?16:32;
+return h('div',{style:{maxWidth:'var(--max)',margin:'0 auto',padding:'0 '+px+'px',minHeight:'100vh'}},
+/* Nav */
+h('nav',{style:{position:'sticky',top:0,zIndex:100,background:'rgba(250,248,244,0.88)',backdropFilter:'blur(20px)',borderBottom:'1px solid rgba(0,0,0,0.04)',padding:'0',margin:'0 -'+px+'px',paddingLeft:px,paddingRight:px}},h('div',{style:{display:'flex',alignItems:'center',justifyContent:'space-between',height:mob?56:64,maxWidth:'var(--max)',margin:'0 auto'}},h('a',{href:'https://www.aiudalabs.com',target:'_blank',rel:'noopener'},h(Logo,{size:mob?22:28})),!mob&&h('span',{style:{fontFamily:'var(--mono)',fontSize:12,fontWeight:500,color:'var(--ink3)',textTransform:'uppercase',letterSpacing:'.04em'}},'Guías de Estudio'))),
+/* Hero */
+h('div',{style:{marginBottom:mob?20:32,paddingTop:mob?16:24}},h('div',{style:{display:'flex',alignItems:'center',gap:10,marginBottom:mob?10:14}},h('span',{style:{width:20,height:1.5,background:'var(--accent)',display:'block'}}),h('span',{style:{fontFamily:'var(--mono)',fontSize:mob?10:12,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--accent)'}},'UTP · Ecuaciones Diferenciales')),h('h1',{style:{fontSize:mob?'26px':'clamp(32px,4vw,44px)',fontWeight:900,lineHeight:1.08,letterSpacing:'-0.03em',marginBottom:8,fontFamily:'var(--display)'}},'EDO de 1er Orden y ',h('em',{style:{fontFamily:'var(--serif)',fontStyle:'italic',fontWeight:400,color:'var(--accent)'}},'1er Grado')),h('p',{style:{fontSize:mob?14:17,lineHeight:1.7,color:'var(--ink3)',maxWidth:520}},'Prof. Alejandro Hernández Espino · UTP')),
 /* Tabs */
-h('div',{style:{display:'flex',gap:4,background:'#fff',borderRadius:'var(--r)',padding:4,marginBottom:24,border:'1px solid var(--bg3)'}},TABS.map((t,i)=>h('button',{key:i,onClick:()=>setTab(i),style:{flex:1,padding:13,borderRadius:10,border:'none',background:tab===i?'var(--ink)':'transparent',cursor:'pointer',fontWeight:tab===i?600:500,fontSize:15,color:tab===i?'var(--bg)':'var(--ink4)',fontFamily:'var(--display)',transition:'all .15s'}},t))),
+h('div',{style:{display:'flex',gap:4,background:'#fff',borderRadius:'var(--r)',padding:4,marginBottom:mob?16:24,border:'1px solid var(--bg3)'}},TABS.map((t,i)=>h('button',{key:i,onClick:()=>setTab(i),style:{flex:1,padding:mob?10:13,borderRadius:10,border:'none',background:tab===i?'var(--ink)':'transparent',cursor:'pointer',fontWeight:tab===i?600:500,fontSize:mob?13:15,color:tab===i?'var(--bg)':'var(--ink4)',fontFamily:'var(--display)',transition:'all .15s'}},t))),
 /* Content */
-tab===0&&h('div',{style:{display:'grid',gridTemplateColumns:'280px 1fr',gap:20,alignItems:'start'}},h('div',{style:{display:'flex',flexDirection:'column',gap:6,position:'sticky',top:80}},ORD.map(id=>h(Card,{key:id,type:T[id],active:at===id,onClick:()=>setAt(id)}))),h('div',{style:{background:'#fff',borderRadius:'var(--r)',padding:28,border:'1px solid var(--bg3)'}},h(Detail,{key:at,type:T[at]}))),
-tab===1&&h('div',{style:{maxWidth:700,margin:'0 auto',background:'#fff',borderRadius:'var(--r)',padding:32,border:'1px solid var(--bg3)'}},h('h3',{style:{fontSize:28,fontWeight:400,color:'var(--ink)',margin:'0 0 6px',fontFamily:'var(--serif)',fontStyle:'italic'}},'¿Qué tipo de EDO tengo?'),h('p',{style:{fontSize:17,color:'var(--ink3)',margin:'0 0 24px',lineHeight:1.7}},'Responde Sí o No a cada pregunta'),h(Flow)),
-tab===2&&h('div',{style:{maxWidth:760,margin:'0 auto',background:'#fff',borderRadius:'var(--r)',padding:32,border:'1px solid var(--bg3)'}},h(Cheat)),
+tab===0&&(mob?
+/* Mobile: stacked */
+h('div',null,h('div',{style:{display:'flex',gap:6,overflowX:'auto',paddingBottom:8,marginBottom:12,WebkitOverflowScrolling:'touch'}},ORD.map(id=>h('button',{key:id,onClick:()=>setAt(id),style:{flexShrink:0,padding:'8px 14px',borderRadius:20,border:at===id?'2px solid '+T[id].color:'1.5px solid var(--bg3)',background:at===id?T[id].color+'10':'#fff',cursor:'pointer',fontFamily:'var(--mono)',fontSize:12,fontWeight:at===id?700:500,color:at===id?T[id].color:'var(--ink3)',whiteSpace:'nowrap'}},T[id].sec+' '+T[id].name))),h('div',{style:{background:'#fff',borderRadius:'var(--r)',padding:16,border:'1px solid var(--bg3)'}},h(Detail,{key:at,type:T[at]})))
+:
+/* Desktop: sidebar grid */
+h('div',{style:{display:'grid',gridTemplateColumns:'280px 1fr',gap:20,alignItems:'start'}},h('div',{style:{display:'flex',flexDirection:'column',gap:6,position:'sticky',top:80}},ORD.map(id=>h(Card,{key:id,type:T[id],active:at===id,onClick:()=>setAt(id)}))),h('div',{style:{background:'#fff',borderRadius:'var(--r)',padding:28,border:'1px solid var(--bg3)'}},h(Detail,{key:at,type:T[at]})))),
+tab===1&&h('div',{style:{maxWidth:700,margin:'0 auto',background:'#fff',borderRadius:'var(--r)',padding:mob?16:32,border:'1px solid var(--bg3)'}},h('h3',{style:{fontSize:mob?20:28,fontWeight:400,color:'var(--ink)',margin:'0 0 6px',fontFamily:'var(--serif)',fontStyle:'italic'}},'¿Qué tipo de EDO tengo?'),h('p',{style:{fontSize:mob?14:17,color:'var(--ink3)',margin:'0 0 '+( mob?16:24)+'px',lineHeight:1.7}},'Responde Sí o No a cada pregunta'),h(Flow)),
+tab===2&&h('div',{style:{maxWidth:760,margin:'0 auto',background:'#fff',borderRadius:'var(--r)',padding:mob?16:32,border:'1px solid var(--bg3)'}},h(Cheat)),
 /* Footer */
-h('footer',{style:{textAlign:'center',padding:'40px 0 28px',marginTop:40,borderTop:'1px solid var(--bg3)'}},h('a',{href:'https://www.aiudalabs.com',target:'_blank',rel:'noopener'},h(Logo,{size:22})),h('p',{style:{fontFamily:'var(--mono)',fontSize:12,color:'var(--ink4)',marginTop:10,letterSpacing:'.04em'}},'© 2026 Aiuda Labs · Panamá'),h('p',{style:{fontSize:14,color:'var(--ink3)',marginTop:12}},'¿Guías personalizadas para tu curso? ',h('a',{href:'https://wa.me/50763644604',target:'_blank',style:{color:'var(--accent)',fontWeight:600}},'Escríbenos'))))}
+h('footer',{style:{textAlign:'center',padding:mob?'28px 0 20px':'40px 0 28px',marginTop:mob?28:40,borderTop:'1px solid var(--bg3)'}},h('a',{href:'https://www.aiudalabs.com',target:'_blank',rel:'noopener'},h(Logo,{size:mob?18:22})),h('p',{style:{fontFamily:'var(--mono)',fontSize:11,color:'var(--ink4)',marginTop:8,letterSpacing:'.04em'}},'© 2026 Aiuda Labs · Panamá'),h('p',{style:{fontSize:13,color:'var(--ink3)',marginTop:10}},'¿Guías para tu curso? ',h('a',{href:'https://wa.me/50763644604',target:'_blank',style:{color:'var(--accent)',fontWeight:600}},'Escríbenos'))))}
 
 ReactDOM.render(h(App),document.getElementById('root'));
 </script>
