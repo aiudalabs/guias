@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 6: Ecuaciones | Nivelación de Matemáticas | Aiuda Labs</title>
+<meta name="description" content="Resolver ecuaciones desde la intuición de la balanza. Lineales, cuadráticas y con logaritmos. Sin 'pasar al otro lado'.">
+<link rel="canonical" href="https://guias.aiudalabs.com/nivelacion/modulo-6/">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root{--bg:#FAF8F4;--bg2:#F3F0EA;--bg3:#EBE7DE;--ink:#0D0D0F;--ink2:#2A2A2F;--ink3:#52525A;--ink4:#8A8A92;--accent:#E8440A;--mc:#b45309;--display:"Satoshi",system-ui,sans-serif;--serif:"Instrument Serif",Georgia,serif;--mono:"JetBrains Mono",monospace;--r:12px;--max:740px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.04)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:26px;font-weight:900;letter-spacing:-0.04em;line-height:1}.logo .a{color:#E8440A}.logo .a2{color:#E8440A;font-weight:400}.logo .m{color:var(--ink4);font-size:18px;font-weight:500;margin-left:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.breadcrumb{padding:16px 0 0;font-family:var(--mono);font-size:12px;color:var(--ink4);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.breadcrumb a{color:var(--ink4)}.breadcrumb a:hover{color:var(--mc)}
+.hero{padding:36px 0 28px}
+.module-badge{display:inline-flex;align-items:center;background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:16px}
+h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.08;letter-spacing:-0.035em;margin-bottom:14px}
+h1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--mc)}
+.lead{font-size:17px;line-height:1.75;color:var(--ink3);margin-bottom:20px}
+.progress{display:flex;gap:6px}
+.pdot{height:6px;border-radius:3px;flex:1;background:var(--bg3)}.pdot.done{background:var(--mc);opacity:.45}.pdot.active{background:var(--mc)}
+hr.divider{border:none;border-top:1px solid var(--bg3);margin:32px 0}
+h2{font-size:22px;font-weight:900;letter-spacing:-0.02em;color:var(--ink);margin:36px 0 14px}
+h3{font-size:18px;font-weight:700;color:var(--ink2);margin:22px 0 10px}
+p{font-size:16px;line-height:1.82;color:var(--ink2);margin-bottom:14px}
+p:last-child{margin-bottom:0}
+ul.bullets{list-style:none;margin:12px 0 16px;padding:0;display:flex;flex-direction:column;gap:8px}
+ul.bullets li{font-size:16px;line-height:1.75;color:var(--ink2);display:flex;gap:10px;align-items:flex-start}
+ul.bullets li::before{content:"·";color:var(--mc);font-weight:900;font-size:20px;flex-shrink:0;line-height:1.35}
+.callout{border-radius:var(--r);padding:20px 24px;margin:20px 0}
+.cl{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;display:block}
+.callout.amber{background:var(--mc);color:#fff}
+.callout.amber .cl{color:rgba(255,255,255,.55)}
+.callout.amber p{color:rgba(255,255,255,.9);margin-bottom:10px}
+.callout.amber p:last-child{margin-bottom:0}
+.callout.why{background:rgba(180,83,9,0.07);border-left:4px solid var(--mc)}
+.callout.why .cl{color:var(--mc)}
+.callout.tip{background:#fefce8;border-left:4px solid #facc15}
+.callout.tip .cl{color:#a16207}
+.callout.tip p{color:#78350f}
+.callout.warn{background:#fff1f2;border-left:4px solid #fda4af}
+.callout.warn .cl{color:#be123c}
+.callout.warn p{color:#881337}
+.mdisp{background:var(--ink);border-radius:10px;padding:20px 24px;margin:18px 0;overflow-x:auto;text-align:center}
+.mdisp .katex{font-size:1.3em!important;color:#e2e8f0!important}
+.mdisp .katex-display{margin:0!important}
+/* balance steps */
+.balance{background:#fff;border-radius:var(--r);border:1.5px solid var(--bg3);overflow:hidden;margin:18px 0}
+.balance-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:12px 20px;border-bottom:1px solid var(--bg3);gap:12px}
+.balance-row:last-child{border-bottom:none}
+.balance-row.header{background:var(--bg2);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);padding:8px 20px}
+.balance-left,.balance-right{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--ink)}
+.balance-left{text-align:right}
+.balance-right{text-align:left}
+.balance-sign{text-align:center;font-size:18px;color:var(--mc);font-weight:900;flex-shrink:0}
+.balance-action{grid-column:1/-1;font-size:13px;color:var(--ink4);font-style:italic;padding:4px 0 0;text-align:center}
+/* exercises */
+.exsec{background:var(--bg2);border-radius:16px;padding:28px;margin:36px 0}
+.exsec-head{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:4px}
+.exsec-sub{font-size:15px;color:var(--ink3);margin-bottom:20px;line-height:1.6}
+.ex{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3)}
+.ex:last-child{margin-bottom:0}
+.ex-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.ex-n{background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px}
+.ex-t{font-weight:700;font-size:16px;color:var(--ink)}
+.ex-p{font-size:15px;color:var(--ink3);line-height:1.75;margin-bottom:14px}
+.rbtn{display:block;width:100%;padding:11px 16px;border-radius:10px;border:1.5px dashed var(--mc);background:transparent;cursor:pointer;font-weight:600;font-size:14px;color:var(--mc);font-family:var(--display);text-align:left;transition:all .15s}
+.rbtn:hover{background:var(--mc);color:#fff;border-style:solid}
+.sol{margin-top:16px;display:none}
+.sstep{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.sn{min-width:28px;height:28px;border-radius:50%;background:var(--mc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;font-family:var(--mono)}
+.sc p{font-size:15px;color:var(--ink2);margin-bottom:6px;line-height:1.75}
+.ans{background:var(--mc);border-radius:10px;padding:16px 20px;margin-top:14px;text-align:center}
+.ans-l{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}
+.ans .katex{color:#fff!important;font-size:1.2em!important}
+.mnav{display:flex;justify-content:space-between;align-items:center;padding:24px 0 0;border-top:1px solid var(--bg3);margin-top:12px;gap:12px;flex-wrap:wrap}
+.nbtn{display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:var(--r);border:1.5px solid var(--bg3);background:#fff;font-weight:600;font-size:14px;color:var(--ink3);font-family:var(--display);text-decoration:none;transition:all .15s}
+.nbtn:hover{border-color:var(--mc);color:var(--mc)}
+.nbtn.done{background:var(--mc);border-color:var(--mc);color:#fff}
+footer{text-align:center;padding:36px 0 24px;border-top:1px solid var(--bg3);margin-top:24px}
+footer p{font-family:var(--mono);font-size:11px;color:var(--ink4);margin-top:8px;letter-spacing:.04em}
+footer .cta{font-size:13px;color:var(--ink3);margin-top:8px}
+footer .cta a{color:var(--accent);font-weight:600}
+@media(max-width:640px){.nav-inner{padding:0 16px;height:56px}.logo{font-size:22px}.wrap{padding:0 16px}.hero{padding:24px 0 20px}h2{font-size:20px}.exsec{padding:20px 14px}.ex{padding:16px}.balance-row{grid-template-columns:1fr auto 1fr;font-size:13px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="https://www.aiudalabs.com" target="_blank" rel="noopener">
+      <span class="logo"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m">labs</span></span>
+    </a>
+    <a href="/nivelacion/" style="font-family:var(--mono);font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em">Nivelación · Matemáticas</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="breadcrumb">
+    <a href="/">Inicio</a><span>›</span>
+    <a href="/nivelacion/">Nivelación</a><span>›</span>
+    <span style="color:var(--mc)">Módulo 6</span>
+  </div>
+
+  <div class="hero">
+    <div class="module-badge">Módulo 6 de 6</div>
+    <h1>Ecuaciones:<br><em>La Balanza que Nunca Miente</em></h1>
+    <p class="lead">Este último módulo conecta todo lo anterior. Logaritmos, potencias, factorización, fracciones, todo converge aquí. Y la idea central es tan simple que cabe en una imagen.</p>
+    <div class="progress">
+      <div class="pdot done"></div>
+      <div class="pdot done"></div>
+      <div class="pdot done"></div>
+      <div class="pdot done"></div>
+      <div class="pdot done"></div>
+      <div class="pdot active"></div>
+    </div>
+  </div>
+
+  <h2>1. El Signo = es una Balanza</h2>
+  <p>Una ecuación como $x + 5 = 12$ dice algo muy concreto: "el platillo de la izquierda pesa exactamente lo mismo que el platillo de la derecha". El $=$ es una balanza en equilibrio perfecto.</p>
+
+  <div class="callout amber">
+    <span class="cl">⚖️ La regla de oro: lo que hagas a un lado, lo haces al otro</span>
+    <p>Para "despejar" $x$, tienes que operar sin romper el equilibrio. Si agregas algo a un lado, lo agregas al otro. Si multiplicas un lado, multiplicas el otro.</p>
+    <p><strong>No existe "pasar un número al otro lado cambiando su signo".</strong> Eso es un atajo que oculta la operación real. La operación real es: restas el mismo número de ambos lados.</p>
+  </div>
+
+  <div class="balance">
+    <div class="balance-row header">
+      <span>Lado izquierdo</span>
+      <span>=</span>
+      <span>Lado derecho</span>
+    </div>
+    <div class="balance-row">
+      <span class="balance-left">$x + 5$</span>
+      <span class="balance-sign">=</span>
+      <span class="balance-right">$12$</span>
+    </div>
+    <div class="balance-row">
+      <span class="balance-left">$x + 5 - 5$</span>
+      <span class="balance-sign">=</span>
+      <span class="balance-right">$12 - 5$</span>
+      <span class="balance-action">Restamos $5$ a ambos lados</span>
+    </div>
+    <div class="balance-row">
+      <span class="balance-left" style="color:var(--mc);font-weight:700">$x$</span>
+      <span class="balance-sign">=</span>
+      <span class="balance-right" style="color:var(--mc);font-weight:700">$7$</span>
+    </div>
+  </div>
+
+  <p>El $5$ no se "fue al otro lado y se hizo negativo". Lo que hicimos fue restar $5$ de ambos lados para que el $+5$ desapareciera del lado izquierdo. El resultado es el mismo, pero entender el proceso importa porque con ecuaciones más complejas, el atajo falla.</p>
+
+  <hr class="divider">
+
+  <h2>2. Ecuaciones Lineales Paso a Paso</h2>
+  <p>Estrategia: agrupa los términos con $x$ en un lado y los números solos en el otro, usando la regla de la balanza.</p>
+
+  <h3>Ejemplo: $3x - 4 = 2x + 7$</h3>
+  <div class="balance">
+    <div class="balance-row"><span class="balance-left">$3x - 4$</span><span class="balance-sign">=</span><span class="balance-right">$2x + 7$</span></div>
+    <div class="balance-row">
+      <span class="balance-left">$3x - 2x - 4$</span><span class="balance-sign">=</span><span class="balance-right">$2x - 2x + 7$</span>
+      <span class="balance-action">Restamos $2x$ de ambos lados</span>
+    </div>
+    <div class="balance-row"><span class="balance-left">$x - 4$</span><span class="balance-sign">=</span><span class="balance-right">$7$</span></div>
+    <div class="balance-row">
+      <span class="balance-left">$x - 4 + 4$</span><span class="balance-sign">=</span><span class="balance-right">$7 + 4$</span>
+      <span class="balance-action">Sumamos $4$ a ambos lados</span>
+    </div>
+    <div class="balance-row"><span class="balance-left" style="color:var(--mc);font-weight:700">$x$</span><span class="balance-sign">=</span><span class="balance-right" style="color:var(--mc);font-weight:700">$11$</span></div>
+  </div>
+
+  <div class="callout tip">
+    <span class="cl">💡 Siempre verifica</span>
+    <p>Sustituye $x = 11$ en la ecuación original: $3(11) - 4 = 33 - 4 = 29$ y $2(11) + 7 = 22 + 7 = 29$. Ambos lados dan $29$. La balanza sigue en equilibrio. ✓</p>
+  </div>
+
+  <hr class="divider">
+
+  <h2>3. Ecuaciones con Paréntesis</h2>
+  <p>Cuando hay paréntesis, primero expandes (Módulo 3) y luego resuelves como una ecuación lineal normal.</p>
+
+  <div class="mdisp">$$2(x - 3) = x + 4$$
+$$2x - 6 = x + 4 \quad \text{(distributiva)}$$
+$$x = 10 \quad \text{(resta } x \text{ de ambos lados, suma 6 a ambos)}$$</div>
+
+  <hr class="divider">
+
+  <h2>4. Ecuaciones Cuadráticas: La Factorización al Rescate</h2>
+  <p>Una ecuación cuadrática tiene la forma $ax^2 + bx + c = 0$. La estrategia más elegante (cuando funciona) es factorizar el lado izquierdo usando lo que aprendiste en el Módulo 3.</p>
+
+  <div class="callout why">
+    <span class="cl">🔍 Por qué funciona: la propiedad del cero</span>
+    <p>Si el producto de dos factores es cero, entonces al menos uno de ellos tiene que ser cero. Es decir: si $A \times B = 0$, entonces $A = 0$ o $B = 0$ (o ambos).</p>
+    <p>Esta propiedad es el motor de la factorización para resolver cuadráticas.</p>
+  </div>
+
+  <h3>Ejemplo: $x^2 - 7x + 12 = 0$</h3>
+  <p>Buscamos dos números que <strong>multipliquen</strong> $12$ y <strong>sumen</strong> $-7$. Esos números son $-3$ y $-4$ (porque $(-3)(-4) = 12$ y $(-3) + (-4) = -7$).</p>
+
+  <div class="mdisp">$$x^2 - 7x + 12 = (x - 3)(x - 4) = 0$$</div>
+
+  <p>Por la propiedad del cero: $x - 3 = 0$ o $x - 4 = 0$.</p>
+  <p>Por lo tanto: $x = 3$ o $x = 4$. Hay dos soluciones.</p>
+
+  <hr class="divider">
+
+  <h2>5. Ecuaciones con Potencias y Logaritmos</h2>
+  <p>Aquí conecta todo el curso. La idea es siempre la misma: aplicas la operación inversa a ambos lados.</p>
+
+  <h3>A. Ecuación exponencial: $2^x = 64$</h3>
+  <p>Factorizamos el lado derecho: $64 = 2^6$. Entonces $2^x = 2^6$, y como las bases son iguales, los exponentes también: $x = 6$.</p>
+  <p>Cuando el lado derecho no es una potencia exacta, aplicamos logaritmo a ambos lados:</p>
+  <div class="mdisp">$$2^x = 10 \;\Rightarrow\; \log(2^x) = \log(10) \;\Rightarrow\; x\log(2) = 1 \;\Rightarrow\; x = \frac{1}{\log(2)} \approx 3.32$$</div>
+
+  <h3>B. Ecuación logarítmica: $\log_3(x) = 4$</h3>
+  <p>Convertimos al lenguaje de potencias (operación inversa): $\log_3(x) = 4 \Leftrightarrow x = 3^4 = 81$.</p>
+
+  <div class="callout amber">
+    <span class="cl">✨ El patrón de todos los módulos juntos</span>
+    <p>Para despejar $x$ cuando está como exponente → aplicar logaritmo a ambos lados.</p>
+    <p>Para despejar $x$ cuando está como argumento de un logaritmo → convertir a potencia.</p>
+    <p>Para despejar $x$ cuando está elevado a una potencia → aplicar raíz a ambos lados.</p>
+    <p>Siempre es la misma idea: aplica la operación inversa a ambos lados de la balanza.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="exsec">
+    <div class="exsec-head">Ejercicios del Módulo 6</div>
+    <p class="exsec-sub">Último módulo. Muestra cada paso claramente. Verifica tu respuesta sustituyendo.</p>
+
+    <div class="ex">
+      <div class="ex-head"><span class="ex-n">01</span><span class="ex-t">Resuelve $4x - 9 = 2x + 7$</span></div>
+      <p class="ex-p">Agrupa los términos con $x$ en un lado. Usa la balanza.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s1')">▸ Ver solución paso a paso</button>
+      <div class="sol" id="s1">
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Restamos $2x$ de ambos lados: $2x - 9 = 7$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>Sumamos $9$ a ambos lados: $2x = 16$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Dividimos ambos lados entre $2$: $x = 8$</p></div></div>
+        <div class="sstep"><div class="sn">4</div><div class="sc"><p>Verificación: $4(8)-9 = 23$ y $2(8)+7 = 23$ ✓</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$x = 8$</div>
+      </div>
+    </div>
+
+    <div class="ex">
+      <div class="ex-head"><span class="ex-n">02</span><span class="ex-t">Resuelve $3(x + 2) = 2(x - 1) + 10$</span></div>
+      <p class="ex-p">Expande los paréntesis primero, luego resuelve.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s2')">▸ Ver solución paso a paso</button>
+      <div class="sol" id="s2">
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Expandimos: $3x + 6 = 2x - 2 + 10$. Simplificamos derecha: $3x + 6 = 2x + 8$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>Restamos $2x$: $x + 6 = 8$. Restamos $6$: $x = 2$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Verificación: $3(2+2) = 12$ y $2(2-1)+10 = 2+10 = 12$ ✓</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$x = 2$</div>
+      </div>
+    </div>
+
+    <div class="ex">
+      <div class="ex-head"><span class="ex-n">03</span><span class="ex-t">Resuelve $x^2 + x - 6 = 0$ factorizando</span></div>
+      <p class="ex-p">Busca dos números que multipliquen $-6$ y sumen $+1$. Luego usa la propiedad del cero.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s3')">▸ Ver solución paso a paso</button>
+      <div class="sol" id="s3">
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Buscamos: ¿qué dos números se multiplican para dar $-6$ y suman $+1$? Son $+3$ y $-2$: $(3)(-2) = -6$ y $3 + (-2) = 1$.</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>Factorizamos: $x^2 + x - 6 = (x+3)(x-2) = 0$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Propiedad del cero: $x + 3 = 0 \Rightarrow x = -3$, o bien $x - 2 = 0 \Rightarrow x = 2$</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$x = -3 \quad\text{o}\quad x = 2$</div>
+      </div>
+    </div>
+
+    <div class="ex">
+      <div class="ex-head"><span class="ex-n">04</span><span class="ex-t">Resuelve $3^x = 243$</span></div>
+      <p class="ex-p">Factoriza el lado derecho y compara las bases.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s4')">▸ Ver solución paso a paso</button>
+      <div class="sol" id="s4">
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Factorizamos $243$: $243 = 3^5$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>La ecuación es $3^x = 3^5$. Bases iguales implica exponentes iguales: $x = 5$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Verificación: $3^5 = 243$ ✓</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$x = 5$</div>
+      </div>
+    </div>
+
+    <div class="ex">
+      <div class="ex-head"><span class="ex-n">05</span><span class="ex-t">Resuelve $\log_2(x+3) = 4$</span></div>
+      <p class="ex-p">Convierte el logaritmo a su forma exponencial equivalente, luego despeja $x$.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s5')">▸ Ver solución paso a paso</button>
+      <div class="sol" id="s5">
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$\log_2(x+3) = 4 \Leftrightarrow 2^4 = x + 3$ (convertimos a forma exponencial)</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$2^4 = 16$, entonces $x + 3 = 16$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Restamos $3$: $x = 13$</p></div></div>
+        <div class="sstep"><div class="sn">4</div><div class="sc"><p>Verificación: $\log_2(13+3) = \log_2(16) = \log_2(2^4) = 4$ ✓</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$x = 13$</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout amber" style="margin:32px 0">
+    <span class="cl">🎉 Curso completado</span>
+    <p>Llegaste al final del curso. Ahora tienes la base que necesitabas: sabes por qué los números primos importan, por qué el denominador común no es arbitrario, por qué el orden de operaciones existe, de dónde vienen las leyes de exponentes, qué pregunta hace un logaritmo, y cómo mantener una ecuación en equilibrio.</p>
+    <p>Eso no es solo "saber matemáticas". Es entender cómo funciona el lenguaje que describe el universo.</p>
+  </div>
+
+  <div class="mnav">
+    <a href="/nivelacion/modulo-5/" class="nbtn">← Módulo 5: Logaritmos</a>
+    <a href="/nivelacion/" class="nbtn done">Ver todo el curso →</a>
+  </div>
+</div>
+
+<footer>
+  <a href="https://www.aiudalabs.com" target="_blank" rel="noopener">
+    <span class="logo" style="font-size:20px"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m" style="font-size:15px">labs</span></span>
+  </a>
+  <p>© 2026 Aiuda Labs · Panamá</p>
+  <p class="cta">¿Quieres una guía para tu curso? <a href="https://wa.me/50763644604" target="_blank">Escríbenos por WhatsApp</a></p>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  renderMathInElement(document.body, {
+    delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+    throwOnError: false
+  });
+});
+function toggleSol(btn, id) {
+  const sol = document.getElementById(id);
+  const open = sol.style.display === 'block';
+  sol.style.display = open ? 'none' : 'block';
+  btn.textContent = open ? '▸ Ver solución paso a paso' : '▾ Ocultar solución';
+}
+</script>
+</body>
+</html>
