@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Módulo 3: El Arte de Agrupar | Nivelación de Matemáticas | Aiuda Labs</title>
-<meta name="description" content="Orden de operaciones, paréntesis y la propiedad distributiva explicados desde el por qué, no el cómo.">
+<title>Módulo 3: El Arte de Agrupar | Aiuda Labs</title>
 <link rel="canonical" href="https://guias.aiudalabs.com/nivelacion/modulo-3/">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,67 +13,64 @@
 <style>
 :root{--bg:#FAF8F4;--bg2:#F3F0EA;--bg3:#EBE7DE;--ink:#0D0D0F;--ink2:#2A2A2F;--ink3:#52525A;--ink4:#8A8A92;--accent:#E8440A;--mc:#142850;--display:"Satoshi",system-ui,sans-serif;--serif:"Instrument Serif",Georgia,serif;--mono:"JetBrains Mono",monospace;--r:12px;--max:740px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+body{background:var(--bg);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
-nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.04)}
+.pbar{position:fixed;top:0;left:0;height:3px;background:var(--mc);z-index:201;width:0%;transition:width .08s linear;pointer-events:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.04)}
 .nav-inner{max-width:1120px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-size:26px;font-weight:900;letter-spacing:-0.04em;line-height:1}.logo .a{color:#E8440A}.logo .a2{color:#E8440A;font-weight:400}.logo .m{color:var(--ink4);font-size:18px;font-weight:500;margin-left:4px}
+.logo{font-size:26px;font-weight:900;letter-spacing:-.04em;line-height:1}.logo .a,.logo .a2{color:#E8440A}.logo .a2{font-weight:400}.logo .m{color:var(--ink4);font-size:18px;font-weight:500;margin-left:4px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;position:relative;z-index:1}
 .breadcrumb{padding:16px 0 0;font-family:var(--mono);font-size:12px;color:var(--ink4);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .breadcrumb a{color:var(--ink4)}.breadcrumb a:hover{color:var(--mc)}
 .hero{padding:36px 0 28px}
-.module-badge{display:inline-flex;align-items:center;background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:16px}
-h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.08;letter-spacing:-0.035em;margin-bottom:14px}
+.mbadge{display:inline-flex;align-items:center;background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:16px}
+h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.08;letter-spacing:-.035em;margin-bottom:14px}
 h1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--mc)}
 .lead{font-size:17px;line-height:1.75;color:var(--ink3);margin-bottom:20px}
-.progress{display:flex;gap:6px}
-.pdot{height:6px;border-radius:3px;flex:1;background:var(--bg3)}.pdot.done{background:var(--mc);opacity:.45}.pdot.active{background:var(--mc)}
+.progress{display:flex;gap:6px;margin-top:4px}
+.pdot{height:6px;border-radius:3px;flex:1;background:var(--bg3)}.pdot.done{background:#E8440A;opacity:.45}.pdot.active{background:var(--mc)}
 hr.divider{border:none;border-top:1px solid var(--bg3);margin:32px 0}
-h2{font-size:22px;font-weight:900;letter-spacing:-0.02em;color:var(--ink);margin:36px 0 14px}
+h2{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--ink);margin:36px 0 14px}
 h3{font-size:18px;font-weight:700;color:var(--ink2);margin:22px 0 10px}
 p{font-size:16px;line-height:1.82;color:var(--ink2);margin-bottom:14px}
 p:last-child{margin-bottom:0}
-ul.bullets{list-style:none;margin:12px 0 16px;padding:0;display:flex;flex-direction:column;gap:8px}
-ul.bullets li{font-size:16px;line-height:1.75;color:var(--ink2);display:flex;gap:10px;align-items:flex-start}
-ul.bullets li::before{content:"·";color:var(--mc);font-weight:900;font-size:20px;flex-shrink:0;line-height:1.35}
 .callout{border-radius:var(--r);padding:20px 24px;margin:20px 0}
 .cl{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;display:block}
-.callout.navy{background:var(--mc);color:#fff}
-.callout.navy .cl{color:rgba(255,255,255,.55)}
-.callout.navy p{color:rgba(255,255,255,.9);margin-bottom:10px}
-.callout.navy p:last-child{margin-bottom:0}
-.callout.why{background:rgba(20,40,80,0.06);border-left:4px solid var(--mc)}
-.callout.why .cl{color:var(--mc)}
-.callout.tip{background:#fefce8;border-left:4px solid #facc15}
-.callout.tip .cl{color:#a16207}
-.callout.tip p{color:#78350f}
-.callout.warn{background:#fff1f2;border-left:4px solid #fda4af}
-.callout.warn .cl{color:#be123c}
-.callout.warn p{color:#881337}
-.mdisp{background:var(--ink);border-radius:10px;padding:20px 24px;margin:18px 0;overflow-x:auto;text-align:center}
-.mdisp .katex{font-size:1.3em!important;color:#e2e8f0!important}
-.mdisp .katex-display{margin:0!important}
-/* comparison table */
+.callout.ac{background:var(--mc)}.callout.ac .cl{color:rgba(255,255,255,.6)}.callout.ac p,.callout.ac h3{color:rgba(255,255,255,.92)}.callout.ac h3{font-size:16px;margin:14px 0 6px;color:#fff}
+.callout.why{background:rgba(10,123,90,.07);border-left:4px solid #0A7B5A}.callout.why .cl{color:#0A7B5A}
+.callout.tip{background:#fefce8;border-left:4px solid #facc15}.callout.tip .cl{color:#a16207}.callout.tip p{color:#78350f}
+.callout.warn{background:#fff1f2;border-left:4px solid #fda4af}.callout.warn .cl{color:#be123c}.callout.warn p{color:#881337}
+.preq{background:#fff;border:2px solid var(--mc);border-radius:var(--r);padding:20px 24px;margin:24px 0}
+.preq-lbl{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:10px;display:block}
+.preq-q{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;line-height:1.5}
+.preq textarea{width:100%;padding:10px 14px;border:1.5px solid var(--bg3);border-radius:8px;font-size:15px;font-family:var(--display);color:var(--ink);background:var(--bg);resize:none;min-height:56px;transition:border-color .15s}
+.preq textarea:focus{outline:none;border-color:var(--mc)}
+.preq-btn{margin-top:10px;padding:9px 18px;background:var(--mc);color:#fff;border:none;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;font-family:var(--display)}
+.preq-reveal{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--bg3)}
+.preq-reveal p{font-size:15px;color:var(--ink3);line-height:1.75}
+.mdisp{background:var(--ink);border-radius:10px;padding:20px 24px;margin:18px 0;overflow-x:auto;text-align:center;position:relative}
+.mdisp .katex{font-size:1.3em!important;color:#e2e8f0!important}.mdisp .katex-display{margin:0!important}
+.mdisp.ov::after{content:"← desliza →";position:absolute;bottom:6px;right:10px;font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.35);pointer-events:none}
 .comp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
 .comp-cell{background:#fff;border-radius:var(--r);padding:16px 20px;border:1.5px solid var(--bg3);text-align:center}
-.comp-cell.wrong{border-color:#fda4af;background:#fff1f2}
-.comp-cell.right{border-color:var(--mc);background:rgba(20,40,80,0.05)}
-.comp-label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
-.comp-cell.wrong .comp-label{color:#be123c}
-.comp-cell.right .comp-label{color:var(--mc)}
-/* exercises */
+.comp-cell.wrong{border-color:#fda4af;background:#fff1f2}.comp-cell.right{border-color:var(--mc)}
+.comp-lbl{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.comp-cell.wrong .comp-lbl{color:#be123c}.comp-cell.right .comp-lbl{color:var(--mc)}
 .exsec{background:var(--bg2);border-radius:16px;padding:28px;margin:36px 0}
 .exsec-head{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:4px}
 .exsec-sub{font-size:15px;color:var(--ink3);margin-bottom:20px;line-height:1.6}
-.ex{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3)}
-.ex:last-child{margin-bottom:0}
+.ex{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3);transition:border-color .3s}
+.ex:last-child{margin-bottom:0}.ex.done{border-color:#22c55e}.ex.done .ex-n{background:#22c55e!important}
+.done-tag{display:none;font-family:var(--mono);font-size:11px;color:#22c55e;font-weight:700;margin-top:10px}
+.ex.done .done-tag{display:block}
 .ex-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.ex-n{background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px}
+.ex-n{background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;transition:background .3s}
 .ex-t{font-weight:700;font-size:16px;color:var(--ink)}
 .ex-p{font-size:15px;color:var(--ink3);line-height:1.75;margin-bottom:14px}
 .rbtn{display:block;width:100%;padding:11px 16px;border-radius:10px;border:1.5px dashed var(--mc);background:transparent;cursor:pointer;font-weight:600;font-size:14px;color:var(--mc);font-family:var(--display);text-align:left;transition:all .15s}
-.rbtn:hover{background:var(--mc);color:#fff;border-style:solid}
+.rbtn:hover:not(:disabled){background:var(--mc);color:#fff;border-style:solid}
+.rbtn:disabled{color:var(--ink4);border-color:var(--bg3);cursor:default}
 .sol{margin-top:16px;display:none}
 .sstep{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
 .sn{min-width:28px;height:28px;border-radius:50%;background:var(--mc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;font-family:var(--mono)}
@@ -82,230 +78,241 @@ ul.bullets li::before{content:"·";color:var(--mc);font-weight:900;font-size:20p
 .ans{background:var(--mc);border-radius:10px;padding:16px 20px;margin-top:14px;text-align:center}
 .ans-l{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}
 .ans .katex{color:#fff!important;font-size:1.2em!important}
+.quiz{background:var(--bg2);border-radius:16px;padding:28px;margin:36px 0}
+.quiz-head{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:4px}
+.quiz-sub{font-size:15px;color:var(--ink3);margin-bottom:22px;line-height:1.6}
+.qblock{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3)}
+.qblock:last-child{margin-bottom:0}
+.q-num{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--mc);margin-bottom:8px}
+.q-text{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:14px;line-height:1.5}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.qopt{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:8px;border:1.5px solid var(--bg3);cursor:pointer;font-size:15px;color:var(--ink2);transition:all .15s;background:#fff;text-align:left;width:100%;font-family:var(--display)}
+.qopt:hover:not(.disabled){border-color:var(--mc);color:var(--mc)}
+.qopt.correct{border-color:#22c55e;background:#f0fdf4;color:#15803d;font-weight:600}
+.qopt.wrong{border-color:#fda4af;background:#fff1f2;color:#be123c}
+.qopt.disabled{pointer-events:none}
+.q-fb{margin-top:12px;padding:12px 16px;border-radius:8px;font-size:14px;line-height:1.65;display:none}
+.q-fb.show{display:block}.q-fb.ok{background:#f0fdf4;color:#15803d;border:1px solid #86efac}.q-fb.bad{background:#fff1f2;color:#be123c;border:1px solid #fda4af}
+.quiz-result{text-align:center;padding:24px 0 4px;border-top:1px solid var(--bg3);margin-top:20px;display:none}
+.qr-num{font-size:52px;font-weight:900;color:var(--mc);line-height:1}
+.qr-lbl{font-family:var(--mono);font-size:11px;color:var(--ink4);letter-spacing:.06em;margin-top:4px}
+.qr-msg{font-size:15px;color:var(--ink2);margin-top:12px;line-height:1.65}
+.qr-btn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:11px 22px;background:var(--mc);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:14px;font-family:var(--display);text-decoration:none}
 .mnav{display:flex;justify-content:space-between;align-items:center;padding:24px 0 0;border-top:1px solid var(--bg3);margin-top:12px;gap:12px;flex-wrap:wrap}
 .nbtn{display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:var(--r);border:1.5px solid var(--bg3);background:#fff;font-weight:600;font-size:14px;color:var(--ink3);font-family:var(--display);text-decoration:none;transition:all .15s}
-.nbtn:hover{border-color:var(--mc);color:var(--mc)}
-.nbtn.next{background:var(--mc);border-color:var(--mc);color:#fff}
-.nbtn.next:hover{opacity:.88}
+.nbtn:hover{border-color:var(--mc);color:var(--mc)}.nbtn.next{background:var(--mc);border-color:var(--mc);color:#fff}.nbtn.next:hover{opacity:.88}
 footer{text-align:center;padding:36px 0 24px;border-top:1px solid var(--bg3);margin-top:24px}
-footer p{font-family:var(--mono);font-size:11px;color:var(--ink4);margin-top:8px;letter-spacing:.04em}
+footer p{font-family:var(--mono);font-size:11px;color:var(--ink4);margin-top:8px}
 footer .cta{font-size:13px;color:var(--ink3);margin-top:8px}
-footer .cta a{color:var(--accent);font-weight:600}
-@media(max-width:640px){.nav-inner{padding:0 16px;height:56px}.logo{font-size:22px}.wrap{padding:0 16px}.hero{padding:24px 0 20px}h2{font-size:20px}.exsec{padding:20px 14px}.ex{padding:16px}.comp{grid-template-columns:1fr}}
+footer .cta a{color:#E8440A;font-weight:600}
+@media(max-width:640px){.nav-inner{padding:0 16px;height:56px}.wrap{padding:0 16px}.hero{padding:24px 0 20px}.exsec,.quiz{padding:20px 14px}.ex{padding:16px}.comp{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a href="https://www.aiudalabs.com" target="_blank" rel="noopener">
-      <span class="logo"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m">labs</span></span>
-    </a>
-    <a href="/nivelacion/" style="font-family:var(--mono);font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em">Nivelación · Matemáticas</a>
-  </div>
-</nav>
+<div class="pbar" id="pbar"></div>
+<nav><div class="nav-inner">
+  <a href="https://www.aiudalabs.com" target="_blank"><span class="logo"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m">labs</span></span></a>
+  <a href="/nivelacion/" style="font-family:var(--mono);font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em">Nivelación · Matemáticas</a>
+</div></nav>
 
 <div class="wrap">
-  <div class="breadcrumb">
-    <a href="/">Inicio</a><span>›</span>
-    <a href="/nivelacion/">Nivelación</a><span>›</span>
-    <span style="color:var(--mc)">Módulo 3</span>
+  <div class="breadcrumb"><a href="/">Inicio</a> › <a href="/nivelacion/">Nivelación</a> › <span style="color:var(--mc)">Módulo 3</span></div>
+  <div class="hero">
+    <div class="mbadge">Módulo 3 de 6</div>
+    <h1>El Arte de<br><em>Agrupar</em></h1>
+    <p class="lead">Sin reglas para operar, la misma expresión daría resultados distintos según quién la calculara. Por eso existen las reglas. Y todas tienen una razón.</p>
+    <div class="progress"><div class="pdot done"></div><div class="pdot done"></div><div class="pdot active"></div><div class="pdot"></div><div class="pdot"></div><div class="pdot"></div></div>
   </div>
 
-  <div class="hero">
-    <div class="module-badge">Módulo 3 de 6</div>
-    <h1>El Arte de<br><em>Agrupar</em></h1>
-    <p class="lead">Sin reglas para operar, la misma expresión matemática daría diferentes resultados dependiendo de quién la calculara. Por eso existen las reglas. Y todas tienen una razón de ser.</p>
-    <div class="progress">
-      <div class="pdot done"></div>
-      <div class="pdot done"></div>
-      <div class="pdot active"></div>
-      <div class="pdot"></div>
-      <div class="pdot"></div>
-      <div class="pdot"></div>
-    </div>
+  <div class="preq">
+    <span class="preq-lbl">🤔 Antes de empezar</span>
+    <div class="preq-q">Calcula $2 + 3 \times 4$ en tu cabeza ahora mismo. ¿Te da 20 o 14? Escribe lo que hiciste.</div>
+    <textarea placeholder="Escribe tu proceso aquí..."></textarea>
+    <button class="preq-btn" onclick="this.parentElement.querySelector('.preq-reveal').style.display='block';this.style.display='none'">Ver la respuesta correcta</button>
+    <div class="preq-reveal"><p>Si calculaste de izquierda a derecha: $(2+3)\times4=20$. Si resolviste la multiplicación primero: $2+(3\times4)=14$. <strong>La respuesta correcta es 14</strong> según el acuerdo universal. Ese acuerdo es lo que explica este módulo.</p></div>
   </div>
 
   <h2>1. El Problema: la Misma Expresión, Dos Respuestas</h2>
-  <p>Calcula $2 + 3 \times 4$. ¿Cuánto da?</p>
-  <p>Si lo calculas de izquierda a derecha: $(2+3) \times 4 = 5 \times 4 = 20$.</p>
-  <p>Si primero haces la multiplicación: $2 + (3 \times 4) = 2 + 12 = 14$.</p>
-
   <div class="comp">
-    <div class="comp-cell wrong">
-      <div class="comp-label">❌ De izquierda a derecha</div>
-      <p>$(2+3)\times 4 = 5 \times 4 = 20$</p>
-    </div>
-    <div class="comp-cell right">
-      <div class="comp-label">✓ Con orden de operaciones</div>
-      <p>$2+(3\times 4) = 2+12 = 14$</p>
-    </div>
+    <div class="comp-cell wrong"><div class="comp-lbl">❌ De izquierda a derecha</div><p>$(2+3)\times 4 = 20$</p></div>
+    <div class="comp-cell right"><div class="comp-lbl">✓ Con el acuerdo</div><p>$2+(3\times 4) = 14$</p></div>
   </div>
-
-  <div class="callout navy">
+  <div class="callout ac">
     <span class="cl">🌍 El acuerdo de civilización</span>
-    <p>El orden de operaciones no es una ley de la naturaleza. Es un <strong>acuerdo entre matemáticos del mundo entero</strong>, igual que el acuerdo de que todos conducimos por el mismo lado de la carretera. Sin él, cada persona calcularía cosas distintas y nadie se entendería.</p>
-    <p>El acuerdo se llama PEMDAS (o BODMAS según el país): Paréntesis, Exponentes, Multiplicación/División, Adición/Sustracción. La respuesta correcta es $14$.</p>
+    <p>El orden de operaciones no es una ley de la naturaleza. Es un <strong>acuerdo entre matemáticos del mundo entero</strong>. Sin él, cada persona calcularía resultados distintos para la misma expresión.</p>
+    <p>El acuerdo: <strong>Paréntesis → Exponentes → ×÷ → +−</strong> (PEMDAS)</p>
   </div>
-
-  <hr class="divider">
-
-  <h2>2. ¿Por Qué Este Orden y No Otro?</h2>
-  <p>Esta es la pregunta que nadie responde. ¿Por qué la multiplicación va antes que la suma? ¿Es arbitrario?</p>
-  <p>No lo es. Hay una razón estructural:</p>
-
   <div class="callout why">
-    <span class="cl">🔍 La jerarquía de las operaciones</span>
-    <p><strong>La multiplicación es suma repetida.</strong> $3 \times 4$ significa "suma tres cuatro veces": $4 + 4 + 4$. La multiplicación es una operación más "fuerte" o "comprimida" que la suma.</p>
-    <p><strong>Los exponentes son multiplicación repetida.</strong> $3^4$ significa "multiplica tres cuatro veces": $3 \times 3 \times 3 \times 3$. Son aún más "fuertes".</p>
-    <p>Entonces la jerarquía natural es: exponentes (multiplicación repetida) > multiplicación (suma repetida) > suma. Las operaciones más "comprimidas" se resuelven primero.</p>
-  </div>
-
-  <div class="mdisp">$$\underbrace{2^3}_{\text{más fuerte}} \quad > \quad \underbrace{3 \times 4}_{\text{fuerte}} \quad > \quad \underbrace{5 + 2}_{\text{base}}$$</div>
-
-  <hr class="divider">
-
-  <h2>3. Los Paréntesis: "Ignora el Acuerdo, Haz Esto Primero"</h2>
-  <p>Los paréntesis son la manera de decir "sé que hay un acuerdo global, pero en este caso específico quiero que hagas esto antes". Son una instrucción explícita que siempre gana sobre el orden natural.</p>
-
-  <div class="comp">
-    <div class="comp-cell" style="border-color:var(--bg3)">
-      <div class="comp-label" style="color:var(--ink4)">Sin paréntesis</div>
-      <p>$3 + 5^2 = 3 + 25 = 28$</p>
-      <p style="font-size:13px;color:var(--ink4)">El exponente va primero (más fuerte)</p>
-    </div>
-    <div class="comp-cell right">
-      <div class="comp-label">Con paréntesis</div>
-      <p>$(3+5)^2 = 8^2 = 64$</p>
-      <p style="font-size:13px;color:var(--mc)">Los paréntesis fuerzan la suma primero</p>
-    </div>
-  </div>
-
-  <p>$28$ y $64$ son completamente diferentes. Los paréntesis cambian el <em>significado</em> de la expresión, no solo el número.</p>
-
-  <div class="callout tip">
-    <span class="cl">💡 Error clásico con paréntesis</span>
-    <p>Cuando tienes $-(a+b)$, el signo negativo se distribuye a ambos términos. El resultado es $-a - b$, no $-a + b$. El paréntesis "contiene" todo, y el signo negativo afecta a cada cosa dentro.</p>
-    <p>$-(3+5) = -3 + (-5) = -8$, no $-3 + 5 = 2$.</p>
+    <span class="cl">🔍 La jerarquía tiene lógica</span>
+    <p><strong>Multiplicación es suma repetida:</strong> $3 \times 4 = 4+4+4$. Es una operación más "comprimida".</p>
+    <p><strong>Exponentes son multiplicación repetida:</strong> $3^4 = 3\times3\times3\times3$. Aún más comprimidos. Las operaciones más comprimidas tienen más "fuerza" y se resuelven primero.</p>
   </div>
 
   <hr class="divider">
-
-  <h2>4. La Propiedad Distributiva: Expandir Paréntesis</h2>
-  <p>¿Por qué $3(x+2) = 3x + 6$? No porque "se mueve el $3$". Hay una razón concreta.</p>
-
-  <div class="callout why">
-    <span class="cl">🔍 La intuición geométrica</span>
-    <p>Imagina un rectángulo de ancho $3$ y largo $(x+2)$. Su área es $3 \times (x+2)$.</p>
-    <p>Pero también puedes dividirlo en dos rectángulos: uno de $3 \times x$ y otro de $3 \times 2$. Sus áreas suman lo mismo: $3x + 6$.</p>
-    <p>El área total no cambia según cómo lo dividas. Por eso $3(x+2) = 3x + 6$.</p>
+  <h2>2. La Propiedad Distributiva</h2>
+  <div class="callout warn">
+    <span class="cl">⚠️ El error más común al distribuir</span>
+    <p><strong>Mal:</strong> $3(x+2) = 3x + 2$ ← solo se multiplicó el primer término.</p>
+    <p><strong>Bien:</strong> $3(x+2) = 3x + 6$ ← el factor se multiplica con <em>cada</em> término del paréntesis.</p>
+    <p><strong>Mal con negativo:</strong> $-(3+5) = -3 + 5 = 2$ ← el signo solo afectó al primero.</p>
+    <p><strong>Bien:</strong> $-(3+5) = -3 - 5 = -8$ ← el signo entra al paréntesis y afecta a todo.</p>
   </div>
-
   <div class="mdisp">$$3(x+2) = 3 \cdot x + 3 \cdot 2 = 3x + 6$$</div>
 
-  <p>Lo mismo funciona con variables y signos negativos:</p>
-  <div class="mdisp">$$-2(4x - 3) = -2 \cdot 4x + (-2) \cdot (-3) = -8x + 6$$</div>
-
+  <h2>3. Doble Distributiva: FOIL</h2>
+  <p>Cuando tienes $(x+a)(x+b)$, cada término del primer paréntesis se multiplica con cada término del segundo.</p>
+  <div class="callout tip">
+    <span class="cl">💡 La regla FOIL</span>
+    <p><strong>F</strong>irst (primeros): $x \cdot x = x^2$ &nbsp;·&nbsp; <strong>O</strong>uter (exteriores): $x \cdot b$ &nbsp;·&nbsp; <strong>I</strong>nner (interiores): $a \cdot x$ &nbsp;·&nbsp; <strong>L</strong>ast (últimos): $a \cdot b$. Suma todo y combina semejantes.</p>
+  </div>
+  <div class="mdisp">$$(x+3)(x+4) = x^2 + 4x + 3x + 12 = x^2 + 7x + 12$$</div>
   <div class="callout warn">
-    <span class="cl">⚠️ El error más común</span>
-    <p>Al distribuir, el factor de afuera se multiplica con <strong>cada término</strong> dentro del paréntesis, no solo con el primero. $3(x+2) \neq 3x + 2$. Sería $3x + 6$.</p>
+    <span class="cl">⚠️ Los términos medios no desaparecen</span>
+    <p><strong>Mal:</strong> $(x+3)(x+4) = x^2 + 12$ ← se olvidaron los términos medios $4x$ y $3x$.</p>
+    <p><strong>Bien:</strong> siempre son cuatro multiplicaciones. Solo después de aplicar FOIL completo combines los del medio.</p>
   </div>
 
-  <hr class="divider">
-
-  <h2>5. Factorizar: El Proceso Inverso</h2>
-  <p>Si expandir es "sacar el paréntesis", factorizar es "meterlo de vuelta". Buscas el factor común que puedes extraer de todos los términos.</p>
-
-  <div class="mdisp">$$6x + 10 \;=\; 2(3x + 5)$$</div>
-
+  <h2>4. Factorizar: El Proceso Inverso</h2>
+  <p>Factorizar es sacar el paréntesis de vuelta: busca el mayor factor común de todos los términos.</p>
+  <div class="mdisp">$$6x + 10 = 2(3x + 5)$$</div>
   <div class="callout why">
     <span class="cl">🔍 Cómo encontrar el factor común</span>
-    <p>Busca el número más grande que divide exactamente a todos los coeficientes. En $6x + 10$: el $6 = 2 \times 3$ y el $10 = 2 \times 5$. El factor común es $2$. Lo sacas afuera y adentro quedan los "residuos": $3x$ y $5$.</p>
-    <p>Verifica siempre: $2(3x+5) = 6x + 10$. ✓</p>
+    <p>$6=2\times3$ y $10=2\times5$. El MCD es 2. Lo sacas afuera, adentro quedan los residuos. Verifica siempre: $2(3x+5)=6x+10$ ✓</p>
   </div>
 
-  <p>Factorizar es una habilidad clave para resolver ecuaciones cuadráticas (Módulo 6). Practica hasta que se vuelva natural.</p>
-
   <hr class="divider">
-
   <div class="exsec">
     <div class="exsec-head">Ejercicios del Módulo 3</div>
-    <p class="exsec-sub">Recuerda siempre el orden: Paréntesis → Exponentes → Multiplicación/División → Suma/Resta.</p>
-
-    <div class="ex">
+    <p class="exsec-sub">Recuerda el orden: Paréntesis → Exponentes → ×÷ → +−</p>
+    <div class="ex" id="ex1">
       <div class="ex-head"><span class="ex-n">01</span><span class="ex-t">Evalúa $5 + 2^3 \times 3 - 6 \div 2$</span></div>
       <p class="ex-p">Aplica el orden correcto. No calcules de izquierda a derecha.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s1')">▸ Ver solución paso a paso</button>
+      <button class="rbtn" onclick="toggleSol(this,'s1','ex1')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s1">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Exponentes primero: $2^3 = 8$. Expresión: $5 + 8 \times 3 - 6 \div 2$</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>Multiplicación y división (de izq. a der.): $8 \times 3 = 24$ y $6 \div 2 = 3$. Expresión: $5 + 24 - 3$</p></div></div>
-        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Suma y resta: $5 + 24 - 3 = 26$</p></div></div>
-        <div class="ans"><div class="ans-l">Respuesta</div>$5 + 2^3 \times 3 - 6 \div 2 = 26$</div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Exponentes: $2^3=8$ → $5+8\times3-6\div2$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>× y ÷: $8\times3=24$ y $6\div2=3$ → $5+24-3$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>+/−: $5+24-3=26$</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$26$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
-
-    <div class="ex">
-      <div class="ex-head"><span class="ex-n">02</span><span class="ex-t">Expande $-3(2x - 5)$</span></div>
+    <div class="ex" id="ex2">
+      <div class="ex-head"><span class="ex-n">02</span><span class="ex-t">Expande $-3(2x-5)$</span></div>
       <p class="ex-p">Distribuye el $-3$ a cada término. Ojo con los signos.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s2')">▸ Ver solución paso a paso</button>
+      <button class="rbtn" onclick="toggleSol(this,'s2','ex2')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s2">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Multiplica $-3$ por el primer término: $(-3)(2x) = -6x$</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>Multiplica $-3$ por el segundo término: $(-3)(-5) = +15$ (negativo por negativo es positivo)</p></div></div>
-        <div class="ans"><div class="ans-l">Respuesta</div>$-3(2x-5) = -6x + 15$</div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$(-3)(2x) = -6x$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$(-3)(-5) = +15$ (negativo × negativo = positivo)</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$-6x + 15$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
-
-    <div class="ex">
+    <div class="ex" id="ex3">
       <div class="ex-head"><span class="ex-n">03</span><span class="ex-t">Expande $(x+3)(x+4)$</span></div>
-      <p class="ex-p">Cada término del primer paréntesis se distribuye a cada término del segundo. Esto se llama FOIL o "doble distributiva".</p>
-      <button class="rbtn" onclick="toggleSol(this,'s3')">▸ Ver solución paso a paso</button>
+      <p class="ex-p">Usa FOIL: cada término del primero multiplicado por cada término del segundo.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s3','ex3')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s3">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$x$ se distribuye: $x \cdot x + x \cdot 4 = x^2 + 4x$</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$3$ se distribuye: $3 \cdot x + 3 \cdot 4 = 3x + 12$</p></div></div>
-        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Sumamos y combinamos términos semejantes: $x^2 + 4x + 3x + 12 = x^2 + 7x + 12$</p></div></div>
-        <div class="ans"><div class="ans-l">Respuesta</div>$(x+3)(x+4) = x^2 + 7x + 12$</div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Primeros: $x \cdot x = x^2$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>Exteriores: $x \cdot 4 = 4x$ &nbsp;·&nbsp; Interiores: $3 \cdot x = 3x$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Últimos: $3 \cdot 4 = 12$</p></div></div>
+        <div class="sstep"><div class="sn">4</div><div class="sc"><p>Combina semejantes: $x^2 + 7x + 12$</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$x^2 + 7x + 12$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
-
-    <div class="ex">
+    <div class="ex" id="ex4">
       <div class="ex-head"><span class="ex-n">04</span><span class="ex-t">Factoriza $15x^2 - 10x$</span></div>
-      <p class="ex-p">Encuentra el máximo factor común de los coeficientes y de las variables.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s4')">▸ Ver solución paso a paso</button>
+      <p class="ex-p">Encuentra el máximo factor común de coeficientes y variables.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s4','ex4')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s4">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Coeficientes: $\text{MCD}(15, 10) = 5$</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>Variables: ambos tienen $x$, el menor exponente es $x^1$. Factor de variables: $x$.</p></div></div>
-        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Factor común total: $5x$. Dividimos cada término: $15x^2 \div 5x = 3x$ y $10x \div 5x = 2$.</p></div></div>
-        <div class="sstep"><div class="sn">4</div><div class="sc"><p>Verificamos: $5x(3x - 2) = 15x^2 - 10x$ ✓</p></div></div>
-        <div class="ans"><div class="ans-l">Respuesta</div>$15x^2 - 10x = 5x(3x-2)$</div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Coeficientes: MCD$(15,10)=5$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>Variables: ambos tienen $x$, exponente menor $x^1$. Factor total: $5x$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>$15x^2 \div 5x = 3x$ y $10x \div 5x = 2$</p></div></div>
+        <div class="sstep"><div class="sn">4</div><div class="sc"><p>Verifica: $5x(3x-2)=15x^2-10x$ ✓</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$5x(3x-2)$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
+  </div>
 
+  <div class="quiz">
+    <div class="quiz-head">Mini-quiz · Módulo 3</div>
+    <p class="quiz-sub">Aplica lo aprendido. Sin calculadora.</p>
+    <div class="qblock">
+      <div class="q-num">Pregunta 1 de 2</div>
+      <div class="q-text">¿Cuánto es $3 + 4^2 \div 2 - 1$?</div>
+      <div class="q-opts">
+        <button class="qopt" data-correct="true" onclick="checkOpt('q1',this,true,'¡Correcto! Exponente primero: 4²=16. División: 16÷2=8. Suma/resta: 3+8-1=10.')">$10$</button>
+        <button class="qopt" onclick="checkOpt('q1',this,false,'Calculaste de izquierda a derecha. Exponente primero: 4²=16, luego 16÷2=8, luego 3+8-1=10.')">$24$</button>
+        <button class="qopt" onclick="checkOpt('q1',this,false,'Revisa el orden. 4²=16 (no 4×2=8). Luego 16÷2=8. Luego 3+8-1=10.')">$12$</button>
+        <button class="qopt" onclick="checkOpt('q1',this,false,'Olvidaste el exponente. 4²=16, no 4. Luego 16÷2=8. Resultado: 3+8-1=10.')">$7$</button>
+      </div>
+      <div class="q-fb" id="fb-q1"></div>
+    </div>
+    <div class="qblock">
+      <div class="q-num">Pregunta 2 de 2</div>
+      <div class="q-text">Expande $(x+2)(x-5)$</div>
+      <div class="q-opts">
+        <button class="qopt" data-correct="true" onclick="checkOpt('q2',this,true,'¡Perfecto! F: x², O: -5x, I: 2x, L: -10. Combinas: x²-3x-10.')">$x^2 - 3x - 10$</button>
+        <button class="qopt" onclick="checkOpt('q2',this,false,'El último término es (2)(-5)=-10, no +10. Cuidado con el signo del 5.')">$x^2 - 3x + 10$</button>
+        <button class="qopt" onclick="checkOpt('q2',this,false,'Los términos medios: -5x+2x=-3x, no +3x. El 5 lleva signo negativo.')">$x^2 + 3x - 10$</button>
+        <button class="qopt" onclick="checkOpt('q2',this,false,'Olvidaste los términos medios (-5x y 2x). FOIL completo: x²-5x+2x-10=x²-3x-10.')">$x^2 - 10$</button>
+      </div>
+      <div class="q-fb" id="fb-q2"></div>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div class="qr-num" id="qr-score"></div>
+      <div class="qr-lbl">RESPUESTAS CORRECTAS</div>
+      <div class="qr-msg" id="qr-msg"></div>
+      <a href="/nivelacion/modulo-4/" class="qr-btn" id="qr-next" style="display:none">Continuar al Módulo 4 →</a>
+    </div>
   </div>
 
   <div class="mnav">
-    <a href="/nivelacion/modulo-2/" class="nbtn">← Módulo 2: Fracciones</a>
+    <a href="/nivelacion/modulo-2/" class="nbtn">← Módulo 2</a>
     <a href="/nivelacion/modulo-4/" class="nbtn next">Módulo 4: Potencias →</a>
   </div>
 </div>
 
 <footer>
-  <a href="https://www.aiudalabs.com" target="_blank" rel="noopener">
-    <span class="logo" style="font-size:20px"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m" style="font-size:15px">labs</span></span>
-  </a>
+  <a href="https://www.aiudalabs.com" target="_blank"><span class="logo" style="font-size:20px"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m" style="font-size:15px">labs</span></span></a>
   <p>© 2026 Aiuda Labs · Panamá</p>
-  <p class="cta">¿Quieres una guía para tu curso? <a href="https://wa.me/50763644604" target="_blank">Escríbenos por WhatsApp</a></p>
+  <p class="cta">¿Quieres una guía personalizada? <a href="https://wa.me/50763644604" target="_blank">Escríbenos por WhatsApp</a></p>
 </footer>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  renderMathInElement(document.body, {
-    delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
-    throwOnError: false
-  });
+document.addEventListener('DOMContentLoaded',function(){
+  renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  document.querySelectorAll('.mdisp').forEach(function(el){if(el.scrollWidth>el.offsetWidth+4)el.classList.add('ov');});
+  try{var p=JSON.parse(localStorage.getItem('nivelacion')||'{}');if(p.m3)document.querySelectorAll('.ex').forEach(function(e){e.classList.add('done');});}catch(e){}
 });
-function toggleSol(btn, id) {
-  const sol = document.getElementById(id);
-  const open = sol.style.display === 'block';
-  sol.style.display = open ? 'none' : 'block';
-  btn.textContent = open ? '▸ Ver solución paso a paso' : '▾ Ocultar solución';
+window.addEventListener('scroll',function(){var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;document.getElementById('pbar').style.width=Math.min(pct,100)+'%';},{passive:true});
+var _ready={};
+function toggleSol(btn,sid,eid){
+  var sol=document.getElementById(sid),open=sol.style.display==='block';
+  if(open){sol.style.display='none';btn.textContent='▸ Ver solución paso a paso';return;}
+  if(!_ready[sid]){_ready[sid]=false;btn.disabled=true;btn.textContent='⏳ Piénsalo 2 segundos...';setTimeout(function(){_ready[sid]=true;btn.disabled=false;btn.textContent='▸ Ver solución paso a paso';},2000);return;}
+  sol.style.display='block';btn.textContent='▾ Ocultar solución';
+  if(eid)document.getElementById(eid).classList.add('done');saveProgress();
+}
+var _ans={};
+function checkOpt(qid,el,correct,fb){
+  if(_ans[qid]!==undefined)return;_ans[qid]=correct;
+  var block=el.closest('.qblock');block.querySelectorAll('.qopt').forEach(function(o){o.classList.add('disabled');});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)block.querySelectorAll('[data-correct]').forEach(function(o){o.classList.add('correct');});
+  var fbEl=block.querySelector('.q-fb');fbEl.textContent=fb;fbEl.classList.add('show',correct?'ok':'bad');
+  if(Object.keys(_ans).length>=2)showResult();
+}
+function showResult(){
+  var correct=Object.values(_ans).filter(Boolean).length;
+  var res=document.getElementById('quiz-result');res.style.display='block';
+  document.getElementById('qr-score').textContent=correct+'/2';
+  var msgs=['Repasa el módulo antes de continuar. 💪','¡Casi! Revisa la que fallaste y sigue.','¡Excelente! Dominaste el módulo. 🎉'];
+  document.getElementById('qr-msg').textContent=msgs[correct===2?2:correct>0?1:0];
+  if(correct===2){document.getElementById('qr-next').style.display='inline-flex';saveProgress();}
+}
+function saveProgress(){
+  try{var p=JSON.parse(localStorage.getItem('nivelacion')||'{}');p.m3={done:true,ts:Date.now()};localStorage.setItem('nivelacion',JSON.stringify(p));}catch(e){}
 }
 </script>
 </body>

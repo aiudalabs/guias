@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Módulo 1: La Anatomía de los Números | Nivelación de Matemáticas | Aiuda Labs</title>
-<meta name="description" content="Números primos como átomos, descomposición factorial y por qué esto es la base de todo lo que verás en 10° grado.">
+<title>Módulo 1: La Anatomía de los Números | Aiuda Labs</title>
 <link rel="canonical" href="https://guias.aiudalabs.com/nivelacion/modulo-1/">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,76 +13,74 @@
 <style>
 :root{--bg:#FAF8F4;--bg2:#F3F0EA;--bg3:#EBE7DE;--ink:#0D0D0F;--ink2:#2A2A2F;--ink3:#52525A;--ink4:#8A8A92;--accent:#E8440A;--mc:#E8440A;--display:"Satoshi",system-ui,sans-serif;--serif:"Instrument Serif",Georgia,serif;--mono:"JetBrains Mono",monospace;--r:12px;--max:740px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+body{background:var(--bg);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
-nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.04)}
+.pbar{position:fixed;top:0;left:0;height:3px;background:var(--mc);z-index:201;width:0%;transition:width .08s linear;pointer-events:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.04)}
 .nav-inner{max-width:1120px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-size:26px;font-weight:900;letter-spacing:-0.04em;line-height:1}
-.logo .a{color:#E8440A}.logo .a2{color:#E8440A;font-weight:400}.logo .m{color:var(--ink4);font-size:18px;font-weight:500;margin-left:4px}
+.logo{font-size:26px;font-weight:900;letter-spacing:-.04em;line-height:1}.logo .a,.logo .a2{color:#E8440A}.logo .a2{font-weight:400}.logo .m{color:var(--ink4);font-size:18px;font-weight:500;margin-left:4px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;position:relative;z-index:1}
 .breadcrumb{padding:16px 0 0;font-family:var(--mono);font-size:12px;color:var(--ink4);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .breadcrumb a{color:var(--ink4)}.breadcrumb a:hover{color:var(--mc)}
 .hero{padding:36px 0 28px}
-.module-badge{display:inline-flex;align-items:center;background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:16px}
-h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.08;letter-spacing:-0.035em;margin-bottom:14px}
+.mbadge{display:inline-flex;align-items:center;background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:16px}
+h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.08;letter-spacing:-.035em;margin-bottom:14px}
 h1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--mc)}
 .lead{font-size:17px;line-height:1.75;color:var(--ink3);margin-bottom:20px}
 .progress{display:flex;gap:6px;margin-top:4px}
-.pdot{height:6px;border-radius:3px;flex:1;background:var(--bg3)}
-.pdot.active{background:var(--mc)}
+.pdot{height:6px;border-radius:3px;flex:1;background:var(--bg3)}.pdot.done{background:var(--mc);opacity:.45}.pdot.active{background:var(--mc)}
 hr.divider{border:none;border-top:1px solid var(--bg3);margin:32px 0}
-h2{font-size:22px;font-weight:900;letter-spacing:-0.02em;color:var(--ink);margin:36px 0 14px;padding-top:4px}
+h2{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--ink);margin:36px 0 14px}
 h3{font-size:18px;font-weight:700;color:var(--ink2);margin:22px 0 10px}
 p{font-size:16px;line-height:1.82;color:var(--ink2);margin-bottom:14px}
 p:last-child{margin-bottom:0}
-ul.bullets{list-style:none;margin:12px 0 16px;padding:0;display:flex;flex-direction:column;gap:8px}
-ul.bullets li{font-size:16px;line-height:1.75;color:var(--ink2);display:flex;gap:10px;align-items:flex-start}
-ul.bullets li::before{content:"·";color:var(--mc);font-weight:900;font-size:20px;flex-shrink:0;line-height:1.35}
-/* callouts */
+ul.bul{list-style:none;margin:12px 0 16px;padding:0;display:flex;flex-direction:column;gap:8px}
+ul.bul li{font-size:16px;line-height:1.75;color:var(--ink2);display:flex;gap:10px;align-items:flex-start}
+ul.bul li::before{content:"·";color:var(--mc);font-weight:900;font-size:20px;flex-shrink:0;line-height:1.35}
 .callout{border-radius:var(--r);padding:20px 24px;margin:20px 0}
 .cl{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;display:block}
-.callout.lego{background:var(--mc)}
-.callout.lego .cl{color:rgba(255,255,255,.6)}
-.callout.lego p,.callout.lego h3{color:rgba(255,255,255,.92)}
-.callout.lego h3{font-size:16px;margin:14px 0 6px;color:#fff}
-.callout.why{background:rgba(10,123,90,0.07);border-left:4px solid #0A7B5A}
-.callout.why .cl{color:#0A7B5A}
-.callout.tip{background:#fefce8;border-left:4px solid #facc15}
-.callout.tip .cl{color:#a16207}
-.callout.tip p{color:#78350f}
-/* math */
-.mdisp{background:var(--ink);border-radius:10px;padding:20px 24px;margin:18px 0;overflow-x:auto;text-align:center}
-.mdisp .katex{font-size:1.3em!important;color:#e2e8f0!important}
-.mdisp .katex-display{margin:0!important}
-/* factor ladder */
+.callout.ac{background:var(--mc)}.callout.ac .cl{color:rgba(255,255,255,.6)}.callout.ac p,.callout.ac h3{color:rgba(255,255,255,.92)}.callout.ac h3{font-size:16px;margin:14px 0 6px;color:#fff}
+.callout.why{background:rgba(10,123,90,.07);border-left:4px solid #0A7B5A}.callout.why .cl{color:#0A7B5A}
+.callout.tip{background:#fefce8;border-left:4px solid #facc15}.callout.tip .cl{color:#a16207}.callout.tip p{color:#78350f}
+.callout.warn{background:#fff1f2;border-left:4px solid #fda4af}.callout.warn .cl{color:#be123c}.callout.warn p{color:#881337}
+.preq{background:#fff;border:2px solid var(--mc);border-radius:var(--r);padding:20px 24px;margin:24px 0}
+.preq-lbl{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:10px;display:block}
+.preq-q{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;line-height:1.5}
+.preq textarea{width:100%;padding:10px 14px;border:1.5px solid var(--bg3);border-radius:8px;font-size:15px;font-family:var(--display);color:var(--ink);background:var(--bg);resize:none;min-height:56px;transition:border-color .15s}
+.preq textarea:focus{outline:none;border-color:var(--mc)}
+.preq-btn{margin-top:10px;padding:9px 18px;background:var(--mc);color:#fff;border:none;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;font-family:var(--display)}
+.preq-reveal{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--bg3)}
+.preq-reveal p{font-size:15px;color:var(--ink3);line-height:1.75}
+.mdisp{background:var(--ink);border-radius:10px;padding:20px 24px;margin:18px 0;overflow-x:auto;text-align:center;position:relative}
+.mdisp .katex{font-size:1.3em!important;color:#e2e8f0!important}.mdisp .katex-display{margin:0!important}
+.mdisp.ov::after{content:"← desliza →";position:absolute;bottom:6px;right:10px;font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.35);pointer-events:none}
 .ladder-wrap{display:flex;justify-content:center;margin:20px 0}
 .ladder{display:inline-flex;flex-direction:column;font-family:var(--mono);font-size:17px;font-weight:600}
 .lr{display:flex;align-items:stretch}
 .ln{min-width:60px;text-align:right;padding:5px 10px 5px 0;color:var(--ink)}
 .ld{padding:5px 14px;border-left:2px solid var(--mc);border-bottom:2px solid var(--mc);color:var(--mc);font-weight:700;min-width:44px}
 .ld.p{color:#0A7B5A;border-color:#0A7B5A}
-.lr.end .ln{color:var(--ink4)}
-.lr.end .ld{border-bottom:none;color:transparent;border-left-color:var(--bg3)}
+.lr.end .ln{color:var(--ink4)}.lr.end .ld{border-bottom:none;color:transparent;border-left-color:var(--bg3)}
 .ladder-note{text-align:center;margin-top:8px;font-family:var(--mono);font-size:13px;color:var(--ink4)}
-/* fraction cancel */
 .fcancel{display:flex;align-items:center;justify-content:center;gap:16px;margin:18px 0;flex-wrap:wrap}
 .fi{display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--mono);font-weight:600;font-size:18px}
 .fi-line{width:100%;height:1.5px;background:var(--ink);min-width:48px}
-.cross{text-decoration:line-through;color:var(--ink4)}
-.stay{color:var(--mc);font-weight:900}
-/* exercises */
+.cross{text-decoration:line-through;color:var(--ink4)}.stay{color:var(--mc);font-weight:900}
 .exsec{background:var(--bg2);border-radius:16px;padding:28px;margin:36px 0}
 .exsec-head{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:4px}
 .exsec-sub{font-size:15px;color:var(--ink3);margin-bottom:20px;line-height:1.6}
-.ex{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3)}
-.ex:last-child{margin-bottom:0}
+.ex{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3);transition:border-color .3s}
+.ex:last-child{margin-bottom:0}.ex.done{border-color:#22c55e}.ex.done .ex-n{background:#22c55e!important}
+.done-tag{display:none;font-family:var(--mono);font-size:11px;color:#22c55e;font-weight:700;margin-top:10px}
+.ex.done .done-tag{display:block}
 .ex-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.ex-n{background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px}
+.ex-n{background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;transition:background .3s}
 .ex-t{font-weight:700;font-size:16px;color:var(--ink)}
 .ex-p{font-size:15px;color:var(--ink3);line-height:1.75;margin-bottom:14px}
 .rbtn{display:block;width:100%;padding:11px 16px;border-radius:10px;border:1.5px dashed var(--mc);background:transparent;cursor:pointer;font-weight:600;font-size:14px;color:var(--mc);font-family:var(--display);text-align:left;transition:all .15s}
-.rbtn:hover{background:var(--mc);color:#fff;border-style:solid}
+.rbtn:hover:not(:disabled){background:var(--mc);color:#fff;border-style:solid}
+.rbtn:disabled{color:var(--ink4);border-color:var(--bg3);cursor:default}
 .sol{margin-top:16px;display:none}
 .sstep{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
 .sn{min-width:28px;height:28px;border-radius:50%;background:var(--mc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;font-family:var(--mono)}
@@ -91,209 +88,204 @@ ul.bullets li::before{content:"·";color:var(--mc);font-weight:900;font-size:20p
 .ans{background:var(--mc);border-radius:10px;padding:16px 20px;margin-top:14px;text-align:center}
 .ans-l{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}
 .ans .katex{color:#fff!important;font-size:1.2em!important}
-/* module nav */
+.quiz{background:var(--bg2);border-radius:16px;padding:28px;margin:36px 0}
+.quiz-head{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:4px}
+.quiz-sub{font-size:15px;color:var(--ink3);margin-bottom:22px;line-height:1.6}
+.qblock{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3)}
+.qblock:last-child{margin-bottom:0}
+.q-num{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--mc);margin-bottom:8px}
+.q-text{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:14px;line-height:1.5}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.qopt{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:8px;border:1.5px solid var(--bg3);cursor:pointer;font-size:15px;color:var(--ink2);transition:all .15s;background:#fff;text-align:left;width:100%;font-family:var(--display)}
+.qopt:hover:not(.disabled){border-color:var(--mc);color:var(--mc)}
+.qopt.correct{border-color:#22c55e;background:#f0fdf4;color:#15803d;font-weight:600}
+.qopt.wrong{border-color:#fda4af;background:#fff1f2;color:#be123c}
+.qopt.disabled{pointer-events:none}
+.q-fb{margin-top:12px;padding:12px 16px;border-radius:8px;font-size:14px;line-height:1.65;display:none}
+.q-fb.show{display:block}.q-fb.ok{background:#f0fdf4;color:#15803d;border:1px solid #86efac}.q-fb.bad{background:#fff1f2;color:#be123c;border:1px solid #fda4af}
+.quiz-result{text-align:center;padding:24px 0 4px;border-top:1px solid var(--bg3);margin-top:20px;display:none}
+.qr-num{font-size:52px;font-weight:900;color:var(--mc);line-height:1}
+.qr-lbl{font-family:var(--mono);font-size:11px;color:var(--ink4);letter-spacing:.06em;margin-top:4px}
+.qr-msg{font-size:15px;color:var(--ink2);margin-top:12px;line-height:1.65}
+.qr-btn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:11px 22px;background:var(--mc);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:var(--display);text-decoration:none}
 .mnav{display:flex;justify-content:space-between;align-items:center;padding:24px 0 0;border-top:1px solid var(--bg3);margin-top:12px;gap:12px;flex-wrap:wrap}
 .nbtn{display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:var(--r);border:1.5px solid var(--bg3);background:#fff;font-weight:600;font-size:14px;color:var(--ink3);font-family:var(--display);text-decoration:none;transition:all .15s}
-.nbtn:hover{border-color:var(--mc);color:var(--mc)}
-.nbtn.next{background:var(--mc);border-color:var(--mc);color:#fff}
-.nbtn.next:hover{opacity:.88}
+.nbtn:hover{border-color:var(--mc);color:var(--mc)}.nbtn.next{background:var(--mc);border-color:var(--mc);color:#fff}.nbtn.next:hover{opacity:.88}
 footer{text-align:center;padding:36px 0 24px;border-top:1px solid var(--bg3);margin-top:24px}
-footer p{font-family:var(--mono);font-size:11px;color:var(--ink4);margin-top:8px;letter-spacing:.04em}
+footer p{font-family:var(--mono);font-size:11px;color:var(--ink4);margin-top:8px}
 footer .cta{font-size:13px;color:var(--ink3);margin-top:8px}
 footer .cta a{color:var(--accent);font-weight:600}
-@media(max-width:640px){.nav-inner{padding:0 16px;height:56px}.logo{font-size:22px}.wrap{padding:0 16px}.hero{padding:24px 0 20px}h2{font-size:20px}.exsec{padding:20px 14px}.ex{padding:16px}}
+@media(max-width:640px){.nav-inner{padding:0 16px;height:56px}.wrap{padding:0 16px}.hero{padding:24px 0 20px}.exsec,.quiz{padding:20px 14px}.ex{padding:16px}}
 </style>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a href="https://www.aiudalabs.com" target="_blank" rel="noopener">
-      <span class="logo"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m">labs</span></span>
-    </a>
-    <a href="/nivelacion/" style="font-family:var(--mono);font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em">Nivelación · Matemáticas</a>
-  </div>
-</nav>
+<div class="pbar" id="pbar"></div>
+<nav><div class="nav-inner">
+  <a href="https://www.aiudalabs.com" target="_blank"><span class="logo"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m">labs</span></span></a>
+  <a href="/nivelacion/" style="font-family:var(--mono);font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em">Nivelación · Matemáticas</a>
+</div></nav>
 
 <div class="wrap">
-  <div class="breadcrumb">
-    <a href="/">Inicio</a><span>›</span>
-    <a href="/nivelacion/">Nivelación</a><span>›</span>
-    <span style="color:var(--mc)">Módulo 1</span>
-  </div>
-
+  <div class="breadcrumb"><a href="/">Inicio</a> › <a href="/nivelacion/">Nivelación</a> › <span style="color:var(--mc)">Módulo 1</span></div>
   <div class="hero">
-    <div class="module-badge">Módulo 1 de 6</div>
+    <div class="mbadge">Módulo 1 de 6</div>
     <h1>La Anatomía de<br>los <em>Números</em></h1>
     <p class="lead">Los números no son bloques sólidos. Tienen una estructura interna que, una vez que la ves, cambia todo lo que haces en matemáticas.</p>
-    <div class="progress">
-      <div class="pdot active"></div>
-      <div class="pdot"></div>
-      <div class="pdot"></div>
-      <div class="pdot"></div>
-      <div class="pdot"></div>
-      <div class="pdot"></div>
-    </div>
+    <div class="progress"><div class="pdot active"></div><div class="pdot"></div><div class="pdot"></div><div class="pdot"></div><div class="pdot"></div><div class="pdot"></div></div>
   </div>
 
-  <!-- 1. Números Primos -->
-  <h2>1. Los Números Primos: Los "Átomos" de las Matemáticas</h2>
-  <p>En el colegio te enseñan a memorizar los números primos: $2, 3, 5, 7, 11...$ y te dicen que "solo se dividen por sí mismos y por uno". Pero casi nunca te explican <strong>por qué son importantes</strong>. Son importantes porque son la base de todo lo demás.</p>
+  <div class="preq">
+    <span class="preq-lbl">🤔 Antes de empezar</span>
+    <div class="preq-q">Fíjate en los números 6, 10 y 15. ¿Qué crees que tienen en común? Escribe tu intuición antes de leer.</div>
+    <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
+    <button class="preq-btn" onclick="this.parentElement.querySelector('.preq-reveal').style.display='block';this.style.display='none'">Ver la conexión</button>
+    <div class="preq-reveal"><p>Los tres se construyen multiplicando primos: $6 = 2 \times 3$, $10 = 2 \times 5$, $15 = 3 \times 5$. Esos primos son los "átomos" de los que trata este módulo.</p></div>
+  </div>
 
-  <div class="callout lego">
+  <h2>1. Los Números Primos: Los Átomos</h2>
+  <p>En el colegio memorizas los primos: $2, 3, 5, 7, 11...$ pero nadie explica por qué importan. La razón: <strong>todo número entero mayor que 1 está construido multiplicándolos</strong>. Esto se llama el Teorema Fundamental de la Aritmética.</p>
+  <div class="callout ac">
     <span class="cl">🧱 La analogía del Lego</span>
-    <p>Imagina que los números son piezas de Lego.</p>
-    <h3>Los números "compuestos" (como el $6$, el $10$ o el $12$)...</h3>
-    <p>...son figuras ya armadas: un carrito, una casa, un avión. Tienen una forma específica, pero están construidas de piezas más pequeñas.</p>
-    <h3>Los números primos ($2, 3, 5, 7, 11, 13...$)...</h3>
-    <p>...son las <strong>piezas individuales de Lego que no se pueden desarmar más</strong>. Son los bloques fundamentales del universo matemático. No se pueden dividir entre nada (excepto ellos mismos y el 1, que no cuenta).</p>
+    <h3>Números compuestos (6, 10, 12…)</h3>
+    <p>Son figuras ya armadas — construcciones de piezas más pequeñas.</p>
+    <h3>Números primos (2, 3, 5, 7, 11…)</h3>
+    <p>Son las <strong>piezas individuales que no se pueden desarmar más</strong>. Los bloques fundamentales.</p>
   </div>
-
-  <p><strong>Aquí viene lo importante:</strong> cualquier número entero positivo mayor que 1, sin importar qué tan grande sea, está construido multiplicando números primos. Esto se llama el <strong>Teorema Fundamental de la Aritmética</strong>, y a la operación se le llama <strong>Descomposición Factorial</strong>.</p>
-
   <div class="callout tip">
-    <span class="cl">💡 Truco rápido para reconocer primos pequeños</span>
-    <p><strong>Divisible entre 2:</strong> termina en $0, 2, 4, 6$ o $8$ (es par).</p>
-    <p><strong>Divisible entre 3:</strong> la suma de sus dígitos es divisible entre $3$. Ej: $45$ → $4+5=9$ → sí.</p>
-    <p><strong>Divisible entre 5:</strong> termina en $0$ o $5$.</p>
-    <p>Si un número no es divisible entre ningún primo hasta su raíz cuadrada, es primo.</p>
+    <span class="cl">💡 Truco de divisibilidad</span>
+    <p><strong>Entre 2:</strong> termina en par · <strong>Entre 3:</strong> suma de dígitos múltiplo de 3 · <strong>Entre 5:</strong> termina en 0 o 5</p>
   </div>
 
   <hr class="divider">
-
-  <!-- 2. Descomposición -->
-  <h2>2. Desarmando el Lego: El Método de las Divisiones Sucesivas</h2>
-  <p>Si ves el número $12$, tu cerebro está entrenado para ver un "doce". Vamos a cambiar eso. A partir de hoy, el $12$ es un carrito de Lego que puedes desarmar en sus piezas originales.</p>
-  <p>¿Cómo lo desarmamos? Con las <strong>divisiones sucesivas</strong>: dividimos siempre por el primo más pequeño posible, y repetimos hasta llegar a $1$.</p>
-
-  <div class="ladder-wrap">
-    <div>
-      <div class="ladder">
-        <div class="lr"><div class="ln">12</div><div class="ld">2</div></div>
-        <div class="lr"><div class="ln">6</div><div class="ld">2</div></div>
-        <div class="lr"><div class="ln">3</div><div class="ld p">3</div></div>
-        <div class="lr end"><div class="ln">1</div><div class="ld"></div></div>
-      </div>
-      <div class="ladder-note">Los divisores, leídos de arriba abajo: $2, 2, 3$</div>
+  <h2>2. Divisiones Sucesivas: Desarmar el Lego</h2>
+  <p>Dividimos siempre por el primo más pequeño posible, repetimos hasta llegar a 1.</p>
+  <div class="callout warn">
+    <span class="cl">⚠️ Error frecuente</span>
+    <p><strong>Mal:</strong> probar 4 o 6 directamente. El 4 = 2×2 y el 6 = 2×3 no son primos — ya son productos de primos más pequeños.</p>
+    <p><strong>Bien:</strong> siempre en orden: $2, 3, 5, 7, 11...$</p>
+  </div>
+  <div class="ladder-wrap"><div>
+    <div class="ladder">
+      <div class="lr"><div class="ln">12</div><div class="ld">2</div></div>
+      <div class="lr"><div class="ln">6</div><div class="ld">2</div></div>
+      <div class="lr"><div class="ln">3</div><div class="ld p">3</div></div>
+      <div class="lr end"><div class="ln">1</div><div class="ld"></div></div>
     </div>
-  </div>
-
-  <div class="callout why">
-    <span class="cl">🔍 Por qué funciona</span>
-    <p>Cuando llegamos a $1$, ya no queda nada más que dividir. Todos los divisores que usamos son primos porque siempre empezamos por el primo más pequeño posible. El resultado es la "receta" única del número, sus piezas de Lego.</p>
-  </div>
-
-  <p>El $12$ en realidad no existe como un bloque sólido. El $12$ es exactamente esto:</p>
-
+    <div class="ladder-note">Divisores de arriba abajo: $2, 2, 3$</div>
+  </div></div>
   <div class="mdisp">$$12 = 2 \times 2 \times 3 = 2^2 \times 3$$</div>
 
-  <p>Cuando veas el $12$, empieza a ver $2 \times 2 \times 3$. Ese cambio de perspectiva vale todo este módulo.</p>
-
   <hr class="divider">
-
-  <!-- 3. Para qué sirve -->
-  <h2>3. ¿Para Qué Sirve Esto en la Vida Real?</h2>
-  <p>Aquí es donde la magia ocurre y donde dejas de memorizar reglas sin entenderlas.</p>
-
+  <h2>3. ¿Para Qué Sirve?</h2>
   <h3>A. Simplificar fracciones sin adivinar</h3>
-  <p>Si te piden simplificar $\dfrac{12}{18}$, la manera tradicional es ir probando: ¿divido entre 2? ¿entre 3? hasta que te cansas. Pero si usas la visión de Lego, descompones ambos:</p>
-  <ul class="bullets">
-    <li>Numerador: $12 = 2 \times 2 \times 3$</li>
-    <li>Denominador: $18 = 2 \times 3 \times 3$</li>
-  </ul>
-  <p>La fracción ahora se ve así:</p>
-  <div class="mdisp">$$\frac{12}{18} = \frac{2 \times 2 \times 3}{2 \times 3 \times 3}$$</div>
-
-  <div class="callout why">
-    <span class="cl">🔍 Por qué podemos "tachar" piezas</span>
-    <p>Tachar un $2$ arriba y un $2$ abajo no es magia ni una regla que alguien inventó. Es literalmente decir: "$2$ dividido entre $2$ es igual a $1$". Y multiplicar por $1$ no cambia nada. Formalmente: $\dfrac{2}{2} = 1$, y ese $1$ desaparece de la fracción.</p>
-    <p>Puedes cancelar cualquier pieza que aparezca tanto arriba como abajo, porque $\dfrac{n}{n} = 1$ para cualquier $n \neq 0$.</p>
+  <p>$\dfrac{12}{18}$: descomponemos $12 = 2^2 \times 3$ y $18 = 2 \times 3^2$.</p>
+  <div class="callout warn">
+    <span class="cl">⚠️ El error del "tacho lo que veo igual"</span>
+    <p><strong>Mal:</strong> cancelar los <em>dígitos</em> que parecen iguales. Eso no es una regla matemática.</p>
+    <p><strong>Bien:</strong> solo se cancela un factor primo completo arriba contra uno abajo, porque $\dfrac{n}{n} = 1$.</p>
   </div>
-
   <div class="fcancel">
     <div class="fi">
       <div style="display:flex;gap:6px;align-items:center"><span class="cross">2</span><span>×</span><span class="stay">2</span><span>×</span><span class="cross">3</span></div>
       <div class="fi-line"></div>
       <div style="display:flex;gap:6px;align-items:center"><span class="cross">2</span><span>×</span><span class="cross">3</span><span>×</span><span class="stay">3</span></div>
     </div>
-    <span style="font-size:24px;color:var(--ink4);font-weight:300">=</span>
+    <span style="font-size:24px;color:var(--ink4);">=</span>
     <div class="fi">
       <div style="color:var(--mc);font-weight:900;font-size:22px">2</div>
       <div class="fi-line" style="background:var(--mc)"></div>
       <div style="color:var(--mc);font-weight:900;font-size:22px">3</div>
     </div>
   </div>
-
-  <p>Quedan un $2$ arriba y un $3$ abajo. La respuesta es $\dfrac{2}{3}$. Sin adivinar, sin probar números al azar.</p>
-
-  <h3>B. La base directa de los Logaritmos</h3>
-  <p>En 10° te van a presentar los logaritmos y probablemente se van a sentir como algo completamente ajeno. Spoiler: no lo son. Un logaritmo es simplemente <strong>una pregunta disfrazada de símbolo</strong>.</p>
-  <p>Cuando ves $\log_2(8)$, alguien te está preguntando: <em>"Si solo uso piezas de Lego del tipo $2$, ¿cuántas piezas necesito multiplicar para construir un $8$?"</em></p>
-
-  <div class="mdisp">$$8 = 2 \times 2 \times 2 \quad \Longrightarrow \quad \text{necesitas 3 piezas de tipo 2} \quad \Longrightarrow \quad \log_2(8) = 3$$</div>
-
-  <div class="callout lego">
-    <span class="cl">✨ El punto que cambia todo</span>
-    <p>Si sabes descomponer un número en factores primos, ya sabes resolver logaritmos de base simple. No hay reglas locas que memorizar. Solo descompones el número, cuentas las piezas del tipo correcto, y listo.</p>
-    <p>Desarrollaremos esto completamente en el <strong>Módulo 5</strong>. Por ahora, quédate con esa intuición.</p>
-  </div>
+  <h3>B. La base de los logaritmos (adelanto del Módulo 5)</h3>
+  <p>$\log_2(8)$ pregunta: <em>"¿cuántas piezas de tipo 2 necesito para construir 8?"</em> $8 = 2^3$ → necesitas 3. De eso hablaremos en el Módulo 5.</p>
 
   <hr class="divider">
-
-  <!-- Exercises -->
   <div class="exsec">
     <div class="exsec-head">Ejercicios del Módulo 1</div>
-    <p class="exsec-sub">Intenta resolverlos antes de ver la solución. Escríbelos en papel, usando el método de divisiones sucesivas. El intento cuenta más que acertar.</p>
-
-    <div class="ex">
+    <p class="exsec-sub">El botón espera 2 segundos — úsalos para intentarlo primero en papel.</p>
+    <div class="ex" id="ex1">
       <div class="ex-head"><span class="ex-n">01</span><span class="ex-t">Descompón el número 20</span></div>
-      <p class="ex-p">Usa divisiones sucesivas. Empieza por el primo más pequeño que divide a $20$ exactamente.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s1')">▸ Ver solución paso a paso</button>
+      <p class="ex-p">Empieza por el primo más pequeño que divide exactamente a $20$.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s1','ex1')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s1">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>¿Es par? <strong>Sí</strong>. El primo más pequeño es $2$: $\quad 20 \div 2 = 10$</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>¿$10$ es par? <strong>Sí</strong>. Seguimos con $2$: $\quad 10 \div 2 = 5$</p></div></div>
-        <div class="sstep"><div class="sn">3</div><div class="sc"><p>¿$5$ es primo? <strong>Sí</strong> — solo lo divide el $1$ y el $5$. Llegamos a un primo. Fin.</p></div></div>
-        <div class="ans"><div class="ans-l">Respuesta</div>$20 = 2 \times 2 \times 5 = 2^2 \times 5$</div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>¿Es par? Sí. $20 \div 2 = 10$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>¿$10$ es par? Sí. $10 \div 2 = 5$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>¿$5$ es primo? Sí. Fin.</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$20 = 2^2 \times 5$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
-
-    <div class="ex">
+    <div class="ex" id="ex2">
       <div class="ex-head"><span class="ex-n">02</span><span class="ex-t">Descompón el número 45</span></div>
-      <p class="ex-p">El $45$ no es par. Usa el truco de la suma de dígitos para encontrar el primer divisor.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s2')">▸ Ver solución paso a paso</button>
+      <p class="ex-p">El $45$ no es par. Usa el truco de la suma de dígitos para el $3$.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s2','ex2')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s2">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>¿Es par? <strong>No</strong>. Probamos con $3$. Truco: suma de dígitos $\to 4 + 5 = 9$. ¿$9$ es divisible entre $3$? <strong>Sí</strong>. Entonces: $45 \div 3 = 15$</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>¿$15$ es divisible entre $3$? $1 + 5 = 6$ → sí. $15 \div 3 = 5$</p></div></div>
-        <div class="sstep"><div class="sn">3</div><div class="sc"><p>¿$5$ es primo? <strong>Sí</strong>. Fin.</p></div></div>
-        <div class="ans"><div class="ans-l">Respuesta</div>$45 = 3 \times 3 \times 5 = 3^2 \times 5$</div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>¿Par? No. Prueba 3: $4+5=9$, sí es múltiplo de 3. $45 \div 3 = 15$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$1+5=6$, múltiplo de 3. $15 \div 3 = 5$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>$5$ es primo. Fin.</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$45 = 3^2 \times 5$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
-
-    <div class="ex">
+    <div class="ex" id="ex3">
       <div class="ex-head"><span class="ex-n">03</span><span class="ex-t">Descompón el número 60</span></div>
-      <p class="ex-p">El $60$ tiene más factores que los anteriores. Tómate tu tiempo y no saltes pasos.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s3')">▸ Ver solución paso a paso</button>
+      <p class="ex-p">Más factores que los anteriores. No saltes pasos.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s3','ex3')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s3">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>¿Es par? <strong>Sí</strong>. $60 \div 2 = 30$</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>¿$30$ es par? <strong>Sí</strong>. $30 \div 2 = 15$</p></div></div>
-        <div class="sstep"><div class="sn">3</div><div class="sc"><p>¿$15$ es par? <strong>No</strong>. Probamos con $3$: $1+5=6$ → sí. $15 \div 3 = 5$</p></div></div>
-        <div class="sstep"><div class="sn">4</div><div class="sc"><p>¿$5$ es primo? <strong>Sí</strong>. Fin.</p></div></div>
-        <div class="ans"><div class="ans-l">Respuesta</div>$60 = 2 \times 2 \times 3 \times 5 = 2^2 \times 3 \times 5$</div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$60 \div 2 = 30$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$30 \div 2 = 15$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>$1+5=6$ múltiplo de 3: $15 \div 3 = 5$</p></div></div>
+        <div class="sstep"><div class="sn">4</div><div class="sc"><p>$5$ es primo. Fin.</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$60 = 2^2 \times 3 \times 5$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
-
-    <div class="ex">
-      <div class="ex-head"><span class="ex-n">04</span><span class="ex-t">Simplifica la fracción $\dfrac{20}{60}$ usando el método de Lego</span></div>
-      <p class="ex-p">Usa los resultados de los ejercicios 01 y 03. Descompón numerador y denominador, y cancela las piezas que aparecen arriba y abajo.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s4')">▸ Ver solución paso a paso</button>
+    <div class="ex" id="ex4">
+      <div class="ex-head"><span class="ex-n">04</span><span class="ex-t">Simplifica $\dfrac{20}{60}$ usando factorización</span></div>
+      <p class="ex-p">Usa los resultados de los ejercicios 01 y 03. Escribe las piezas y cancela.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s4','ex4')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s4">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>De los ejercicios anteriores: $20 = 2^2 \times 5$ y $60 = 2^2 \times 3 \times 5$.</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>Escribimos la fracción mostrando las piezas: $\dfrac{2 \times 2 \times 5}{2 \times 2 \times 3 \times 5}$</p></div></div>
-        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Cancelamos piezas iguales arriba y abajo. Aparecen los dos $2$ y el $5$ en ambos lados. Cada cancelación es porque $\dfrac{n}{n} = 1$.</p></div></div>
-        <div class="sstep"><div class="sn">4</div><div class="sc"><p>Abajo queda solo el $3$. Arriba queda $1$ (aunque no lo escribimos, porque $\dfrac{1}{n} = \dfrac{1}{n}$).</p></div></div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$20 = 2^2 \times 5$ y $60 = 2^2 \times 3 \times 5$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$\dfrac{2 \times 2 \times 5}{2 \times 2 \times 3 \times 5}$: cancelas los dos 2 y el 5. Cada cancelación es $\tfrac{n}{n}=1$.</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Abajo queda solo el 3. Arriba queda el 1 implícito.</p></div></div>
         <div class="ans"><div class="ans-l">Respuesta</div>$\dfrac{20}{60} = \dfrac{1}{3}$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
+  </div>
 
+  <div class="quiz">
+    <div class="quiz-head">Mini-quiz · Módulo 1</div>
+    <p class="quiz-sub">Dos preguntas. Elige tu respuesta y recibe feedback al instante. Sin trampa — es para saber si quedó claro antes de continuar.</p>
+    <div class="qblock">
+      <div class="q-num">Pregunta 1 de 2</div>
+      <div class="q-text">¿Cuál es la descomposición en factores primos de 36?</div>
+      <div class="q-opts">
+        <button class="qopt" data-correct="true" onclick="checkOpt('q1',this,true,'¡Correcto! 36 = 2×2×3×3 = 2²×3². Solo hay doses y treses como factores primos.')">$2^2 \times 3^2$</button>
+        <button class="qopt" onclick="checkOpt('q1',this,false,'4×9 muestra factores, pero 4 y 9 no son primos. Necesitas llegar hasta los primos: 2²×3².')">$4 \times 9$</button>
+        <button class="qopt" onclick="checkOpt('q1',this,false,'6×6 no está en factores primos. El 6 = 2×3, entonces 6×6 = (2×3)² = 2²×3².')">$6 \times 6$</button>
+        <button class="qopt" onclick="checkOpt('q1',this,false,'2×18 no está completo. 18 = 2×3², así que la respuesta final es 2²×3².')">$2 \times 18$</button>
+      </div>
+      <div class="q-fb" id="fb-q1"></div>
+    </div>
+    <div class="qblock">
+      <div class="q-num">Pregunta 2 de 2</div>
+      <div class="q-text">Simplifica $\dfrac{18}{30}$ usando factorización</div>
+      <div class="q-opts">
+        <button class="qopt" data-correct="true" onclick="checkOpt('q2',this,true,'¡Perfecto! 18=2×3² y 30=2×3×5. Cancelas el 2 y un 3 → queda 3/5.')">$\dfrac{3}{5}$</button>
+        <button class="qopt" onclick="checkOpt('q2',this,false,'9/15 no está del todo simplificada. 9 = 3² y 15 = 3×5; cancelas un 3 más → 3/5.')">$\dfrac{9}{15}$</button>
+        <button class="qopt" onclick="checkOpt('q2',this,false,'6/10 todavía tiene el factor 2 común. 6=2×3 y 10=2×5; cancelas el 2 → 3/5.')">$\dfrac{6}{10}$</button>
+        <button class="qopt" onclick="checkOpt('q2',this,false,'Incorrecto. 18=2×3² y 30=2×3×5. Los factores comunes son 2 y un 3; queda 3/5, no 2/3.')">$\dfrac{2}{3}$</button>
+      </div>
+      <div class="q-fb" id="fb-q2"></div>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div class="qr-num" id="qr-score"></div>
+      <div class="qr-lbl">RESPUESTAS CORRECTAS</div>
+      <div class="qr-msg" id="qr-msg"></div>
+      <a href="/nivelacion/modulo-2/" class="qr-btn" id="qr-next" style="display:none">Continuar al Módulo 2 →</a>
+    </div>
   </div>
 
   <div class="mnav">
@@ -303,25 +295,51 @@ footer .cta a{color:var(--accent);font-weight:600}
 </div>
 
 <footer>
-  <a href="https://www.aiudalabs.com" target="_blank" rel="noopener">
-    <span class="logo" style="font-size:20px"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m" style="font-size:15px">labs</span></span>
-  </a>
+  <a href="https://www.aiudalabs.com" target="_blank"><span class="logo" style="font-size:20px"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m" style="font-size:15px">labs</span></span></a>
   <p>© 2026 Aiuda Labs · Panamá</p>
-  <p class="cta">¿Quieres una guía para tu curso? <a href="https://wa.me/50763644604" target="_blank">Escríbenos por WhatsApp</a></p>
+  <p class="cta">¿Quieres una guía personalizada? <a href="https://wa.me/50763644604" target="_blank">Escríbenos por WhatsApp</a></p>
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  renderMathInElement(document.body, {
-    delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
-    throwOnError: false
-  });
+document.addEventListener('DOMContentLoaded',function(){
+  renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  document.querySelectorAll('.mdisp').forEach(function(el){if(el.scrollWidth>el.offsetWidth+4)el.classList.add('ov');});
+  try{var p=JSON.parse(localStorage.getItem('nivelacion')||'{}');if(p.m1)document.querySelectorAll('.ex').forEach(function(e){e.classList.add('done');});}catch(e){}
 });
-function toggleSol(btn, id) {
-  const sol = document.getElementById(id);
-  const open = sol.style.display === 'block';
-  sol.style.display = open ? 'none' : 'block';
-  btn.textContent = open ? '▸ Ver solución paso a paso' : '▾ Ocultar solución';
+window.addEventListener('scroll',function(){var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;document.getElementById('pbar').style.width=Math.min(pct,100)+'%';},{passive:true});
+var _ready={};
+function toggleSol(btn,sid,eid){
+  var sol=document.getElementById(sid),open=sol.style.display==='block';
+  if(open){sol.style.display='none';btn.textContent='▸ Ver solución paso a paso';return;}
+  if(!_ready[sid]){
+    _ready[sid]=false;btn.disabled=true;btn.textContent='⏳ Piénsalo 2 segundos...';
+    setTimeout(function(){_ready[sid]=true;btn.disabled=false;btn.textContent='▸ Ver solución paso a paso';},2000);
+    return;
+  }
+  sol.style.display='block';btn.textContent='▾ Ocultar solución';
+  document.getElementById(eid).classList.add('done');saveProgress();
+}
+var _ans={};
+function checkOpt(qid,el,correct,fb){
+  if(_ans[qid]!==undefined)return;
+  _ans[qid]=correct;
+  var block=el.closest('.qblock');
+  block.querySelectorAll('.qopt').forEach(function(o){o.classList.add('disabled');});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)block.querySelectorAll('[data-correct="true"]').forEach(function(o){o.classList.add('correct');});
+  var fbEl=block.querySelector('.q-fb');fbEl.textContent=fb;fbEl.classList.add('show',correct?'ok':'bad');
+  if(Object.keys(_ans).length>=2)showResult();
+}
+function showResult(){
+  var correct=Object.values(_ans).filter(Boolean).length;
+  var res=document.getElementById('quiz-result');res.style.display='block';
+  document.getElementById('qr-score').textContent=correct+'/2';
+  var msgs=['Repasa el módulo antes de continuar. 💪','¡Casi! Revisa la que fallaste y sigue.','¡Excelente! Dominaste el módulo. 🎉'];
+  document.getElementById('qr-msg').textContent=msgs[correct===2?2:correct>0?1:0];
+  if(correct===2){document.getElementById('qr-next').style.display='inline-flex';saveProgress();}
+}
+function saveProgress(){
+  try{var p=JSON.parse(localStorage.getItem('nivelacion')||'{}');p.m1={done:true,ts:Date.now()};localStorage.setItem('nivelacion',JSON.stringify(p));}catch(e){}
 }
 </script>
 </body>

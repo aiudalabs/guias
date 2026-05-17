@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Módulo 5: Logaritmos | Nivelación de Matemáticas | Aiuda Labs</title>
-<meta name="description" content="Logaritmos explicados desde la intuición: la pregunta disfrazada. Propiedades derivadas de los exponentes.">
+<title>Módulo 5: Logaritmos | Aiuda Labs</title>
 <link rel="canonical" href="https://guias.aiudalabs.com/nivelacion/modulo-5/">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,68 +13,68 @@
 <style>
 :root{--bg:#FAF8F4;--bg2:#F3F0EA;--bg3:#EBE7DE;--ink:#0D0D0F;--ink2:#2A2A2F;--ink3:#52525A;--ink4:#8A8A92;--accent:#E8440A;--mc:#0369a1;--display:"Satoshi",system-ui,sans-serif;--serif:"Instrument Serif",Georgia,serif;--mono:"JetBrains Mono",monospace;--r:12px;--max:740px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+body{background:var(--bg);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
-nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.04)}
+.pbar{position:fixed;top:0;left:0;height:3px;background:var(--mc);z-index:201;width:0%;transition:width .08s linear;pointer-events:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.04)}
 .nav-inner{max-width:1120px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-size:26px;font-weight:900;letter-spacing:-0.04em;line-height:1}.logo .a{color:#E8440A}.logo .a2{color:#E8440A;font-weight:400}.logo .m{color:var(--ink4);font-size:18px;font-weight:500;margin-left:4px}
+.logo{font-size:26px;font-weight:900;letter-spacing:-.04em;line-height:1}.logo .a,.logo .a2{color:#E8440A}.logo .a2{font-weight:400}.logo .m{color:var(--ink4);font-size:18px;font-weight:500;margin-left:4px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;position:relative;z-index:1}
 .breadcrumb{padding:16px 0 0;font-family:var(--mono);font-size:12px;color:var(--ink4);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .breadcrumb a{color:var(--ink4)}.breadcrumb a:hover{color:var(--mc)}
 .hero{padding:36px 0 28px}
-.module-badge{display:inline-flex;align-items:center;background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:16px}
-h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.08;letter-spacing:-0.035em;margin-bottom:14px}
+.mbadge{display:inline-flex;align-items:center;background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:16px}
+h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.08;letter-spacing:-.035em;margin-bottom:14px}
 h1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--mc)}
 .lead{font-size:17px;line-height:1.75;color:var(--ink3);margin-bottom:20px}
-.progress{display:flex;gap:6px}
-.pdot{height:6px;border-radius:3px;flex:1;background:var(--bg3)}.pdot.done{background:var(--mc);opacity:.45}.pdot.active{background:var(--mc)}
+.progress{display:flex;gap:6px;margin-top:4px}
+.pdot{height:6px;border-radius:3px;flex:1;background:var(--bg3)}.pdot.done{background:#E8440A;opacity:.45}.pdot.active{background:var(--mc)}
 hr.divider{border:none;border-top:1px solid var(--bg3);margin:32px 0}
-h2{font-size:22px;font-weight:900;letter-spacing:-0.02em;color:var(--ink);margin:36px 0 14px}
+h2{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--ink);margin:36px 0 14px}
 h3{font-size:18px;font-weight:700;color:var(--ink2);margin:22px 0 10px}
 p{font-size:16px;line-height:1.82;color:var(--ink2);margin-bottom:14px}
 p:last-child{margin-bottom:0}
-ul.bullets{list-style:none;margin:12px 0 16px;padding:0;display:flex;flex-direction:column;gap:8px}
-ul.bullets li{font-size:16px;line-height:1.75;color:var(--ink2);display:flex;gap:10px;align-items:flex-start}
-ul.bullets li::before{content:"·";color:var(--mc);font-weight:900;font-size:20px;flex-shrink:0;line-height:1.35}
 .callout{border-radius:var(--r);padding:20px 24px;margin:20px 0}
 .cl{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;display:block}
-.callout.blue{background:var(--mc);color:#fff}
-.callout.blue .cl{color:rgba(255,255,255,.55)}
-.callout.blue p{color:rgba(255,255,255,.9);margin-bottom:10px}
-.callout.blue p:last-child{margin-bottom:0}
-.callout.why{background:rgba(3,105,161,0.07);border-left:4px solid var(--mc)}
-.callout.why .cl{color:var(--mc)}
-.callout.tip{background:#fefce8;border-left:4px solid #facc15}
-.callout.tip .cl{color:#a16207}
-.callout.tip p{color:#78350f}
-.mdisp{background:var(--ink);border-radius:10px;padding:20px 24px;margin:18px 0;overflow-x:auto;text-align:center}
-.mdisp .katex{font-size:1.3em!important;color:#e2e8f0!important}
-.mdisp .katex-display{margin:0!important}
-/* notation anatomy */
+.callout.ac{background:var(--mc)}.callout.ac .cl{color:rgba(255,255,255,.6)}.callout.ac p{color:rgba(255,255,255,.92)}
+.callout.why{background:rgba(10,123,90,.07);border-left:4px solid #0A7B5A}.callout.why .cl{color:#0A7B5A}
+.callout.tip{background:#fefce8;border-left:4px solid #facc15}.callout.tip .cl{color:#a16207}.callout.tip p{color:#78350f}
+.callout.warn{background:#fff1f2;border-left:4px solid #fda4af}.callout.warn .cl{color:#be123c}.callout.warn p{color:#881337}
+.callout.link{background:rgba(10,123,90,.07);border-left:4px solid #0A7B5A}.callout.link .cl{color:#0A7B5A}
+.preq{background:#fff;border:2px solid var(--mc);border-radius:var(--r);padding:20px 24px;margin:24px 0}
+.preq-lbl{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:10px;display:block}
+.preq-q{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;line-height:1.5}
+.preq textarea{width:100%;padding:10px 14px;border:1.5px solid var(--bg3);border-radius:8px;font-size:15px;font-family:var(--display);color:var(--ink);background:var(--bg);resize:none;min-height:56px;transition:border-color .15s}
+.preq textarea:focus{outline:none;border-color:var(--mc)}
+.preq-btn{margin-top:10px;padding:9px 18px;background:var(--mc);color:#fff;border:none;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;font-family:var(--display)}
+.preq-reveal{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--bg3)}
+.preq-reveal p{font-size:15px;color:var(--ink3);line-height:1.75}
+.mdisp{background:var(--ink);border-radius:10px;padding:20px 24px;margin:18px 0;overflow-x:auto;text-align:center;position:relative}
+.mdisp .katex{font-size:1.3em!important;color:#e2e8f0!important}.mdisp .katex-display{margin:0!important}
+.mdisp.ov::after{content:"← desliza →";position:absolute;bottom:6px;right:10px;font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.35);pointer-events:none}
 .log-anatomy{background:#fff;border-radius:var(--r);padding:24px;border:1.5px solid var(--bg3);margin:18px 0;text-align:center}
-.log-big{font-family:var(--mono);font-size:36px;font-weight:700;color:var(--ink);margin-bottom:16px;letter-spacing:-0.02em}
-.log-labels{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-.log-label{text-align:center}
-.log-label-term{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--mc)}
-.log-label-desc{font-size:13px;color:var(--ink3);margin-top:4px}
-/* property cards */
-.props{display:flex;flex-direction:column;gap:12px;margin:18px 0}
-.prop{background:#fff;border-radius:var(--r);padding:16px 20px;border-left:4px solid var(--mc)}
-.prop-formula{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--mc);margin-bottom:8px}
-.prop-why{font-size:14px;color:var(--ink3);line-height:1.65}
-/* exercises */
+.log-big{font-family:var(--mono);font-size:32px;font-weight:700;color:var(--ink);margin-bottom:16px;line-height:1.2}
+.log-labels{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+.log-term{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--mc)}
+.log-desc{font-size:13px;color:var(--ink3);margin-top:4px}
+.prop{background:#fff;border-radius:var(--r);padding:16px 20px;border-left:4px solid var(--mc);margin-bottom:12px}
+.prop-f{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--mc);margin-bottom:8px}
+.prop-w{font-size:14px;color:var(--ink3);line-height:1.65}
 .exsec{background:var(--bg2);border-radius:16px;padding:28px;margin:36px 0}
 .exsec-head{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:4px}
 .exsec-sub{font-size:15px;color:var(--ink3);margin-bottom:20px;line-height:1.6}
-.ex{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3)}
-.ex:last-child{margin-bottom:0}
+.ex{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3);transition:border-color .3s}
+.ex:last-child{margin-bottom:0}.ex.done{border-color:#22c55e}.ex.done .ex-n{background:#22c55e!important}
+.done-tag{display:none;font-family:var(--mono);font-size:11px;color:#22c55e;font-weight:700;margin-top:10px}
+.ex.done .done-tag{display:block}
 .ex-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.ex-n{background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px}
+.ex-n{background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;transition:background .3s}
 .ex-t{font-weight:700;font-size:16px;color:var(--ink)}
 .ex-p{font-size:15px;color:var(--ink3);line-height:1.75;margin-bottom:14px}
 .rbtn{display:block;width:100%;padding:11px 16px;border-radius:10px;border:1.5px dashed var(--mc);background:transparent;cursor:pointer;font-weight:600;font-size:14px;color:var(--mc);font-family:var(--display);text-align:left;transition:all .15s}
-.rbtn:hover{background:var(--mc);color:#fff;border-style:solid}
+.rbtn:hover:not(:disabled){background:var(--mc);color:#fff;border-style:solid}
+.rbtn:disabled{color:var(--ink4);border-color:var(--bg3);cursor:default}
 .sol{margin-top:16px;display:none}
 .sstep{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
 .sn{min-width:28px;height:28px;border-radius:50%;background:var(--mc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;font-family:var(--mono)}
@@ -83,220 +82,228 @@ ul.bullets li::before{content:"·";color:var(--mc);font-weight:900;font-size:20p
 .ans{background:var(--mc);border-radius:10px;padding:16px 20px;margin-top:14px;text-align:center}
 .ans-l{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}
 .ans .katex{color:#fff!important;font-size:1.2em!important}
+.quiz{background:var(--bg2);border-radius:16px;padding:28px;margin:36px 0}
+.quiz-head{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:4px}
+.quiz-sub{font-size:15px;color:var(--ink3);margin-bottom:22px;line-height:1.6}
+.qblock{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3)}
+.qblock:last-child{margin-bottom:0}
+.q-num{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--mc);margin-bottom:8px}
+.q-text{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:14px;line-height:1.5}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.qopt{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:8px;border:1.5px solid var(--bg3);cursor:pointer;font-size:15px;color:var(--ink2);transition:all .15s;background:#fff;text-align:left;width:100%;font-family:var(--display)}
+.qopt:hover:not(.disabled){border-color:var(--mc);color:var(--mc)}
+.qopt.correct{border-color:#22c55e;background:#f0fdf4;color:#15803d;font-weight:600}
+.qopt.wrong{border-color:#fda4af;background:#fff1f2;color:#be123c}
+.qopt.disabled{pointer-events:none}
+.q-fb{margin-top:12px;padding:12px 16px;border-radius:8px;font-size:14px;line-height:1.65;display:none}
+.q-fb.show{display:block}.q-fb.ok{background:#f0fdf4;color:#15803d;border:1px solid #86efac}.q-fb.bad{background:#fff1f2;color:#be123c;border:1px solid #fda4af}
+.quiz-result{text-align:center;padding:24px 0 4px;border-top:1px solid var(--bg3);margin-top:20px;display:none}
+.qr-num{font-size:52px;font-weight:900;color:var(--mc);line-height:1}
+.qr-lbl{font-family:var(--mono);font-size:11px;color:var(--ink4);letter-spacing:.06em;margin-top:4px}
+.qr-msg{font-size:15px;color:var(--ink2);margin-top:12px;line-height:1.65}
+.qr-btn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:11px 22px;background:var(--mc);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:14px;font-family:var(--display);text-decoration:none}
 .mnav{display:flex;justify-content:space-between;align-items:center;padding:24px 0 0;border-top:1px solid var(--bg3);margin-top:12px;gap:12px;flex-wrap:wrap}
 .nbtn{display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:var(--r);border:1.5px solid var(--bg3);background:#fff;font-weight:600;font-size:14px;color:var(--ink3);font-family:var(--display);text-decoration:none;transition:all .15s}
-.nbtn:hover{border-color:var(--mc);color:var(--mc)}
-.nbtn.next{background:var(--mc);border-color:var(--mc);color:#fff}
-.nbtn.next:hover{opacity:.88}
+.nbtn:hover{border-color:var(--mc);color:var(--mc)}.nbtn.next{background:var(--mc);border-color:var(--mc);color:#fff}.nbtn.next:hover{opacity:.88}
 footer{text-align:center;padding:36px 0 24px;border-top:1px solid var(--bg3);margin-top:24px}
-footer p{font-family:var(--mono);font-size:11px;color:var(--ink4);margin-top:8px;letter-spacing:.04em}
+footer p{font-family:var(--mono);font-size:11px;color:var(--ink4);margin-top:8px}
 footer .cta{font-size:13px;color:var(--ink3);margin-top:8px}
-footer .cta a{color:var(--accent);font-weight:600}
-@media(max-width:640px){.nav-inner{padding:0 16px;height:56px}.logo{font-size:22px}.wrap{padding:0 16px}.hero{padding:24px 0 20px}h2{font-size:20px}.exsec{padding:20px 14px}.ex{padding:16px}}
+footer .cta a{color:#E8440A;font-weight:600}
+@media(max-width:640px){.nav-inner{padding:0 16px;height:56px}.wrap{padding:0 16px}.hero{padding:24px 0 20px}.exsec,.quiz{padding:20px 14px}.ex{padding:16px}}
 </style>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a href="https://www.aiudalabs.com" target="_blank" rel="noopener">
-      <span class="logo"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m">labs</span></span>
-    </a>
-    <a href="/nivelacion/" style="font-family:var(--mono);font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em">Nivelación · Matemáticas</a>
-  </div>
-</nav>
+<div class="pbar" id="pbar"></div>
+<nav><div class="nav-inner">
+  <a href="https://www.aiudalabs.com" target="_blank"><span class="logo"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m">labs</span></span></a>
+  <a href="/nivelacion/" style="font-family:var(--mono);font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em">Nivelación · Matemáticas</a>
+</div></nav>
 
 <div class="wrap">
-  <div class="breadcrumb">
-    <a href="/">Inicio</a><span>›</span>
-    <a href="/nivelacion/">Nivelación</a><span>›</span>
-    <span style="color:var(--mc)">Módulo 5</span>
+  <div class="breadcrumb"><a href="/">Inicio</a> › <a href="/nivelacion/">Nivelación</a> › <span style="color:var(--mc)">Módulo 5</span></div>
+  <div class="hero">
+    <div class="mbadge">Módulo 5 de 6</div>
+    <h1>Logaritmos:<br><em>La Pregunta Disfrazada</em></h1>
+    <p class="lead">Un logaritmo no es una operación nueva. Es la misma relación de las potencias, vista desde el otro lado. Con los Módulos 1 y 4, ya tienes todo lo que necesitas.</p>
+    <div class="progress"><div class="pdot done"></div><div class="pdot done"></div><div class="pdot done"></div><div class="pdot done"></div><div class="pdot active"></div><div class="pdot"></div></div>
   </div>
 
-  <div class="hero">
-    <div class="module-badge">Módulo 5 de 6</div>
-    <h1>Logaritmos:<br><em>La Pregunta Disfrazada</em></h1>
-    <p class="lead">Un logaritmo no es una operación nueva. Es la misma relación de las potencias, vista desde el otro lado. Con los Módulos 1 y 4, ya tienes todo lo que necesitas para entenderlo.</p>
-    <div class="progress">
-      <div class="pdot done"></div>
-      <div class="pdot done"></div>
-      <div class="pdot done"></div>
-      <div class="pdot done"></div>
-      <div class="pdot active"></div>
-      <div class="pdot"></div>
-    </div>
+  <div class="preq">
+    <span class="preq-lbl">🤔 Antes de empezar</span>
+    <div class="preq-q">¿Cuántas veces necesitas multiplicar $2$ por sí mismo para obtener $32$? Escribe la multiplicación completa.</div>
+    <textarea placeholder="Escribe aquí..."></textarea>
+    <button class="preq-btn" onclick="this.parentElement.querySelector('.preq-reveal').style.display='block';this.style.display='none'">Ver la respuesta</button>
+    <div class="preq-reveal"><p>$2 \times 2 \times 2 \times 2 \times 2 = 32$ — cinco veces. Eso es exactamente lo que pregunta $\log_2(32)$: la respuesta es $5$. Acabas de calcular un logaritmo sin saberlo.</p></div>
+  </div>
+
+  <div class="callout link">
+    <span class="cl">🔗 Este módulo depende de los Módulos 1 y 4</span>
+    <p>Para calcular logaritmos necesitas <strong>factorizar</strong> (<a href="/nivelacion/modulo-1/" style="color:#0A7B5A;font-weight:700">Módulo 1</a>). Las propiedades de logaritmos son consecuencia directa de las leyes de exponentes (<a href="/nivelacion/modulo-4/" style="color:#0A7B5A;font-weight:700">Módulo 4</a>). Si algo no queda claro, ese es el lugar donde buscar.</p>
   </div>
 
   <h2>1. La Pregunta que Esconde el Logaritmo</h2>
-  <p>Hasta ahora conoces las potencias. $2^3 = 8$ es una afirmación: "dos elevado a la tres es ocho".</p>
-  <p>Un logaritmo hace la misma pregunta, pero al revés: <em>"¿A qué potencia hay que elevar la base $2$ para obtener $8$?"</em></p>
-
-  <div class="callout blue">
-    <span class="cl">🔵 La conexión con el Lego del Módulo 1</span>
-    <p>Recuerdas la pregunta del Módulo 1: "¿Cuántas piezas de Lego del tipo $2$ necesito multiplicar para construir un $8$?"</p>
-    <p>$8 = 2 \times 2 \times 2$ → necesitas $3$ piezas de tipo $2$.</p>
-    <p>Eso mismo es lo que pregunta $\log_2(8)$. La respuesta es $3$.</p>
+  <div class="callout ac">
+    <span class="cl">🔵 La conexión fundamental</span>
+    <p>$\log_b(x) = y$ pregunta: <em>"¿A qué potencia hay que elevar $b$ para obtener $x$?"</em></p>
+    <p>$\log_2(8) = 3$ porque $2^3 = 8$. Son exactamente la misma relación, escrita en dos idiomas diferentes.</p>
   </div>
-
   <div class="mdisp">$$\underbrace{2^3 = 8}_{\text{Afirmación (potencia)}} \qquad \Longleftrightarrow \qquad \underbrace{\log_2(8) = 3}_{\text{Pregunta (logaritmo)}}$$</div>
 
-  <p>Son la misma relación, escritas de forma diferente. Si entiendes una, entiendes la otra.</p>
-
-  <hr class="divider">
-
-  <h2>2. Anatomía del Logaritmo</h2>
-
   <div class="log-anatomy">
-    <div class="log-big">log<sub style="font-size:22px">2</sub>(8) = 3</div>
+    <div class="log-big">log<sub style="font-size:20px">2</sub>(8) = 3</div>
     <div class="log-labels">
-      <div class="log-label">
-        <div class="log-label-term">Base (2)</div>
-        <div class="log-label-desc">La "pieza de Lego".<br>Siempre mayor que 0 y ≠ 1.</div>
-      </div>
-      <div class="log-label">
-        <div class="log-label-term">Argumento (8)</div>
-        <div class="log-label-desc">El número que<br>estás "construyendo".</div>
-      </div>
-      <div class="log-label">
-        <div class="log-label-term">Resultado (3)</div>
-        <div class="log-label-desc">El exponente que<br>buscabas.</div>
-      </div>
+      <div><div class="log-term">Base (2)</div><div class="log-desc">La "pieza de Lego"</div></div>
+      <div><div class="log-term">Argumento (8)</div><div class="log-desc">Lo que estás "construyendo"</div></div>
+      <div><div class="log-term">Resultado (3)</div><div class="log-desc">El exponente que buscabas</div></div>
     </div>
   </div>
 
-  <div class="callout tip">
-    <span class="cl">💡 La relación de tres en tres</span>
-    <p>Siempre existe esta relación: $\log_b(x) = y \;\Leftrightarrow\; b^y = x$.</p>
-    <p>Si sabes dos de los tres valores ($b$, $x$, $y$), puedes encontrar el tercero. Practica "traducir" entre las dos formas hasta que sea automático.</p>
+  <h2>2. Calcular con Factorización</h2>
+  <p>$\log_3(81)$: factorizas $81 = 3^4$ → necesitas 4 treses → $\log_3(81) = 4$.</p>
+  <p>$\log_2(32)$: $32 = 2^5$ → necesitas 5 doses → $\log_2(32) = 5$.</p>
+
+  <h2>3. Las Propiedades: Derivadas de los Exponentes</h2>
+  <div class="prop"><div class="prop-f">$\log_b(x \cdot y) = \log_b(x) + \log_b(y)$</div><div class="prop-w"><strong>Por qué:</strong> si $x=b^m$ e $y=b^n$, entonces $xy=b^{m+n}$ (Ley 1 de exponentes). Multiplicar argumentos = sumar logaritmos.</div></div>
+  <div class="prop"><div class="prop-f">$\log_b\!\left(\dfrac{x}{y}\right) = \log_b(x) - \log_b(y)$</div><div class="prop-w"><strong>Por qué:</strong> $x/y=b^{m-n}$ (Ley 3). Dividir argumentos = restar logaritmos.</div></div>
+  <div class="prop"><div class="prop-f">$\log_b(x^n) = n \cdot \log_b(x)$</div><div class="prop-w"><strong>Por qué:</strong> $x^n=(b^m)^n=b^{mn}$ (Ley 2). El exponente del argumento baja como factor multiplicando.</div></div>
+  <div class="prop"><div class="prop-f">Cambio de base: $\log_b(x) = \dfrac{\log(x)}{\log(b)}$</div><div class="prop-w"><strong>Para qué:</strong> tu calculadora solo tiene $\log$ (base 10) y $\ln$ (base $e$). Esto te permite calcular cualquier base.</div></div>
+
+  <div class="callout warn">
+    <span class="cl">⚠️ La propiedad que NO existe</span>
+    <p><strong>Mal:</strong> $\log(a+b) = \log(a) + \log(b)$ ← <em>esto es completamente falso</em>. No hay propiedad para el logaritmo de una suma.</p>
+    <p><strong>Bien:</strong> $\log(a \cdot b) = \log(a) + \log(b)$ ← la propiedad aplica al <em>producto</em> del argumento, no a la suma.</p>
   </div>
 
   <hr class="divider">
-
-  <h2>3. Calcular Logaritmos con Factorización</h2>
-  <p>Para logaritmos con bases de números primos, la factorización del Módulo 1 te da la respuesta directamente.</p>
-
-  <h3>Ejemplo: $\log_3(81)$</h3>
-  <p>Factorizamos $81$: $81 = 3^4$. Entonces $\log_3(81) = 4$, porque necesitas $4$ piezas de tipo $3$.</p>
-
-  <h3>Ejemplo: $\log_2(32)$</h3>
-  <p>$32 = 2^5$. Entonces $\log_2(32) = 5$.</p>
-
-  <h3>Ejemplo: $\log_6(36)$</h3>
-  <p>$36 = 6^2$. Entonces $\log_6(36) = 2$.</p>
-
-  <div class="callout why">
-    <span class="cl">🔍 Qué pasa cuando el argumento NO es una potencia exacta de la base</span>
-    <p>Si el argumento no es una potencia exacta de la base (por ejemplo $\log_2(10)$), el resultado no es un entero. En ese caso necesitas la calculadora o el cambio de base. Pero los ejercicios del colegio casi siempre usan casos exactos, así que la factorización funciona la mayoría de las veces.</p>
-  </div>
-
-  <hr class="divider">
-
-  <h2>4. Las Propiedades: Derivadas de los Exponentes</h2>
-  <p>Las propiedades de los logaritmos no son reglas inventadas. Son consecuencias directas de las leyes de exponentes del Módulo 4.</p>
-
-  <div class="props">
-    <div class="prop">
-      <div class="prop-formula">$\log_b(x \cdot y) = \log_b(x) + \log_b(y)$</div>
-      <div class="prop-why"><strong>Por qué:</strong> Si $x = b^m$ y $y = b^n$, entonces $x \cdot y = b^m \cdot b^n = b^{m+n}$ (Ley 1 de exponentes). El logaritmo de $b^{m+n}$ es $m+n$, que es $\log_b(x) + \log_b(y)$. La multiplicación de los argumentos corresponde a la suma de los logaritmos.</div>
-    </div>
-    <div class="prop">
-      <div class="prop-formula">$\log_b\!\left(\dfrac{x}{y}\right) = \log_b(x) - \log_b(y)$</div>
-      <div class="prop-why"><strong>Por qué:</strong> $\dfrac{x}{y} = \dfrac{b^m}{b^n} = b^{m-n}$ (Ley 3). El logaritmo de eso es $m-n$. División de argumentos corresponde a resta de logaritmos.</div>
-    </div>
-    <div class="prop">
-      <div class="prop-formula">$\log_b(x^n) = n \cdot \log_b(x)$</div>
-      <div class="prop-why"><strong>Por qué:</strong> Si $x = b^m$, entonces $x^n = (b^m)^n = b^{mn}$ (Ley 2). El logaritmo de $b^{mn}$ es $mn$, que es $n \cdot \log_b(x)$. El exponente del argumento baja como factor multiplicando.</div>
-    </div>
-    <div class="prop">
-      <div class="prop-formula">Cambio de base: $\log_b(x) = \dfrac{\log_c(x)}{\log_c(b)}$</div>
-      <div class="prop-why"><strong>Para qué sirve:</strong> Tu calculadora solo tiene $\log_{10}$ (que se escribe como $\log$) y $\ln$ (que es $\log_e$). Si necesitas calcular $\log_2(10)$, usas: $\dfrac{\log(10)}{\log(2)} = \dfrac{1}{0.301} \approx 3.32$.</div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <h2>5. Un Párrafo sobre log₁₀ y ln</h2>
-  <p>Cuando ves $\log(x)$ sin base escrita, se entiende que la base es $10$. ¿Por qué $10$? Porque usamos el sistema decimal; $10$ es la base de nuestra forma de escribir números.</p>
-  <p>Cuando ves $\ln(x)$, la base es el número $e \approx 2.718...$, llamado la constante de Euler. Aparece naturalmente en crecimiento exponencial, finanzas compuestas, y física. No es arbitrario: $e$ es la única base para la que la derivada de $b^x$ es exactamente $b^x$ (lo verás en cálculo).</p>
-
-  <hr class="divider">
-
   <div class="exsec">
     <div class="exsec-head">Ejercicios del Módulo 5</div>
-    <p class="exsec-sub">Para los primeros, factoriza el argumento. Para los últimos, usa las propiedades.</p>
-
-    <div class="ex">
+    <p class="exsec-sub">Para los primeros, factoriza el argumento. Para los siguientes, usa las propiedades.</p>
+    <div class="ex" id="ex1">
       <div class="ex-head"><span class="ex-n">01</span><span class="ex-t">Calcula $\log_2(64)$, $\log_3(27)$ y $\log_5(125)$</span></div>
-      <p class="ex-p">Factoriza cada argumento y cuenta cuántas "piezas" necesitas.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s1')">▸ Ver solución paso a paso</button>
+      <p class="ex-p">Factoriza cada argumento y cuenta las "piezas" del tipo correcto.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s1','ex1')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s1">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$64 = 2^6$, por lo tanto $\log_2(64) = 6$</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$27 = 3^3$, por lo tanto $\log_3(27) = 3$</p></div></div>
-        <div class="sstep"><div class="sn">3</div><div class="sc"><p>$125 = 5^3$, por lo tanto $\log_5(125) = 3$</p></div></div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$64=2^6$ → $\log_2(64)=6$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$27=3^3$ → $\log_3(27)=3$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>$125=5^3$ → $\log_5(125)=3$</p></div></div>
         <div class="ans"><div class="ans-l">Respuestas</div>$6 \quad;\quad 3 \quad;\quad 3$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
-
-    <div class="ex">
+    <div class="ex" id="ex2">
       <div class="ex-head"><span class="ex-n">02</span><span class="ex-t">Simplifica $\log_2(4) + \log_2(8)$</span></div>
-      <p class="ex-p">Usa la propiedad de suma de logaritmos con la misma base.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s2')">▸ Ver solución paso a paso</button>
+      <p class="ex-p">Usa la propiedad de suma de logaritmos.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s2','ex2')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s2">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$\log_2(4) + \log_2(8) = \log_2(4 \times 8) = \log_2(32)$ (suma de logs = log del producto)</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$32 = 2^5$, entonces $\log_2(32) = 5$</p></div></div>
-        <div class="ans"><div class="ans-l">Respuesta</div>$\log_2(4) + \log_2(8) = 5$</div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$\log_2(4)+\log_2(8)=\log_2(4\times8)=\log_2(32)$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$32=2^5$ → $\log_2(32)=5$</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$5$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
-
-    <div class="ex">
+    <div class="ex" id="ex3">
       <div class="ex-head"><span class="ex-n">03</span><span class="ex-t">Expande $\log\!\left(\dfrac{x^3 y}{z^2}\right)$</span></div>
-      <p class="ex-p">Usa las tres propiedades: producto, cociente y potencia.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s3')">▸ Ver solución paso a paso</button>
+      <p class="ex-p">Usa las tres propiedades: cociente, producto y potencia.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s3','ex3')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s3">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Cociente: $\log\left(\dfrac{x^3 y}{z^2}\right) = \log(x^3 y) - \log(z^2)$</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>Producto del numerador: $\log(x^3 y) = \log(x^3) + \log(y)$</p></div></div>
-        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Potencias: $\log(x^3) = 3\log(x)$ y $\log(z^2) = 2\log(z)$</p></div></div>
-        <div class="ans"><div class="ans-l">Respuesta</div>$3\log(x) + \log(y) - 2\log(z)$</div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Cociente: $\log(x^3 y) - \log(z^2)$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>Producto: $\log(x^3)+\log(y)-\log(z^2)$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Potencias: $3\log(x)+\log(y)-2\log(z)$</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$3\log(x)+\log(y)-2\log(z)$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
-
-    <div class="ex">
-      <div class="ex-head"><span class="ex-n">04</span><span class="ex-t">Si $\log_2(x) = 5$, ¿cuánto vale $x$?</span></div>
+    <div class="ex" id="ex4">
+      <div class="ex-head"><span class="ex-n">04</span><span class="ex-t">Si $\log_2(x)=5$, ¿cuánto vale $x$?</span></div>
       <p class="ex-p">Convierte la expresión logarítmica a su forma exponencial equivalente.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s4')">▸ Ver solución paso a paso</button>
+      <button class="rbtn" onclick="toggleSol(this,'s4','ex4')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s4">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$\log_2(x) = 5$ significa que $2^5 = x$ (traducimos del lenguaje de logaritmo al de potencia)</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$2^5 = 32$</p></div></div>
-        <div class="ans"><div class="ans-l">Respuesta</div>$x = 32$</div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$\log_2(x)=5$ significa $2^5=x$ (traducimos al idioma de potencia)</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$2^5=32$</p></div></div>
+        <div class="ans"><div class="ans-l">Respuesta</div>$x=32$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
+  </div>
 
+  <div class="quiz">
+    <div class="quiz-head">Mini-quiz · Módulo 5</div>
+    <p class="quiz-sub">Sin calculadora.</p>
+    <div class="qblock">
+      <div class="q-num">Pregunta 1 de 2</div>
+      <div class="q-text">¿Cuánto es $\log_4(64)$?</div>
+      <div class="q-opts">
+        <button class="qopt" data-correct="true" onclick="checkOpt('q1',this,true,'¡Correcto! 64=4³ — necesitas 3 piezas de tipo 4. log₄(64)=3.')">$3$</button>
+        <button class="qopt" onclick="checkOpt('q1',this,false,'4⁴=256, no 64. Factoriza: 64=4×4×4=4³. La respuesta es 3.')">$4$</button>
+        <button class="qopt" onclick="checkOpt('q1',this,false,'16 es 4², no el logaritmo. log₄(64)=3 porque 4³=64.')">$16$</button>
+        <button class="qopt" onclick="checkOpt('q1',this,false,'4²=16, no 64. Necesitas tres piezas de tipo 4: 4³=64. Respuesta: 3.')">$2$</button>
+      </div>
+      <div class="q-fb" id="fb-q1"></div>
+    </div>
+    <div class="qblock">
+      <div class="q-num">Pregunta 2 de 2</div>
+      <div class="q-text">Simplifica $\log_3(9) + \log_3(3)$</div>
+      <div class="q-opts">
+        <button class="qopt" onclick="checkOpt('q2',this,false,'log(a)+log(b)=log(a×b), no log(a+b). Aquí es log₃(9×3)=log₃(27)=3.')">$\log_3(12)$</button>
+        <button class="qopt" data-correct="true" onclick="checkOpt('q2',this,true,'¡Correcto! log₃(9)+log₃(3)=log₃(27)=3, porque 27=3³.')">$3$</button>
+        <button class="qopt" onclick="checkOpt('q2',this,false,'log₃(9)=2 y log₃(3)=1. Suma: 2+1=3, no 5.')">$5$</button>
+        <button class="qopt" onclick="checkOpt('q2',this,false,'Calculaste solo log₃(9)=2 y olvidaste el segundo. log₃(3)=1, entonces 2+1=3.')">$2$</button>
+      </div>
+      <div class="q-fb" id="fb-q2"></div>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div class="qr-num" id="qr-score"></div>
+      <div class="qr-lbl">RESPUESTAS CORRECTAS</div>
+      <div class="qr-msg" id="qr-msg"></div>
+      <a href="/nivelacion/modulo-6/" class="qr-btn" id="qr-next" style="display:none">Continuar al Módulo 6 →</a>
+    </div>
   </div>
 
   <div class="mnav">
-    <a href="/nivelacion/modulo-4/" class="nbtn">← Módulo 4: Potencias</a>
+    <a href="/nivelacion/modulo-4/" class="nbtn">← Módulo 4</a>
     <a href="/nivelacion/modulo-6/" class="nbtn next">Módulo 6: Ecuaciones →</a>
   </div>
 </div>
 
 <footer>
-  <a href="https://www.aiudalabs.com" target="_blank" rel="noopener">
-    <span class="logo" style="font-size:20px"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m" style="font-size:15px">labs</span></span>
-  </a>
+  <a href="https://www.aiudalabs.com" target="_blank"><span class="logo" style="font-size:20px"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m" style="font-size:15px">labs</span></span></a>
   <p>© 2026 Aiuda Labs · Panamá</p>
-  <p class="cta">¿Quieres una guía para tu curso? <a href="https://wa.me/50763644604" target="_blank">Escríbenos por WhatsApp</a></p>
+  <p class="cta">¿Quieres una guía personalizada? <a href="https://wa.me/50763644604" target="_blank">Escríbenos por WhatsApp</a></p>
 </footer>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  renderMathInElement(document.body, {
-    delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
-    throwOnError: false
-  });
+document.addEventListener('DOMContentLoaded',function(){
+  renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  document.querySelectorAll('.mdisp').forEach(function(el){if(el.scrollWidth>el.offsetWidth+4)el.classList.add('ov');});
+  try{var p=JSON.parse(localStorage.getItem('nivelacion')||'{}');if(p.m5)document.querySelectorAll('.ex').forEach(function(e){e.classList.add('done');});}catch(e){}
 });
-function toggleSol(btn, id) {
-  const sol = document.getElementById(id);
-  const open = sol.style.display === 'block';
-  sol.style.display = open ? 'none' : 'block';
-  btn.textContent = open ? '▸ Ver solución paso a paso' : '▾ Ocultar solución';
+window.addEventListener('scroll',function(){var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;document.getElementById('pbar').style.width=Math.min(pct,100)+'%';},{passive:true});
+var _ready={};
+function toggleSol(btn,sid,eid){
+  var sol=document.getElementById(sid),open=sol.style.display==='block';
+  if(open){sol.style.display='none';btn.textContent='▸ Ver solución paso a paso';return;}
+  if(!_ready[sid]){_ready[sid]=false;btn.disabled=true;btn.textContent='⏳ Piénsalo 2 segundos...';setTimeout(function(){_ready[sid]=true;btn.disabled=false;btn.textContent='▸ Ver solución paso a paso';},2000);return;}
+  sol.style.display='block';btn.textContent='▾ Ocultar solución';
+  if(eid)document.getElementById(eid).classList.add('done');saveProgress();
+}
+var _ans={};
+function checkOpt(qid,el,correct,fb){
+  if(_ans[qid]!==undefined)return;_ans[qid]=correct;
+  var block=el.closest('.qblock');block.querySelectorAll('.qopt').forEach(function(o){o.classList.add('disabled');});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)block.querySelectorAll('[data-correct]').forEach(function(o){o.classList.add('correct');});
+  var fbEl=block.querySelector('.q-fb');fbEl.textContent=fb;fbEl.classList.add('show',correct?'ok':'bad');
+  if(Object.keys(_ans).length>=2)showResult();
+}
+function showResult(){
+  var correct=Object.values(_ans).filter(Boolean).length;
+  var res=document.getElementById('quiz-result');res.style.display='block';
+  document.getElementById('qr-score').textContent=correct+'/2';
+  var msgs=['Repasa el módulo antes de continuar. 💪','¡Casi! Revisa la que fallaste y sigue.','¡Excelente! Dominaste el módulo. 🎉'];
+  document.getElementById('qr-msg').textContent=msgs[correct===2?2:correct>0?1:0];
+  if(correct===2){document.getElementById('qr-next').style.display='inline-flex';saveProgress();}
+}
+function saveProgress(){
+  try{var p=JSON.parse(localStorage.getItem('nivelacion')||'{}');p.m5={done:true,ts:Date.now()};localStorage.setItem('nivelacion',JSON.stringify(p));}catch(e){}
 }
 </script>
 </body>

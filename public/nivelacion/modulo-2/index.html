@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Módulo 2: El Idioma de las Fracciones | Nivelación de Matemáticas | Aiuda Labs</title>
-<meta name="description" content="Por qué el denominador común no es arbitrario. Suma, resta, multiplicación y división de fracciones explicadas desde la intuición.">
+<title>Módulo 2: El Idioma de las Fracciones | Aiuda Labs</title>
 <link rel="canonical" href="https://guias.aiudalabs.com/nivelacion/modulo-2/">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,67 +13,64 @@
 <style>
 :root{--bg:#FAF8F4;--bg2:#F3F0EA;--bg3:#EBE7DE;--ink:#0D0D0F;--ink2:#2A2A2F;--ink3:#52525A;--ink4:#8A8A92;--accent:#E8440A;--mc:#0A7B5A;--display:"Satoshi",system-ui,sans-serif;--serif:"Instrument Serif",Georgia,serif;--mono:"JetBrains Mono",monospace;--r:12px;--max:740px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+body{background:var(--bg);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
-nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.04)}
+.pbar{position:fixed;top:0;left:0;height:3px;background:var(--mc);z-index:201;width:0%;transition:width .08s linear;pointer-events:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.04)}
 .nav-inner{max-width:1120px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-size:26px;font-weight:900;letter-spacing:-0.04em;line-height:1}
-.logo .a{color:#E8440A}.logo .a2{color:#E8440A;font-weight:400}.logo .m{color:var(--ink4);font-size:18px;font-weight:500;margin-left:4px}
+.logo{font-size:26px;font-weight:900;letter-spacing:-.04em;line-height:1}.logo .a,.logo .a2{color:#E8440A}.logo .a2{font-weight:400}.logo .m{color:var(--ink4);font-size:18px;font-weight:500;margin-left:4px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;position:relative;z-index:1}
 .breadcrumb{padding:16px 0 0;font-family:var(--mono);font-size:12px;color:var(--ink4);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .breadcrumb a{color:var(--ink4)}.breadcrumb a:hover{color:var(--mc)}
 .hero{padding:36px 0 28px}
-.module-badge{display:inline-flex;align-items:center;background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:16px}
-h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.08;letter-spacing:-0.035em;margin-bottom:14px}
+.mbadge{display:inline-flex;align-items:center;background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:16px}
+h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.08;letter-spacing:-.035em;margin-bottom:14px}
 h1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--mc)}
 .lead{font-size:17px;line-height:1.75;color:var(--ink3);margin-bottom:20px}
-.progress{display:flex;gap:6px}
-.pdot{height:6px;border-radius:3px;flex:1;background:var(--bg3)}
-.pdot.done{background:var(--mc);opacity:.45}
-.pdot.active{background:var(--mc)}
+.progress{display:flex;gap:6px;margin-top:4px}
+.pdot{height:6px;border-radius:3px;flex:1;background:var(--bg3)}.pdot.done{background:#E8440A;opacity:.45}.pdot.active{background:var(--mc)}
 hr.divider{border:none;border-top:1px solid var(--bg3);margin:32px 0}
-h2{font-size:22px;font-weight:900;letter-spacing:-0.02em;color:var(--ink);margin:36px 0 14px}
+h2{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--ink);margin:36px 0 14px}
 h3{font-size:18px;font-weight:700;color:var(--ink2);margin:22px 0 10px}
 p{font-size:16px;line-height:1.82;color:var(--ink2);margin-bottom:14px}
 p:last-child{margin-bottom:0}
-ul.bullets{list-style:none;margin:12px 0 16px;padding:0;display:flex;flex-direction:column;gap:8px}
-ul.bullets li{font-size:16px;line-height:1.75;color:var(--ink2);display:flex;gap:10px;align-items:flex-start}
-ul.bullets li::before{content:"·";color:var(--mc);font-weight:900;font-size:20px;flex-shrink:0;line-height:1.35}
 .callout{border-radius:var(--r);padding:20px 24px;margin:20px 0}
 .cl{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;display:block}
-.callout.green{background:var(--mc);color:#fff}
-.callout.green .cl{color:rgba(255,255,255,.6)}
-.callout.green p{color:rgba(255,255,255,.92);margin-bottom:10px}
-.callout.green p:last-child{margin-bottom:0}
-.callout.why{background:rgba(10,123,90,0.07);border-left:4px solid var(--mc)}
-.callout.why .cl{color:var(--mc)}
-.callout.tip{background:#fefce8;border-left:4px solid #facc15}
-.callout.tip .cl{color:#a16207}
-.callout.tip p{color:#78350f}
-.callout.warn{background:#fff1f2;border-left:4px solid #fda4af}
-.callout.warn .cl{color:#be123c}
-.callout.warn p{color:#881337}
-.mdisp{background:var(--ink);border-radius:10px;padding:20px 24px;margin:18px 0;overflow-x:auto;text-align:center}
-.mdisp .katex{font-size:1.3em!important;color:#e2e8f0!important}
-.mdisp .katex-display{margin:0!important}
-/* pizza visualization */
-.pizza-row{display:flex;align-items:center;justify-content:center;gap:20px;margin:20px 0;flex-wrap:wrap}
-.pizza{text-align:center}
-.pizza-label{font-family:var(--mono);font-size:12px;color:var(--ink4);margin-top:6px}
-.pizza svg{display:block;margin:0 auto}
-/* exercises */
+.callout.ac{background:var(--mc)}.callout.ac .cl{color:rgba(255,255,255,.6)}.callout.ac p{color:rgba(255,255,255,.92)}
+.callout.why{background:rgba(10,123,90,.07);border-left:4px solid #0A7B5A}.callout.why .cl{color:#0A7B5A}
+.callout.tip{background:#fefce8;border-left:4px solid #facc15}.callout.tip .cl{color:#a16207}.callout.tip p{color:#78350f}
+.callout.warn{background:#fff1f2;border-left:4px solid #fda4af}.callout.warn .cl{color:#be123c}.callout.warn p{color:#881337}
+.callout.link{background:rgba(10,123,90,.07);border-left:4px solid var(--mc)}.callout.link .cl{color:var(--mc)}
+.preq{background:#fff;border:2px solid var(--mc);border-radius:var(--r);padding:20px 24px;margin:24px 0}
+.preq-lbl{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:10px;display:block}
+.preq-q{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:12px;line-height:1.5}
+.preq textarea{width:100%;padding:10px 14px;border:1.5px solid var(--bg3);border-radius:8px;font-size:15px;font-family:var(--display);color:var(--ink);background:var(--bg);resize:none;min-height:56px;transition:border-color .15s}
+.preq textarea:focus{outline:none;border-color:var(--mc)}
+.preq-btn{margin-top:10px;padding:9px 18px;background:var(--mc);color:#fff;border:none;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;font-family:var(--display)}
+.preq-reveal{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--bg3)}
+.preq-reveal p{font-size:15px;color:var(--ink3);line-height:1.75}
+.mdisp{background:var(--ink);border-radius:10px;padding:20px 24px;margin:18px 0;overflow-x:auto;text-align:center;position:relative}
+.mdisp .katex{font-size:1.3em!important;color:#e2e8f0!important}.mdisp .katex-display{margin:0!important}
+.mdisp.ov::after{content:"← desliza →";position:absolute;bottom:6px;right:10px;font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.35);pointer-events:none}
+.fcancel{display:flex;align-items:center;justify-content:center;gap:16px;margin:18px 0;flex-wrap:wrap}
+.fi{display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--mono);font-weight:600;font-size:18px}
+.fi-line{width:100%;height:1.5px;background:var(--ink);min-width:48px}
+.cross{text-decoration:line-through;color:var(--ink4)}.stay{color:var(--mc);font-weight:900}
 .exsec{background:var(--bg2);border-radius:16px;padding:28px;margin:36px 0}
 .exsec-head{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:4px}
 .exsec-sub{font-size:15px;color:var(--ink3);margin-bottom:20px;line-height:1.6}
-.ex{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3)}
-.ex:last-child{margin-bottom:0}
+.ex{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3);transition:border-color .3s}
+.ex:last-child{margin-bottom:0}.ex.done{border-color:#22c55e}.ex.done .ex-n{background:#22c55e!important}
+.done-tag{display:none;font-family:var(--mono);font-size:11px;color:#22c55e;font-weight:700;margin-top:10px}
+.ex.done .done-tag{display:block}
 .ex-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.ex-n{background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px}
+.ex-n{background:var(--mc);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;transition:background .3s}
 .ex-t{font-weight:700;font-size:16px;color:var(--ink)}
 .ex-p{font-size:15px;color:var(--ink3);line-height:1.75;margin-bottom:14px}
 .rbtn{display:block;width:100%;padding:11px 16px;border-radius:10px;border:1.5px dashed var(--mc);background:transparent;cursor:pointer;font-weight:600;font-size:14px;color:var(--mc);font-family:var(--display);text-align:left;transition:all .15s}
-.rbtn:hover{background:var(--mc);color:#fff;border-style:solid}
+.rbtn:hover:not(:disabled){background:var(--mc);color:#fff;border-style:solid}
+.rbtn:disabled{color:var(--ink4);border-color:var(--bg3);cursor:default}
 .sol{margin-top:16px;display:none}
 .sstep{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
 .sn{min-width:28px;height:28px;border-radius:50%;background:var(--mc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;font-family:var(--mono)}
@@ -82,229 +78,242 @@ ul.bullets li::before{content:"·";color:var(--mc);font-weight:900;font-size:20p
 .ans{background:var(--mc);border-radius:10px;padding:16px 20px;margin-top:14px;text-align:center}
 .ans-l{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}
 .ans .katex{color:#fff!important;font-size:1.2em!important}
+.quiz{background:var(--bg2);border-radius:16px;padding:28px;margin:36px 0}
+.quiz-head{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mc);margin-bottom:4px}
+.quiz-sub{font-size:15px;color:var(--ink3);margin-bottom:22px;line-height:1.6}
+.qblock{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;border:1.5px solid var(--bg3)}
+.qblock:last-child{margin-bottom:0}
+.q-num{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--mc);margin-bottom:8px}
+.q-text{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:14px;line-height:1.5}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.qopt{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:8px;border:1.5px solid var(--bg3);cursor:pointer;font-size:15px;color:var(--ink2);transition:all .15s;background:#fff;text-align:left;width:100%;font-family:var(--display)}
+.qopt:hover:not(.disabled){border-color:var(--mc);color:var(--mc)}
+.qopt.correct{border-color:#22c55e;background:#f0fdf4;color:#15803d;font-weight:600}
+.qopt.wrong{border-color:#fda4af;background:#fff1f2;color:#be123c}
+.qopt.disabled{pointer-events:none}
+.q-fb{margin-top:12px;padding:12px 16px;border-radius:8px;font-size:14px;line-height:1.65;display:none}
+.q-fb.show{display:block}.q-fb.ok{background:#f0fdf4;color:#15803d;border:1px solid #86efac}.q-fb.bad{background:#fff1f2;color:#be123c;border:1px solid #fda4af}
+.quiz-result{text-align:center;padding:24px 0 4px;border-top:1px solid var(--bg3);margin-top:20px;display:none}
+.qr-num{font-size:52px;font-weight:900;color:var(--mc);line-height:1}
+.qr-lbl{font-family:var(--mono);font-size:11px;color:var(--ink4);letter-spacing:.06em;margin-top:4px}
+.qr-msg{font-size:15px;color:var(--ink2);margin-top:12px;line-height:1.65}
+.qr-btn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:11px 22px;background:var(--mc);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:var(--display);text-decoration:none}
 .mnav{display:flex;justify-content:space-between;align-items:center;padding:24px 0 0;border-top:1px solid var(--bg3);margin-top:12px;gap:12px;flex-wrap:wrap}
 .nbtn{display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:var(--r);border:1.5px solid var(--bg3);background:#fff;font-weight:600;font-size:14px;color:var(--ink3);font-family:var(--display);text-decoration:none;transition:all .15s}
-.nbtn:hover{border-color:var(--mc);color:var(--mc)}
-.nbtn.next{background:var(--mc);border-color:var(--mc);color:#fff}
-.nbtn.next:hover{opacity:.88}
+.nbtn:hover{border-color:var(--mc);color:var(--mc)}.nbtn.next{background:var(--mc);border-color:var(--mc);color:#fff}.nbtn.next:hover{opacity:.88}
 footer{text-align:center;padding:36px 0 24px;border-top:1px solid var(--bg3);margin-top:24px}
-footer p{font-family:var(--mono);font-size:11px;color:var(--ink4);margin-top:8px;letter-spacing:.04em}
+footer p{font-family:var(--mono);font-size:11px;color:var(--ink4);margin-top:8px}
 footer .cta{font-size:13px;color:var(--ink3);margin-top:8px}
-footer .cta a{color:var(--accent);font-weight:600}
-@media(max-width:640px){.nav-inner{padding:0 16px;height:56px}.logo{font-size:22px}.wrap{padding:0 16px}.hero{padding:24px 0 20px}h2{font-size:20px}.exsec{padding:20px 14px}.ex{padding:16px}}
+footer .cta a{color:#E8440A;font-weight:600}
+@media(max-width:640px){.nav-inner{padding:0 16px;height:56px}.wrap{padding:0 16px}.hero{padding:24px 0 20px}.exsec,.quiz{padding:20px 14px}.ex{padding:16px}}
 </style>
 </head>
 <body>
-<nav>
-  <div class="nav-inner">
-    <a href="https://www.aiudalabs.com" target="_blank" rel="noopener">
-      <span class="logo"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m">labs</span></span>
-    </a>
-    <a href="/nivelacion/" style="font-family:var(--mono);font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em">Nivelación · Matemáticas</a>
-  </div>
-</nav>
+<div class="pbar" id="pbar"></div>
+<nav><div class="nav-inner">
+  <a href="https://www.aiudalabs.com" target="_blank"><span class="logo"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m">labs</span></span></a>
+  <a href="/nivelacion/" style="font-family:var(--mono);font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em">Nivelación · Matemáticas</a>
+</div></nav>
 
 <div class="wrap">
-  <div class="breadcrumb">
-    <a href="/">Inicio</a><span>›</span>
-    <a href="/nivelacion/">Nivelación</a><span>›</span>
-    <span style="color:var(--mc)">Módulo 2</span>
-  </div>
-
+  <div class="breadcrumb"><a href="/">Inicio</a> › <a href="/nivelacion/">Nivelación</a> › <span style="color:var(--mc)">Módulo 2</span></div>
   <div class="hero">
-    <div class="module-badge">Módulo 2 de 6</div>
+    <div class="mbadge">Módulo 2 de 6</div>
     <h1>El Idioma de<br>las <em>Fracciones</em></h1>
     <p class="lead">Una fracción no es un símbolo raro. Es una división que alguien dejó a medias. Una vez que ves eso, todo lo demás tiene sentido.</p>
-    <div class="progress">
-      <div class="pdot done"></div>
-      <div class="pdot active"></div>
-      <div class="pdot"></div>
-      <div class="pdot"></div>
-      <div class="pdot"></div>
-      <div class="pdot"></div>
-    </div>
+    <div class="progress"><div class="pdot done"></div><div class="pdot active"></div><div class="pdot"></div><div class="pdot"></div><div class="pdot"></div><div class="pdot"></div></div>
+  </div>
+
+  <div class="preq">
+    <span class="preq-lbl">🤔 Antes de empezar</span>
+    <div class="preq-q">Si tienes $\dfrac{1}{2}$ de pizza y $\dfrac{1}{3}$ de pizza, ¿crees que tienes más o menos que una pizza entera? ¿Cómo lo calcularías?</div>
+    <textarea placeholder="Escribe tu respuesta aquí..."></textarea>
+    <button class="preq-btn" onclick="this.parentElement.querySelector('.preq-reveal').style.display='block';this.style.display='none'">Ver la respuesta</button>
+    <div class="preq-reveal"><p>Tienes <em>menos</em> que una pizza completa. Para calcularlo necesitas convertir las porciones a "trozos del mismo tamaño": $\tfrac{1}{2} = \tfrac{3}{6}$ y $\tfrac{1}{3} = \tfrac{2}{6}$, entonces tienes $\tfrac{5}{6}$ de pizza. De eso trata este módulo.</p></div>
+  </div>
+
+  <div class="callout link">
+    <span class="cl">🔗 Conexión con el Módulo 1</span>
+    <p>Para simplificar fracciones y calcular el MCM vas a necesitar descomponer números en factores primos. Si el Módulo 1 no quedó claro, <a href="/nivelacion/modulo-1/" style="color:var(--mc);font-weight:700">regresa y repásalo primero</a> — todo lo que sigue depende de eso.</p>
   </div>
 
   <h2>1. ¿Qué es una Fracción, en Serio?</h2>
-  <p>En el colegio presentan las fracciones con una pizza o un pastel dividido. Eso está bien para empezar, pero se queda corto. La verdad más poderosa sobre una fracción es esta:</p>
-
-  <div class="callout green">
+  <p>La verdad más poderosa: $\dfrac{a}{b}$ es simplemente la división $a \div b$, <strong>congelada en el tiempo</strong>. En vez de calcular el decimal, dejamos la división pausada.</p>
+  <div class="callout ac">
     <span class="cl">💡 La definición que lo cambia todo</span>
-    <p>Una fracción $\dfrac{a}{b}$ es simplemente la división $a \div b$, congelada en el tiempo. En vez de calcular el resultado decimal, dejamos la división en pausa y la escribimos como una fracción.</p>
-    <p>$\dfrac{1}{2}$ no es "un sobre dos". Es "1 dividido entre 2, sin terminar de calcular". Si lo calcularas, obtendrías $0.5$. La fracción es solo otra forma de escribir lo mismo.</p>
+    <p>$\dfrac{1}{2}$ no es "un sobre dos". Es "$1$ dividido entre $2$, sin terminar de calcular". Si lo calcularas, obtendrías $0.5$. La fracción es otra forma de escribir lo mismo — más precisa cuando el decimal es infinito, como $\dfrac{1}{3} = 0.333...$</p>
   </div>
 
-  <p>¿Por qué no calculamos siempre el decimal? Porque a veces el decimal es infinito ($\frac{1}{3} = 0.333...$) y la fracción es mucho más precisa y fácil de manejar.</p>
-
-  <h3>Las dos partes de una fracción</h3>
-  <ul class="bullets">
-    <li><strong>Numerador</strong> (arriba): cuántas partes tienes.</li>
-    <li><strong>Denominador</strong> (abajo): en cuántas partes igual está dividido el entero.</li>
-  </ul>
-  <p>El denominador da el tamaño de cada pieza. El numerador dice cuántas piezas de ese tamaño tienes.</p>
-
-  <hr class="divider">
-
-  <h2>2. Simplificar: El Módulo 1 al Rescate</h2>
-  <p>Ya aprendiste a descomponer números en el Módulo 1. Simplificar fracciones es exactamente eso: encontrar los factores primos arriba y abajo y cancelar los que se repiten.</p>
-  <p>Simplifica $\dfrac{24}{36}$:</p>
-
+  <h2>2. Simplificar: Módulo 1 al Rescate</h2>
+  <p>Para simplificar $\dfrac{24}{36}$ descomponemos ambos:</p>
   <div class="mdisp">$$24 = 2^3 \times 3 \qquad 36 = 2^2 \times 3^2$$</div>
-  <div class="mdisp">$$\frac{24}{36} = \frac{2^3 \times 3}{2^2 \times 3^2} = \frac{2^{3-2} \times 3^{1-1}}{1} = \frac{2^1}{3^1} = \frac{2}{3}$$</div>
-
-  <div class="callout why">
-    <span class="cl">🔍 Por qué restamos los exponentes</span>
-    <p>Cuando tienes $\dfrac{2^3}{2^2}$, eso es $\dfrac{2 \times 2 \times 2}{2 \times 2}$. Cancelas dos pares de $\dfrac{2}{2}=1$, y queda un solo $2$. Los exponentes se restan porque estás contando cuántos quedan después de cancelar. Esto conecta directamente con las leyes de potencias del Módulo 4.</p>
-  </div>
+  <div class="mdisp">$$\frac{24}{36} = \frac{2^3 \times 3}{2^2 \times 3^2} = \frac{2^{3-2}}{3^{2-1}} = \frac{2}{3}$$</div>
 
   <hr class="divider">
-
   <h2>3. Suma y Resta: El Problema del Idioma</h2>
-  <p>Aquí está la razón real del denominador común, y no te la suelen explicar.</p>
-  <p>Imagina que tienes $\dfrac{1}{2}$ de una pizza y $\dfrac{1}{3}$ de una pizza. ¿Cuánto tienes en total? No puedes simplemente decir $\dfrac{1+1}{2+3} = \dfrac{2}{5}$, porque eso sería incorrecto.</p>
-
-  <div class="callout green">
+  <div class="callout warn">
+    <span class="cl">⚠️ El error más común de fracciones</span>
+    <p><strong>Mal:</strong> $\dfrac{1}{2} + \dfrac{1}{3} = \dfrac{1+1}{2+3} = \dfrac{2}{5}$ ← <em>incorrecto</em>.</p>
+    <p><strong>Por qué está mal:</strong> $\dfrac{2}{5} \approx 0.4$, pero $\dfrac{1}{2} + \dfrac{1}{3} \approx 0.83$. No cuadra. Sumar los denominadores directamente no tiene ningún significado matemático.</p>
+    <p><strong>Bien:</strong> convierte a la misma "unidad de pieza" primero. Eso es el denominador común.</p>
+  </div>
+  <div class="callout ac">
     <span class="cl">🍕 La analogía del idioma</span>
-    <p>Sumar $\dfrac{1}{2} + \dfrac{1}{3}$ es como intentar sumar "2 metros + 3 pies". No puedes, porque las unidades son distintas. Primero tienes que convertirlas a la misma unidad.</p>
-    <p>Los denominadores distintos significan que tus piezas son de diferente tamaño. Para sumarlas, necesitas cortarlas en piezas del mismo tamaño.</p>
+    <p>Sumar $\tfrac{1}{2} + \tfrac{1}{3}$ es como sumar "2 metros + 3 pies". Primero conviertes a la misma unidad. Denominadores distintos son unidades distintas.</p>
   </div>
-
-  <p>¿Cuál es el "tamaño de pieza" que funciona para medios ($2$) y para tercios ($3$)? El <strong>Mínimo Común Múltiplo (MCM)</strong>, que es el número más pequeño divisible por ambos denominadores.</p>
-
-  <div class="mdisp">$$\text{MCM}(2, 3) = 6 \qquad \text{(el múltiplo más pequeño que comparten 2 y 3)}$$</div>
-
-  <p>Convertimos ambas fracciones a sextos:</p>
-
-  <div class="mdisp">$$\frac{1}{2} = \frac{1 \times 3}{2 \times 3} = \frac{3}{6} \qquad \frac{1}{3} = \frac{1 \times 2}{3 \times 2} = \frac{2}{6}$$</div>
-
   <div class="callout why">
-    <span class="cl">🔍 Por qué multiplicar arriba y abajo por lo mismo no cambia la fracción</span>
-    <p>Multiplicar numerador y denominador por el mismo número es multiplicar la fracción por $\dfrac{3}{3} = 1$. Y multiplicar por $1$ no cambia el valor. Es como cortar cada mitad de pizza en tres partes iguales: tienes más piezas pero la misma cantidad de pizza.</p>
+    <span class="cl">🔍 Cómo calcular el MCM con factorización</span>
+    <p>Descompón cada denominador. Toma todos los factores primos usando el exponente <em>mayor</em> de cada uno.</p>
+    <p>MCM$(4,6)$: $4=2^2$, $6=2\times3$. Tomas $2^2$ y $3^1$. MCM $= 4 \times 3 = 12$.</p>
   </div>
-
-  <div class="mdisp">$$\frac{1}{2} + \frac{1}{3} = \frac{3}{6} + \frac{2}{6} = \frac{3+2}{6} = \frac{5}{6}$$</div>
-
-  <p>La resta funciona exactamente igual. Encuentras el MCM y restas los numeradores una vez que tienen el mismo denominador.</p>
-
-  <div class="callout tip">
-    <span class="cl">💡 Cómo calcular el MCM usando factorización</span>
-    <p>Descompón cada denominador. Toma todos los factores primos que aparecen, usando el exponente <em>mayor</em> de cada uno.</p>
-    <p>MCM$(4, 6)$: $4 = 2^2$, $6 = 2 \times 3$. Tomas $2^2$ (el mayor entre $2^2$ y $2^1$) y $3^1$. MCM $= 2^2 \times 3 = 12$.</p>
-  </div>
+  <div class="mdisp">$$\text{MCM}(2,3)=6 \qquad \frac{1}{2}=\frac{3}{6} \qquad \frac{1}{3}=\frac{2}{6} \qquad \frac{3}{6}+\frac{2}{6}=\frac{5}{6}$$</div>
 
   <hr class="divider">
-
-  <h2>4. Multiplicación: La Fracción de una Fracción</h2>
-  <p>Multiplica $\dfrac{2}{3} \times \dfrac{3}{4}$. La pregunta que esconde esta operación es: "¿cuánto es <em>dos tercios</em> de <em>tres cuartos</em>?"</p>
-
-  <div class="callout green">
-    <span class="cl">🔍 Por qué simplemente se multiplica arriba y abajo</span>
-    <p>$\dfrac{2}{3} \times \dfrac{3}{4}$ significa tomar $\dfrac{2}{3}$ de algo que ya mide $\dfrac{3}{4}$. Si el entero se dividió en $4$ partes y tomaste $3$, y luego de esas $3$ partes tomas $\dfrac{2}{3}$, terminas con $2$ partes de un entero que está dividido en $4 \times 3 = 12$ partes. Por eso se multiplican numeradores entre sí y denominadores entre sí.</p>
+  <h2>4. Multiplicación: Fracción de una Fracción</h2>
+  <div class="callout why">
+    <span class="cl">🔍 Por qué se multiplica arriba y abajo</span>
+    <p>$\dfrac{2}{3} \times \dfrac{3}{4}$ pregunta: "¿cuánto es $\tfrac{2}{3}$ de algo que ya mide $\tfrac{3}{4}$?" Los numeradores se multiplican entre sí, los denominadores entre sí. Simplifica antes de multiplicar para números más pequeños.</p>
   </div>
-
-  <div class="mdisp">$$\frac{2}{3} \times \frac{3}{4} = \frac{2 \times 3}{3 \times 4} = \frac{6}{12} = \frac{1}{2}$$</div>
-
-  <p>Antes de multiplicar, conviene simplificar cruzado: el $3$ del numerador de la segunda fracción cancela con el $3$ del denominador de la primera. Así la aritmética es más limpia.</p>
-
   <div class="mdisp">$$\frac{2}{\cancel{3}} \times \frac{\cancel{3}}{4} = \frac{2}{4} = \frac{1}{2}$$</div>
 
-  <hr class="divider">
-
-  <h2>5. División: ¿Cuántas Veces Cabe?</h2>
-  <p>¿Por qué dividir fracciones es "invertir y multiplicar"? Esta es una de las reglas que más se memorizan sin entender. Vamos a derivarla.</p>
-  <p>La pregunta que hace $\dfrac{3}{4} \div \dfrac{1}{2}$ es: "¿cuántas veces cabe $\dfrac{1}{2}$ dentro de $\dfrac{3}{4}$?"</p>
-
-  <div class="callout why">
-    <span class="cl">🔍 La derivación: por qué "invertir y multiplicar"</span>
-    <p>Para dividir entre una fracción, multiplicamos arriba y abajo por el recíproco del divisor (para que el denominador se vuelva $1$):</p>
-    <p style="text-align:center;font-family:var(--mono);margin:12px 0">$\dfrac{3/4}{1/2} = \dfrac{3/4 \;\times\; 2/1}{1/2 \;\times\; 2/1} = \dfrac{3/4 \;\times\; 2}{1} = \dfrac{3}{4} \times 2 = \dfrac{3}{2}$</p>
-    <p>El denominador se convierte en $1$ (desaparece) porque $\dfrac{1/2 \times 2}{1} = 1$. Lo que queda es la fracción original multiplicada por el recíproco. Eso es todo. "Invierte y multiplica" es solo el atajo de este proceso.</p>
+  <h2>5. División: Por Qué se Invierte</h2>
+  <div class="callout warn">
+    <span class="cl">⚠️ La regla que más se memoriza sin entender</span>
+    <p>"Invierte y multiplica" no es un truco arbitrario. Es el resultado de multiplicar numerador y denominador por el recíproco del divisor para que el denominador se convierta en 1:</p>
+    <p style="margin:10px 0;font-family:var(--mono);font-size:14px;text-align:center">$\dfrac{3/4}{1/2} = \dfrac{3/4 \times 2/1}{1/2 \times 2/1} = \dfrac{3/2}{1} = \dfrac{3}{2}$</p>
+    <p>El denominador se hace 1 (desaparece) porque $\tfrac{1}{2} \times 2 = 1$.</p>
   </div>
 
-  <div class="mdisp">$$\frac{3}{4} \div \frac{1}{2} = \frac{3}{4} \times \frac{2}{1} = \frac{6}{4} = \frac{3}{2}$$</div>
-
-  <p>¿Tiene sentido la respuesta? $\dfrac{3}{4}$ de pizza. Una porción es $\dfrac{1}{2}$. ¿Cuántas porciones de $\dfrac{1}{2}$ caben en $\dfrac{3}{4}$? Caben $\dfrac{3}{2} = 1.5$ porciones. Sí, tiene sentido.</p>
-
   <hr class="divider">
-
   <div class="exsec">
     <div class="exsec-head">Ejercicios del Módulo 2</div>
-    <p class="exsec-sub">Usa el método que aprendiste, no la regla de memoria. Muestra los pasos.</p>
-
-    <div class="ex">
+    <p class="exsec-sub">Muestra el proceso. El resultado solo tiene valor si el camino es correcto.</p>
+    <div class="ex" id="ex1">
       <div class="ex-head"><span class="ex-n">01</span><span class="ex-t">Simplifica $\dfrac{36}{48}$ usando factorización</span></div>
       <p class="ex-p">Descompón numerador y denominador, cancela los factores comunes.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s1')">▸ Ver solución paso a paso</button>
+      <button class="rbtn" onclick="toggleSol(this,'s1','ex1')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s1">
         <div class="sstep"><div class="sn">1</div><div class="sc"><p>$36 = 2^2 \times 3^2$ y $48 = 2^4 \times 3$</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$\dfrac{36}{48} = \dfrac{2^2 \times 3^2}{2^4 \times 3}$. Cancelamos: queda $\dfrac{3^{2-1}}{2^{4-2}} = \dfrac{3}{4}$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$\dfrac{2^2 \times 3^2}{2^4 \times 3}$: cancelas $2^2$ y un $3$. Queda $\dfrac{3^{2-1}}{2^{4-2}} = \dfrac{3}{4}$</p></div></div>
         <div class="ans"><div class="ans-l">Respuesta</div>$\dfrac{36}{48} = \dfrac{3}{4}$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
-
-    <div class="ex">
+    <div class="ex" id="ex2">
       <div class="ex-head"><span class="ex-n">02</span><span class="ex-t">Calcula $\dfrac{1}{4} + \dfrac{1}{6}$</span></div>
-      <p class="ex-p">Encuentra el MCM de $4$ y $6$ usando factorización, convierte ambas fracciones y suma.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s2')">▸ Ver solución paso a paso</button>
+      <p class="ex-p">Factoriza los denominadores, calcula el MCM, convierte y suma.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s2','ex2')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s2">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$4 = 2^2$, $6 = 2 \times 3$. MCM $= 2^2 \times 3 = 12$</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$\dfrac{1}{4} = \dfrac{3}{12}$ (multiplicamos por $\dfrac{3}{3}$) y $\dfrac{1}{6} = \dfrac{2}{12}$ (multiplicamos por $\dfrac{2}{2}$)</p></div></div>
-        <div class="sstep"><div class="sn">3</div><div class="sc"><p>$\dfrac{3}{12} + \dfrac{2}{12} = \dfrac{5}{12}$. Ya está simplificado (5 y 12 no tienen factores comunes).</p></div></div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>$4=2^2$, $6=2\times3$. MCM $=2^2\times3=12$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$\dfrac{1}{4}=\dfrac{3}{12}$ y $\dfrac{1}{6}=\dfrac{2}{12}$</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>$\dfrac{3}{12}+\dfrac{2}{12}=\dfrac{5}{12}$</p></div></div>
         <div class="ans"><div class="ans-l">Respuesta</div>$\dfrac{1}{4} + \dfrac{1}{6} = \dfrac{5}{12}$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
-
-    <div class="ex">
+    <div class="ex" id="ex3">
       <div class="ex-head"><span class="ex-n">03</span><span class="ex-t">Calcula $\dfrac{3}{5} \times \dfrac{10}{9}$</span></div>
-      <p class="ex-p">Antes de multiplicar, mira si puedes simplificar cruzado para facilitar el cálculo.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s3')">▸ Ver solución paso a paso</button>
+      <p class="ex-p">Antes de multiplicar, busca simplificación cruzada.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s3','ex3')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s3">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Simplificación cruzada: el $3$ del numerador cancela con el $9$ del denominador ($9 \div 3 = 3$). El $10$ del numerador cancela con el $5$ del denominador ($10 \div 5 = 2$).</p></div></div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Simplificación cruzada: $3$ cancela con $9$ → queda $3$ abajo. $10$ cancela con $5$ → queda $2$ arriba.</p></div></div>
         <div class="sstep"><div class="sn">2</div><div class="sc"><p>Queda: $\dfrac{1}{1} \times \dfrac{2}{3} = \dfrac{2}{3}$</p></div></div>
         <div class="ans"><div class="ans-l">Respuesta</div>$\dfrac{3}{5} \times \dfrac{10}{9} = \dfrac{2}{3}$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
-
-    <div class="ex">
+    <div class="ex" id="ex4">
       <div class="ex-head"><span class="ex-n">04</span><span class="ex-t">Calcula $\dfrac{5}{8} \div \dfrac{15}{16}$</span></div>
-      <p class="ex-p">Recuerda: dividir entre una fracción es multiplicar por su recíproco. Luego simplifica.</p>
-      <button class="rbtn" onclick="toggleSol(this,'s4')">▸ Ver solución paso a paso</button>
+      <p class="ex-p">Recuerda: dividir es multiplicar por el recíproco. Luego simplifica.</p>
+      <button class="rbtn" onclick="toggleSol(this,'s4','ex4')">▸ Ver solución paso a paso</button>
       <div class="sol" id="s4">
-        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Invertimos el divisor: $\dfrac{5}{8} \div \dfrac{15}{16} = \dfrac{5}{8} \times \dfrac{16}{15}$</p></div></div>
-        <div class="sstep"><div class="sn">2</div><div class="sc"><p>Simplificamos: $5$ cancela con $15$ ($15 \div 5 = 3$). $8$ cancela con $16$ ($16 \div 8 = 2$).</p></div></div>
-        <div class="sstep"><div class="sn">3</div><div class="sc"><p>Queda: $\dfrac{1}{1} \times \dfrac{2}{3} = \dfrac{2}{3}$</p></div></div>
+        <div class="sstep"><div class="sn">1</div><div class="sc"><p>Invertimos el divisor: $\dfrac{5}{8} \times \dfrac{16}{15}$</p></div></div>
+        <div class="sstep"><div class="sn">2</div><div class="sc"><p>$5$ cancela con $15$ → queda $3$ abajo. $8$ cancela con $16$ → queda $2$ arriba.</p></div></div>
+        <div class="sstep"><div class="sn">3</div><div class="sc"><p>$\dfrac{1 \times 2}{1 \times 3} = \dfrac{2}{3}$</p></div></div>
         <div class="ans"><div class="ans-l">Respuesta</div>$\dfrac{5}{8} \div \dfrac{15}{16} = \dfrac{2}{3}$</div>
       </div>
+      <div class="done-tag">✓ Completado</div>
     </div>
+  </div>
 
+  <div class="quiz">
+    <div class="quiz-head">Mini-quiz · Módulo 2</div>
+    <p class="quiz-sub">Dos preguntas. Intenta sin calculadora.</p>
+    <div class="qblock">
+      <div class="q-num">Pregunta 1 de 2</div>
+      <div class="q-text">¿Cuánto es $\dfrac{1}{3} + \dfrac{1}{4}$?</div>
+      <div class="q-opts">
+        <button class="qopt" onclick="checkOpt('q1',this,false,'Ese es el error de sumar denominadores. MCM(3,4)=12. Convierte: 4/12 + 3/12 = 7/12.')">$\dfrac{2}{7}$</button>
+        <button class="qopt" data-correct="true" onclick="checkOpt('q1',this,true,'¡Correcto! MCM(3,4)=12. 1/3=4/12 y 1/4=3/12. Suma: 7/12.')">$\dfrac{7}{12}$</button>
+        <button class="qopt" onclick="checkOpt('q1',this,false,'MCM(3,4)=12, no 6. Conviertes: 1/3=4/12 y 1/4=3/12. Suma: 7/12.')">$\dfrac{1}{6}$</button>
+        <button class="qopt" onclick="checkOpt('q1',this,false,'Solo pusiste 1+1 en el numerador con denominador 12. Necesitas convertir primero: 1/3=4/12, 1/4=3/12. Total: 7/12.')">$\dfrac{2}{12}$</button>
+      </div>
+      <div class="q-fb" id="fb-q1"></div>
+    </div>
+    <div class="qblock">
+      <div class="q-num">Pregunta 2 de 2</div>
+      <div class="q-text">¿Cuánto es $\dfrac{2}{3} \div \dfrac{4}{9}$?</div>
+      <div class="q-opts">
+        <button class="qopt" onclick="checkOpt('q2',this,false,'Eso es multiplicar, no dividir. Invertir el divisor: 2/3 × 9/4 = 18/12 = 3/2.')">$\dfrac{8}{27}$</button>
+        <button class="qopt" onclick="checkOpt('q2',this,false,'Dividir entre 4/9 es multiplicar por 9/4. Entonces 2/3 × 9/4 = 18/12 = 3/2.')">$\dfrac{1}{6}$</button>
+        <button class="qopt" data-correct="true" onclick="checkOpt('q2',this,true,'¡Perfecto! Inviertes el divisor: 2/3 × 9/4 = 18/12 = 3/2.')">$\dfrac{3}{2}$</button>
+        <button class="qopt" onclick="checkOpt('q2',this,false,'El resultado no cambió. Recuerda: dividir entre 4/9 es multiplicar por su recíproco 9/4.')">$\dfrac{2}{3}$</button>
+      </div>
+      <div class="q-fb" id="fb-q2"></div>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div class="qr-num" id="qr-score"></div>
+      <div class="qr-lbl">RESPUESTAS CORRECTAS</div>
+      <div class="qr-msg" id="qr-msg"></div>
+      <a href="/nivelacion/modulo-3/" class="qr-btn" id="qr-next" style="display:none">Continuar al Módulo 3 →</a>
+    </div>
   </div>
 
   <div class="mnav">
-    <a href="/nivelacion/modulo-1/" class="nbtn">← Módulo 1: Números</a>
+    <a href="/nivelacion/modulo-1/" class="nbtn">← Módulo 1</a>
     <a href="/nivelacion/modulo-3/" class="nbtn next">Módulo 3: Agrupar →</a>
   </div>
 </div>
 
 <footer>
-  <a href="https://www.aiudalabs.com" target="_blank" rel="noopener">
-    <span class="logo" style="font-size:20px"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m" style="font-size:15px">labs</span></span>
-  </a>
+  <a href="https://www.aiudalabs.com" target="_blank"><span class="logo" style="font-size:20px"><span class="a2">&lt;</span><span class="a">ai</span>uda<span class="a2">/&gt;</span><span class="m" style="font-size:15px">labs</span></span></a>
   <p>© 2026 Aiuda Labs · Panamá</p>
-  <p class="cta">¿Quieres una guía para tu curso? <a href="https://wa.me/50763644604" target="_blank">Escríbenos por WhatsApp</a></p>
+  <p class="cta">¿Quieres una guía personalizada? <a href="https://wa.me/50763644604" target="_blank">Escríbenos por WhatsApp</a></p>
 </footer>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  renderMathInElement(document.body, {
-    delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
-    throwOnError: false
-  });
+document.addEventListener('DOMContentLoaded',function(){
+  renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  document.querySelectorAll('.mdisp').forEach(function(el){if(el.scrollWidth>el.offsetWidth+4)el.classList.add('ov');});
+  try{var p=JSON.parse(localStorage.getItem('nivelacion')||'{}');if(p.m2)document.querySelectorAll('.ex').forEach(function(e){e.classList.add('done');});}catch(e){}
 });
-function toggleSol(btn, id) {
-  const sol = document.getElementById(id);
-  const open = sol.style.display === 'block';
-  sol.style.display = open ? 'none' : 'block';
-  btn.textContent = open ? '▸ Ver solución paso a paso' : '▾ Ocultar solución';
+window.addEventListener('scroll',function(){var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;document.getElementById('pbar').style.width=Math.min(pct,100)+'%';},{passive:true});
+var _ready={};
+function toggleSol(btn,sid,eid){
+  var sol=document.getElementById(sid),open=sol.style.display==='block';
+  if(open){sol.style.display='none';btn.textContent='▸ Ver solución paso a paso';return;}
+  if(!_ready[sid]){_ready[sid]=false;btn.disabled=true;btn.textContent='⏳ Piénsalo 2 segundos...';setTimeout(function(){_ready[sid]=true;btn.disabled=false;btn.textContent='▸ Ver solución paso a paso';},2000);return;}
+  sol.style.display='block';btn.textContent='▾ Ocultar solución';
+  document.getElementById(eid).classList.add('done');saveProgress();
+}
+var _ans={};
+function checkOpt(qid,el,correct,fb){
+  if(_ans[qid]!==undefined)return;_ans[qid]=correct;
+  var block=el.closest('.qblock');block.querySelectorAll('.qopt').forEach(function(o){o.classList.add('disabled');});
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct)block.querySelectorAll('[data-correct="true"]').forEach(function(o){o.classList.add('correct');});
+  var fbEl=block.querySelector('.q-fb');fbEl.textContent=fb;fbEl.classList.add('show',correct?'ok':'bad');
+  if(Object.keys(_ans).length>=2)showResult();
+}
+function showResult(){
+  var correct=Object.values(_ans).filter(Boolean).length;
+  var res=document.getElementById('quiz-result');res.style.display='block';
+  document.getElementById('qr-score').textContent=correct+'/2';
+  var msgs=['Repasa el módulo antes de continuar. 💪','¡Casi! Revisa la que fallaste.','¡Excelente! Lista para seguir. 🎉'];
+  document.getElementById('qr-msg').textContent=msgs[correct===2?2:correct>0?1:0];
+  if(correct===2){document.getElementById('qr-next').style.display='inline-flex';saveProgress();}
+}
+function saveProgress(){
+  try{var p=JSON.parse(localStorage.getItem('nivelacion')||'{}');p.m2={done:true,ts:Date.now()};localStorage.setItem('nivelacion',JSON.stringify(p));}catch(e){}
 }
 </script>
 </body>
